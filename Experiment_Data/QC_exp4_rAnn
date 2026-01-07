@@ -1,0 +1,100 @@
+>> QC_exp3_driver
+--- Running order k = 1 ---
+---- refinement = 1 ---- 
+Elapsed time is 0.195617 seconds.
+---- refinement = 2 ---- 
+Elapsed time is 0.137809 seconds.
+Elapsed time is 0.453730 seconds.
+---- refinement = 3 ---- 
+Elapsed time is 0.754123 seconds.
+Elapsed time is 1.107676 seconds.
+---- refinement = 4 ---- 
+Elapsed time is 2.182122 seconds.
+Elapsed time is 6.120397 seconds.
+---- refinement = 5 ---- 
+Elapsed time is 8.256390 seconds.
+Elapsed time is 23.420884 seconds.
+---- refinement = 6 ---- 
+Elapsed time is 72.708584 seconds.
+Elapsed time is 174.724554 seconds.
+--- Running order k = 2 ---
+---- refinement = 1 ---- 
+Elapsed time is 0.043729 seconds.
+---- refinement = 2 ---- 
+Elapsed time is 0.092977 seconds.
+Elapsed time is 0.397384 seconds.
+---- refinement = 3 ---- 
+Elapsed time is 0.447115 seconds.
+Elapsed time is 1.886944 seconds.
+---- refinement = 4 ---- 
+Elapsed time is 2.592327 seconds.
+Elapsed time is 10.277962 seconds.
+---- refinement = 5 ---- 
+Elapsed time is 11.293738 seconds.
+Elapsed time is 44.118133 seconds.
+---- refinement = 6 ---- 
+Elapsed time is 115.005413 seconds.
+Elapsed time is 373.276976 seconds.
+--- Running order k = 3 ---
+---- refinement = 1 ---- 
+Elapsed time is 0.065418 seconds.
+---- refinement = 2 ---- 
+Elapsed time is 0.163971 seconds.
+Elapsed time is 0.732070 seconds.
+---- refinement = 3 ---- 
+Elapsed time is 0.821482 seconds.
+Elapsed time is 3.729306 seconds.
+---- refinement = 4 ---- 
+Elapsed time is 5.848648 seconds.
+Elapsed time is 28.218843 seconds.
+---- refinement = 5 ---- 
+Elapsed time is 23.133618 seconds.
+Elapsed time is 94.764260 seconds.
+---- refinement = 6 ---- 
+Elapsed time is 242.572064 seconds.
+Elapsed time is 712.583682 seconds.
+
+=============================================
+Order k = 1, Betti number = 1
+        h        nDofs     rer_uh      s_uh      rer_xih      s_xih        c1         rer_c1      slope_c1
+    _________    _____    ________    _______    ________    _______    ________    __________    ________
+
+        0.301       66           0        NaN           0        NaN    -0.14966           NaN        NaN 
+      0.14084      197      0.5585        NaN     0.63769        NaN    -0.15085     0.0079345        NaN 
+     0.073217      908     0.29939    0.95308     0.37165    0.82528    -0.15136     0.0033473     1.3193 
+     0.034094     4637     0.17225    0.72325     0.19238    0.86159    -0.15162     0.0016849    0.89813 
+      0.01571    17139    0.096182    0.75209    0.094648    0.91543    -0.15169    0.00051353     1.5335 
+    0.0075533    92388    0.062198    0.59524    0.053177    0.78726    -0.15173    0.00024705    0.99913 
+
+
+=============================================
+Order k = 2, Betti number = 1
+        h          nDofs        rer_uh      s_uh      rer_xih      s_xih        c1         rer_c1      slope_c1
+    _________    __________    ________    _______    ________    _______    ________    __________    ________
+
+        0.301           204           0        NaN           0        NaN    -0.15137           NaN        NaN 
+      0.14084           614     0.18467        NaN     0.15862        NaN    -0.15157     0.0013275        NaN 
+     0.073217          2816     0.11596    0.71133    0.078236     1.0804    -0.15168    0.00070375    0.97011 
+     0.034094         14274    0.068122    0.69594    0.040796    0.85197    -0.15172    0.00031294     1.0604 
+      0.01571         52278    0.038796    0.72659     0.02268    0.75774    -0.15174    9.7037e-05     1.5112 
+    0.0075533    2.8478e+05    0.026074    0.54264    0.015046    0.56038    -0.15174    4.1969e-05     1.1445 
+
+
+=============================================
+Order k = 3, Betti number = 1
+        h          nDofs        rer_uh      s_uh      rer_xih      s_xih        c1         rer_c1      slope_c1
+    _________    __________    ________    _______    ________    _______    ________    __________    ________
+
+        0.301           378           0        NaN           0        NaN    -0.15166           NaN        NaN 
+      0.14084          1141     0.12089        NaN    0.080288        NaN    -0.15171    0.00032938        NaN 
+     0.073217          5224    0.077074    0.68798    0.045154    0.87976    -0.15173    0.00013518     1.3613 
+     0.034094         26411    0.044156    0.72882    0.025868    0.72885    -0.15174    8.2351e-05    0.64851 
+      0.01571         96417     0.02557    0.70511    0.015061    0.69816    -0.15174    2.8219e-05     1.3823 
+    0.0075533    5.2716e+05    0.017315    0.53231    0.010104    0.54498    -0.15175    1.0006e-05     1.4158 
+
+Level  h_max    h_ratio
+  1  3.0100e-01   2.137
+  2  1.4084e-01   1.924
+  3  7.3217e-02   2.147
+  4  3.4094e-02   2.170
+  5  1.5710e-02   2.080

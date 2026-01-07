@@ -1,0 +1,77 @@
+\section{Hodge Decomposition Based Reduction}\label{sec:Reduction}
+
+Any $\bs{v} \in H(\divr{}^0;\Omega)$ has a unique decomposition (see Chapter 3 in \cite{Girault-Raviart-1986-FEM-NS} and (1.2) in \cite{Brenner-Cui-Nan-Sung-2012-HodgeDecomposition2D}):
+\begin{align}\label{eq:HodgeDecomposition}
+    \bs{v} = \curl{\phi} + \sum_{j = 1}^{m} d_j \grad \varphi_j,
+\end{align}
+where $\phi \in H^1(\Omega) \cap L^2_0(\Omega)$, $m \in \mathbb{Z}^+_0$ is the Betti number, and $d_j (1 \leq j \leq m) \in \R$. The harmonic functions $\varphi_j$ are defined by 
+\begin{subequations}\label{eq:P.varphi}
+    \begin{align}
+        (\grad \varphi_j, \grad v) &= 0 \quad \forall v \in H_0^1(\Omega), \label{eq:P.varphi.a}\\
+        \varphi_j|_{\Gamma_0} &= 0, \label{eq:P.varphi.b}\\
+        \varphi_j|_{\Gamma_l} &= \delta_{jl} \quad \mbox{for} \quad 1 \leq l \leq m.\label{eq:P.varphi.c}
+    \end{align}
+\end{subequations}
+Here $\Gamma_0$ denotes the outer boundary, $\Gamma_l$ denote the $l$ components of the inner boundary when Betti number $m > 0$, and $\delta_{jl}$ is the Kronecker delta function.
+
+
+\begin{remark}\label{rem:kernel}
+  The quad-curl energy has a large kernel consisting of gradient fields. Since the functions in $H( \divr{}^0; \Omega)$ are orthogonal to gradient fields, this kernel is fixed upto harmonic functions. Furthermore, in the case of simply connected domains, we infer from the boundary condition $\bs{u} \times \bs{n} = 0$ that the kernel reduces to the zero vector field. Therefore, we can put $\gamma = 0$. However, in the case of multiply connected domains, the harmonic functions in the kernel are non-zero vector fields. To account for this, we set $\gamma > 0$.
+\end{remark}
+
+\subsection{$\Omega$ is simply connected ($\gamma$ = 0).}
+The Hodge decomposition \eqref{eq:HodgeDecomposition} reduces to 
+$$ \bs{u} = \curl{\phi}. $$
+ It now remains to find $\phi$. As shown in \cite{Brenner-Sun-Sung-2017-HodgeDecomposition2D}, this can be achieved by solving the following sequence of problems. 
+
+\begin{enumerate}
+    \item First we find $\rho \in H^1(\Omega) \cap L_2^0(\Omega)$, or equivalently $\rho \in H^1(\Omega)$ such that
+          \begin{align}\label{eq:P.rho}
+            (\curl{\rho}, \curl{\psi}) + (\rho,1) (\psi,1) = (\bs{f}, \curl{\psi}) \quad \forall \psi \in H^1(\Omega).
+          \end{align}
+
+    \item Find $\xi \in H^1(\Omega) \cap L_2^0(\Omega)$ given by 
+          \begin{align}\label{eq:P.xi}
+            \xi = \xi_0 - \frac{(1,\xi_0)}{(1, \xi_1)} \xi_1, 
+          \end{align}
+          where $\xi_0, \xi_1 \in H_0^1(\Omega)$ satisfy 
+          \begin{align}
+            (\curl{\xi_0}, \curl{\eta}) + \beta(\xi_0, \eta) = (\rho, \eta) \quad \forall \eta \in H_0^1(\Omega), \label{eq:P.xi0}\\
+            (\curl{\xi_1}, \curl{\eta}) + \beta(\xi_1, \eta) = (1, \eta) \quad \forall \eta \in H_0^1(\Omega). \label{eq:P.xi1}
+          \end{align}
+
+    \item Finally we find $\phi \in H^1(\Omega) \cap L_2^0(\Omega)$, or equivalently $\phi \in H^1(\Omega)$ such that
+          \begin{align}\label{eq:P.phi}
+            (\curl{\phi}, \curl{\psi}) + (\phi,1) (\psi,1) = (\xi, \psi) \quad \forall \psi \in H^1(\Omega).
+          \end{align}
+\end{enumerate}
+
+\subsection{$\Omega$ is multiply connected ($\gamma > 0$).}
+Recalling the Hodge decomposition \eqref{eq:HodgeDecomposition} 
+$$ \bs{u} = \curl{\phi} + \sum_{j = 1}^{m} c_j \grad \varphi_j. $$
+It remains to find $\phi, c_j,$ and $\varphi_j$. Following \cite{Brenner-Sun-Sung-2017-HodgeDecomposition2D}, this is equivalent to solving the following sequence of problems. 
+
+\begin{enumerate}
+    \item Find $(\zeta, \xi) \in H^1(\Omega) \times H_0^1(\Omega)$ given by
+     \begin{align}\label{eq:P.zeta.chi}
+        (\zeta, \xi) = (\zeta_0, \xi_0) - \frac{(1,\xi_0)}{(1, \xi_1)} (\zeta_1, \xi_1),
+     \end{align}
+     where $(\zeta_0, \xi_0), (\zeta_1, \xi_1) \in H^1(\Omega) \times H_0^1(\Omega)$ solve the following two coupled system:
+     \begin{align}
+            \A((\zeta_0,\xi_0),(\psi,\eta)) + (\zeta_0, 1) (\psi,1) &= \gamma^{-\frac{1}{2}}(\bs{f}, \curl{\psi}) \quad \forall (\psi, \eta) \in H^1(\Omega) \times H_0^1(\Omega), \label{eq:P.zeta0.xi0}\\
+            \A((\zeta_1,\xi_1),(\psi,\eta)) + (\zeta_1, 1) (\psi,1) &= (1,\eta) \quad \forall (\psi, \eta) \in H^1(\Omega) \times H_0^1(\Omega). \label{eq:P.zeta1.xi1}
+      \end{align}
+      Here, the bilinear form $\A(\cdot, \cdot)$ is defined by
+      \begin{align}\label{eq:A}
+        \A((\zeta,\xi),(\psi,\eta)) = (\curl \zeta, \curl \psi) + \gamma^{\frac{1}{2}} (\psi, \xi) - \gamma^{\frac{1}{2}} (\zeta, \eta) + (\curl \xi, \curl \eta) + \beta(\xi, \eta).
+      \end{align}
+
+
+    \item Find $\phi \in H^1(\Omega)$ such that \eqref{eq:P.phi} holds.
+
+    \item Finally $c_j (1 \leq j \leq m)$, are determined by solving the $m \times m$, SPD system
+          \begin{align}\label{eq:P.cj}
+            \sum_{j=1}^m (\grad \varphi_i, \grad \varphi_j) c_j = \gamma^{-1} (\bs{f}, \grad \varphi_i) \quad \mbox{for} \quad 1 \leq i \leq m,
+          \end{align}
+          and the harmonic functions $\varphi_j$ are defined by \eqref{eq:P.varphi}.
+\end{enumerate}

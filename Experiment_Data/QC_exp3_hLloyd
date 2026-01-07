@@ -1,0 +1,70 @@
+QC_exp2_driver
+--- Running order k = 1 ---
+---- refinement = 1 ---- 
+Elapsed time is 0.150895 seconds.
+---- refinement = 2 ---- 
+Elapsed time is 0.212147 seconds.
+Elapsed time is 0.311875 seconds.
+---- refinement = 3 ---- 
+Elapsed time is 0.366826 seconds.
+Elapsed time is 0.868195 seconds.
+---- refinement = 4 ---- 
+Elapsed time is 1.975166 seconds.
+Elapsed time is 3.798979 seconds.
+---- refinement = 5 ---- 
+Elapsed time is 7.324794 seconds.
+Elapsed time is 15.615689 seconds.
+---- refinement = 6 ---- 
+Elapsed time is 49.337493 seconds.
+Elapsed time is 108.827171 seconds.
+---- refinement = 7 ---- 
+Elapsed time is 512.192197 seconds.
+Elapsed time is 872.815483 seconds.
+--- Running order k = 2 ---
+---- refinement = 1 ---- 
+Elapsed time is 0.075934 seconds.
+---- refinement = 2 ---- 
+Elapsed time is 0.179001 seconds.
+Elapsed time is 0.413654 seconds.
+---- refinement = 3 ---- 
+Elapsed time is 0.595302 seconds.
+Elapsed time is 1.969617 seconds.
+---- refinement = 4 ---- 
+Elapsed time is 2.241426 seconds.
+Elapsed time is 6.375484 seconds.
+---- refinement = 5 ---- 
+Elapsed time is 8.473043 seconds.
+Elapsed time is 35.146507 seconds.
+---- refinement = 6 ---- 
+Elapsed time is 63.103851 seconds.
+Elapsed time is 170.807108 seconds.
+---- refinement = 7 ---- 
+Elapsed time is 548.877065 seconds.
+Elapsed time is 1318.024088 seconds.
+
+=============================================
+Order k = 1
+
+           h |    nDofs |             rer uh |      slope |            rer xih |      slope
+  ------------------------------------------------------------------------------------------
+  6.4474e-01 |       47 |         0.0000e+00 |        NaN |         0.0000e+00 |        NaN
+  3.2497e-01 |      174 |         3.1455e-01 |        NaN |         5.5756e-01 |        NaN
+  1.5600e-01 |      783 |         1.4861e-01 |     1.0218 |         2.9441e-01 |     0.8702
+  7.6972e-02 |     4279 |         7.6425e-02 |     0.9414 |         1.4527e-01 |     0.9999
+  3.8974e-02 |    16213 |         4.1667e-02 |     0.8913 |         6.6347e-02 |     1.1516
+  1.9933e-02 |    68184 |         2.4315e-02 |     0.8033 |         3.3254e-02 |     1.0301
+  1.0296e-02 |   255458 |         1.6116e-02 |     0.6226 |         1.6667e-02 |     1.0457
+
+=============================================
+Order k = 2
+
+           h |    nDofs |             rer uh |      slope |            rer xih |      slope
+  ------------------------------------------------------------------------------------------
+  6.4474e-01 |      143 |         0.0000e+00 |        NaN |         0.0000e+00 |        NaN
+  3.2497e-01 |      547 |         8.2224e-02 |        NaN |         1.5327e-01 |        NaN
+  1.5600e-01 |     2465 |         4.4343e-02 |     0.8414 |         4.9060e-02 |     1.5522
+  7.6972e-02 |    13557 |         2.7502e-02 |     0.6762 |         1.3178e-02 |     1.8607
+  3.8974e-02 |    51425 |         1.5440e-02 |     0.8483 |         3.0375e-03 |     2.1564
+  1.9933e-02 |   216367 |         9.2966e-03 |     0.7565 |         1.1150e-03 |     1.4946
+  1.0296e-02 |   810915 |         6.4954e-03 |     0.5428 |         6.6147e-04 |     0.7904
+diary off

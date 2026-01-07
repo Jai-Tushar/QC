@@ -1,0 +1,100 @@
+>> QC_exp3_driver
+--- Running order k = 1 ---
+---- refinement = 1 ---- 
+Elapsed time is 0.294494 seconds.
+---- refinement = 2 ---- 
+Elapsed time is 0.297985 seconds.
+Elapsed time is 0.738713 seconds.
+---- refinement = 3 ---- 
+Elapsed time is 0.734775 seconds.
+Elapsed time is 1.720854 seconds.
+---- refinement = 4 ---- 
+Elapsed time is 2.630119 seconds.
+Elapsed time is 6.564625 seconds.
+---- refinement = 5 ---- 
+Elapsed time is 12.342729 seconds.
+Elapsed time is 39.935049 seconds.
+---- refinement = 6 ---- 
+Elapsed time is 78.435674 seconds.
+Elapsed time is 155.254087 seconds.
+--- Running order k = 2 ---
+---- refinement = 1 ---- 
+Elapsed time is 0.196034 seconds.
+---- refinement = 2 ---- 
+Elapsed time is 0.563308 seconds.
+Elapsed time is 1.560384 seconds.
+---- refinement = 3 ---- 
+Elapsed time is 1.372587 seconds.
+Elapsed time is 4.575340 seconds.
+---- refinement = 4 ---- 
+Elapsed time is 3.272999 seconds.
+Elapsed time is 10.315473 seconds.
+---- refinement = 5 ---- 
+Elapsed time is 18.038559 seconds.
+Elapsed time is 50.780081 seconds.
+---- refinement = 6 ---- 
+Elapsed time is 143.162588 seconds.
+Elapsed time is 315.939389 seconds.
+--- Running order k = 3 ---
+---- refinement = 1 ---- 
+Elapsed time is 0.200542 seconds.
+---- refinement = 2 ---- 
+Elapsed time is 0.550599 seconds.
+Elapsed time is 1.886592 seconds.
+---- refinement = 3 ---- 
+Elapsed time is 1.607755 seconds.
+Elapsed time is 5.457586 seconds.
+---- refinement = 4 ---- 
+Elapsed time is 6.771521 seconds.
+Elapsed time is 39.826309 seconds.
+---- refinement = 5 ---- 
+Elapsed time is 50.645917 seconds.
+Elapsed time is 137.949462 seconds.
+---- refinement = 6 ---- 
+Elapsed time is 238.982082 seconds.
+Elapsed time is 536.681689 seconds.
+
+=============================================
+Order k = 1, Betti number = 2
+       h        nDofs    rer_uh      s_uh      rer_xih      s_xih        c1         rer_c1      slope_c1        c2         rer_c2      slope_c2
+    ________    _____    _______    _______    ________    _______    ________    __________    _________    ________    __________    ________
+
+      0.4345      178          0        NaN           0        NaN    -0.29668           NaN          NaN    -0.13608           NaN         NaN
+     0.21992      470    0.50009        NaN     0.39216        NaN    -0.29731     0.0021114          NaN     -0.1359     0.0013735         NaN
+     0.11751     1462    0.36811    0.48891     0.25068    0.71402    -0.29774     0.0014648      0.58341    -0.13602    0.00093598     0.61192
+    0.060195     5054    0.23122    0.69514     0.14398    0.82894    -0.29763    0.00037872       2.0221    -0.13586     0.0011802    -0.34664
+    0.030553    18014    0.14628    0.67515    0.081268    0.84334    -0.29752    0.00038746    -0.033632    -0.13579    0.00050486      1.2522
+    0.015213    67916    0.09475    0.62284    0.045347    0.83671    -0.29746     0.0001888        1.031    -0.13577    0.00019904      1.3349
+
+
+=============================================
+Order k = 2, Betti number = 2
+       h          nDofs        rer_uh      s_uh      rer_xih      s_xih        c1         rer_c1      slope_c1       c2         rer_c2      slope_c2
+    ________    __________    ________    _______    ________    _______    ________    __________    ________    ________    __________    ________
+
+      0.4345           493           0        NaN           0        NaN    -0.29863           NaN        NaN     -0.13632           NaN         NaN
+     0.21992          1337     0.21366        NaN    0.097556        NaN    -0.29837    0.00088762        NaN     -0.13615     0.0012693         NaN
+     0.11751          4245     0.18612    0.22017    0.061022    0.74862     -0.2978     0.0019198    -1.2309     -0.13592     0.0016774    -0.44485
+    0.060195         14885     0.11626     0.7034     0.03062     1.0309    -0.29759     0.0007055     1.4965     -0.13582    0.00073464      1.2343
+    0.030553         53497    0.073862    0.66897    0.019329    0.67841    -0.29749    0.00032765      1.131     -0.13578    0.00031782      1.2356
+    0.015213    2.0267e+05     0.04854    0.60208    0.012267    0.65214    -0.29744    0.00014434     1.1757     -0.13576    0.00014396      1.1358
+
+
+=============================================
+Order k = 3, Betti number = 2
+       h          nDofs        rer_uh       s_uh      rer_xih      s_xih        c1         rer_c1      slope_c1       c2         rer_c2      slope_c2
+    ________    __________    ________    ________    ________    _______    ________    __________    ________    ________    __________    ________
+
+      0.4345           876           0         NaN           0        NaN    -0.29824           NaN        NaN     -0.13612           NaN        NaN 
+     0.21992          2402     0.16262         NaN    0.052471        NaN    -0.29791     0.0010967        NaN     -0.13597     0.0010794        NaN 
+     0.11751          7688     0.15717    0.054298    0.044549    0.26113    -0.29762    0.00096839    0.19859     -0.13584    0.00095722    0.19162 
+    0.060195         27104      0.0988     0.69403    0.024289    0.90678     -0.2975    0.00041015     1.2843     -0.13579    0.00041441     1.2515 
+    0.030553         97714    0.061311     0.70361    0.015134    0.69756    -0.29745    0.00016548     1.3385     -0.13576    0.00016974     1.3162 
+    0.015213    3.7084e+05     0.04115     0.57184    0.010179    0.56884    -0.29743    7.2425e-05      1.185     -0.13575    7.1846e-05      1.233 
+
+Level  h_max    h_ratio
+  1  4.3450e-01   1.976
+  2  2.1992e-01   1.871
+  3  1.1751e-01   1.952
+  4  6.0195e-02   1.970
+  5  3.0553e-02   2.008

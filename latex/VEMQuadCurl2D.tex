@@ -1,0 +1,397 @@
+\documentclass[oneside, reqno, 11pt, a4paper]{amsart}
+
+\usepackage[english]{babel}
+
+
+%%%%%%%%%%
+%% Fonts %%
+%%%%%%%%%%
+\AtBeginDocument{
+  \DeclareSymbolFont{AMSb}{U}{msb}{m}{n}
+  \DeclareSymbolFontAlphabet{\mathbb}{AMSb}
+}
+\DeclareFontFamily{U}{mathx}{\hyphenchar\font45}
+\DeclareFontShape{U}{mathx}{m}{n}{<-> mathx10}{}
+\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
+\DeclareMathAccent{\widebar}{0}{mathx}{"73}
+
+\usepackage{graphicx}
+%\usepackage{subfig}
+\usepackage{svg}
+\usepackage{tikz}
+\usepackage{caption}
+\usepackage{aligned-overset}
+\usepackage{subcaption}
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\usetikzlibrary{shapes.misc,matrix,fit,positioning,arrows.meta,decorations.pathreplacing,calc,shapes.geometric,arrows,shapes,patterns,math}
+\tikzset{Matrix/.style={matrix of nodes, font=\footnotesize,text height=1pt, text depth=0.5pt, text width=8.5pt, align=center, column sep=0pt, row sep=0pt, nodes in empty cells}}
+
+\graphicspath{{Figures/}{Figures/results_3d/}{Figures/results/}}
+
+%%%%%%%%%%%%
+%% Acronyms %%
+%%%%%%%%%%%%
+\usepackage{acronym}
+\input{acronyms}
+
+%%%%%%%%%%%%
+%% Layout %%
+%%%%%%%%%%%%
+\usepackage[a4paper, pdftex, left=2cm, top=2cm, right=2cm, bottom=2cm]{geometry}
+\usepackage[final]{pdfpages}
+\usepackage{changepage}
+\newcommand{\br}{\vskip 1em}
+\usepackage[foot]{amsaddr}
+\numberwithin{equation}{section}
+
+%%%%%%%%%%%
+%% Links %%
+%%%%%%%%%%%
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
+    bookmarksopen=true,
+    pdftitle={VEM for a Quad-Curl Problem}, 
+    pdfauthor={S. C. Brenner, L. Y. Sung, J. Tushar}, 
+	pdfauthor={}
+    pdfsubject={}, 
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=blue,
+    filecolor=black,
+    urlcolor=blue
+}
+\newcommand{\fig}[1]{Fig.~\ref{#1}}
+\newcommand{\tab}[1]{Tab.~\ref{#1}}
+\newcommand{\sect}[1]{Sect.~\ref{#1}}
+\newcommand{\app}[1]{Apdx.~\ref{#1}}
+
+% Define correction command
+ \usepackage{refcheck}
+\usepackage[normalem]{ulem}
+\normalem
+\newcounter{corr}
+
+%%%%%%%%%%%%%%
+%% Graphics %%
+%%%%%%%%%%%%%%
+% \usepackage[dvipsnames]{xcolor}
+\definecolor{RedOrange}{rgb}{1,0.3,0}
+\definecolor{violet}{rgb}{0.580,0.,0.827}  
+\newcommand{\corr}[3]{\typeout{Warning : a correction remains in page \thepage}
+  \stepcounter{corr}        
+	      {\color{blue}\ifmmode\text{\,\sout{\ensuremath{#1}}\,}\else\sout{#1}\fi}
+              {\color{red}#2}
+              {\color{violet} #3}
+}
+
+% \newcommand{\corr}[3]{{\color{RedOrange}\bf $\blacktriangleright$ #3 $\blacktriangleleft$}}
+
+% Revision highlighting (toggle with \revmodefalse to hide)
+\newif\ifrevmode
+\revmodetrue
+\newcommand{\revadd}[1]{\ifrevmode{\color{red}#1}\else#1\fi}
+\newcommand{\revdel}[1]{\ifrevmode{\color{blue}\ifmmode\text{\,\sout{\ensuremath{#1}}\,}\else\sout{#1}\fi}\else\ignorespaces\fi}
+\newcommand{\revrep}[2]{\ifrevmode{\revdel{#1}{}}{\color{red}#2}\else#2\fi}
+
+%%%%%%%%%%%%%%%%%%
+%% Bibliography %%
+%%%%%%%%%%%%%%%%%%
+\usepackage{csquotes}
+\usepackage[backend=biber, defernumbers=true, maxbibnames=5, style=numeric-comp, isbn=false, bibencoding=utf8, safeinputenc, url=false, doi=true, giveninits=true]{biblatex}
+\addbibresource{refs.bib}
+
+%%%%%%%%%%%%%%%%%%
+%% Environments %%
+%%%%%%%%%%%%%%%%%%
+\usepackage{mathtools}
+\usepackage{mathabx}
+
+\usepackage{float}
+\usepackage{framed}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{multirow}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{cancel}
+\usepackage{accents}
+\usepackage{mleftright}
+\usepackage{thm-restate}
+\usepackage{longtable}
+
+\makeatletter
+\algdef{S}[IF]{IfNoThen}[1]{\algorithmicif\ #1}
+\makeatother
+\usepackage[inline]{enumitem}
+\usepackage{siunitx}
+
+
+\newtheorem{theorem}{Theorem}
+\numberwithin{theorem}{section}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{assumption}[theorem]{Assumption}
+\usepackage[breakable]{tcolorbox}
+\tcbuselibrary{theorems}
+\tcbuselibrary{skins}
+\tcbset{
+	commonstyle/.style={
+		theorem style=plain,
+		enhanced jigsaw,
+		fonttitle=\bfseries,
+		fontupper=\itshape,
+		halign=justify,
+		separator sign=:,
+		description delimiters none,
+		description font=\bfseries, 
+		terminator sign={.\hspace{0.25em}},
+		arc=0mm,outer arc=0mm,
+		boxrule=0pt,toprule=0pt,bottomrule=0pt,leftrule=0pt,rightrule=0pt,
+		titlerule=0pt,toptitle=0pt,bottomtitle=0pt,top=0pt,
+		colback=white,coltitle=black,
+		boxsep=0pt, bottom=0pt, left=0pt, 
+	}
+}
+\newtcbtheorem[]{myproblem}{Problem}%
+{center, commonstyle, fonttitle=\bfseries}{pb}
+\newtcbtheorem[]{mydefinition}{Definition}
+{center, commonstyle, fonttitle=\bfseries}{pb}
+\newtcbtheorem[]{myassumption}{Assumption}
+{center, commonstyle, fonttitle=\bfseries}{pb}
+
+%%%%%%%%%%%%%%%%%
+%% Mathematics %%
+%%%%%%%%%%%%%%%%%
+\usepackage{amsmath, amsfonts, amssymb, amscd, bm, mathtools}
+
+% Mesh (micro, macro)
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\curl}[1]{\nabla \times #1}
+\newcommand{\grad}[1]{\nabla #1}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\divr}[1]{\mbox{div}\,#1}
+\newcommand{\Th}{\mathcal{T}_h}
+\newcommand{\ED}{\mathcal{E}_D}
+\newcommand{\Poly}{\mathbb{P}}
+\newcommand{\norm}[2]{\|#2\|_{#1}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\seminorm}[2]{|#2|_{#1}}
+\newcommand{\Ih}[1]{I_{k,h} #1}
+\newcommand{\ID}[1]{I_{k,D} #1}
+\newcommand{\tnorm}[2]{\vvvert #2\vvvert_{#1}}
+
+% \newcommand{\mh}{\mathbb{M}_{h}}
+% \newcommand{\tah}{\mathbb{T}_{h}}
+% \newcommand{\fh}{\mathbb{F}_{h}}
+% \newcommand{\Mh}{\mathcal{M}_{h}}
+% \newcommand{\Th}{\mathcal{T}_{h}}
+% \newcommand{\Thloc}{\mathcal{T}^i_{h}}
+% \newcommand{\Fh}{\mathcal{F}_{h}}
+% \newcommand{\Fhloc}{\mathcal{F}^i_{h}}
+% \newcommand{\interior}{{\rm in}}
+% \newcommand{\boundary}{{\rm bd}}
+% \newcommand{\Fhi}{\Fh^{\interior}}
+% \newcommand{\Fhb}{\Fh^{\boundary}}
+% \newcommand{\Fhbloc}{\Fh^{\boundary,i}}
+% \newcommand{\FFhb}{\mathcal{F\!F}_h^{\boundary}}
+% \newcommand{\FFhbloc}{\mathcal{F\!F}_h^{\boundary,i}}
+% \newcommand{\FFh}{\mathcal{F\!F}_h}
+% \newcommand{\Eh}{\mathcal{E}_{h}}
+% \newcommand{\Ehi}{\Eh^{\interior}}
+% \newcommand{\Ehb}{\Eh^{\boundary}}
+% \newcommand{\MH}{\mathcal{M}_{H}}
+% \renewcommand{\TH}{\mathcal{T}_{H}}
+% \newcommand{\FH}{\mathcal{F}_{H}}
+% \newcommand{\FHi}{\FH^{\interior}}
+% \newcommand{\FHb}{\FH^{\boundary}}
+% % Projectors
+% \newcommand{\lproj}[2]{\pi_{#1}^{#2}}
+% %\newcommand{\lproj}[2]{\pi_{#1}^{0,#2}}
+% %\newcommand{\eproj}[2]{\pi_{#1}^{1,#2}}
+% \newcommand{\projFace}{\mathfrak{F}}
+% % To distinguish continuous and discontinuous vectors/spaces
+% \newcommand{\wh}[1]{\widehat{#1}}
+% \newcommand{\wt}[1]{\widetilde{#1}} 
+% \newcommand{\ul}[1]{\underline{#1}}
+% % HHO space: continuous (interior and boundary), discontinuous, micro, macro
+% \newcommand{\Uhbddc}{\ul{\wt{U}}_h}
+% \newcommand{\Uhbub}{\ul{U}_{h,0}}
+% \newcommand{\Uhbubb}{U_{h,0}^\partial}
+% \newcommand{\Uhc}{\wh{\ul{U}}_{h}}
+% % \newcommand{\Uh}{\ul{U}_{h}}
+% \newcommand{\Uh}{\Uhc}
+% \newcommand{\Uhci}{\wh{U}_{h}}
+% \newcommand{\Uhi}{U_{h}}
+% \newcommand{\Uhcloc}{\wh{\ul{U}}^i_{h}}
+% \newcommand{\Uhloc}{\ul{U}^i_{h}}
+% \newcommand{\Uhcb}{\wh{U}_{h}^{\partial}}
+% % \newcommand{\Uhb}{U_{h}^{\partial}}
+% \newcommand{\Uhb}{\Uhcb}
+% \newcommand{\Uhcbb}{\wh{U}_{h}^{\partial,\boundary}}
+% % \newcommand{\Uhbb}{U_{h}^{\partial,\boundary}}
+% \newcommand{\Uhbb}{\Uhcbb}
+% \newcommand{\bb}{{\partial,\boundary}}
+% \newcommand{\Uhcbloc}{\wh{U}_{h}^{\partial,i}}
+% \newcommand{\Uhbloc}{U_{h}^{\partial,i}}
+% \newcommand{\Uhcbbloc}{\wh{U}_{h}^{\partial,\boundary,i}}
+% \newcommand{\Uhbbloc}{U_{h}^{\partial,\boundary,i}}
+% \newcommand{\bs}[1]{\boldsymbol{#1}}
+
+% \newcommand{\Uhd}{\ul{U}_{h}}
+% \newcommand{\Uhdi}{U_{h}}
+% \newcommand{\Uhdb}{U_{h}^{\partial}}
+
+% \newcommand{\UHc}{\wh{\ul{U}}_{H}}
+% \newcommand{\UHci}{\wh{U}_{H}}
+% \newcommand{\UHcb}{\wh{U}_{H}^{\partial}}
+% \newcommand{\UHd}{\ul{U}_{H}}
+% \newcommand{\UHdi}{U_{H}}
+% \newcommand{\UHdb}{U_{H}^{\partial}}
+% \newcommand{\Uhei}{\wh{\mathcal{U}}_{h}}
+
+% \newcommand{\Iht}{\ul{I}_{t,h}}
+% \newcommand{\Ih}{\ul{I}_h}
+
+% \newcommand{\ctr}{\gamma}
+% \newcommand{\tr}{\gamma}
+
+% \newcommand{\fbou}{f}
+
+% \newcommand{\fF}{{f\!F}}
+% \newcommand{\ffp}{{f \! f' }}
+% \newcommand{\ff}{{f\!f}}
+% % \newcommand{\dffp}{\delta_{\ffp}}
+% \newcommand{\dffp}{|x_f-x_{f'}|}
+% \newcommand{\dfg}{|x_f-x_{g}|}
+% % \newcommand{\dffp}{\delta(f,f')}
+% \newcommand{\dff}{\delta_\ff}
+% \newcommand{\fGbd}{{f\partial\Gamma}}
+% \newcommand{\dfGbd}{\mbox{dist}(x_f,\partial\Gamma)}
+% \newcommand{\dist}{\mathop{\rm dist}}
+% \newcommand{\distV}{\mathop{\rm dist}\nolimits_V}
+% \newcommand{\distH}{\mathop{\rm dist}\nolimits_H}
+% %\newcommand{\vvvert}{\vert\kern-0.25ex\vert\kern-0.25ex\vert}
+% % \newcommand{\tnorm}[2]{\vvvert #2\vvvert_{#1}}
+% 
+% \newcommand{\Poly}[1]{\mathbb{P}^{#1}}
+ 
+% % Domain
+% % \newcommand{\dom}{\mathcal{O}}
+% \newcommand{\dom}{\Omega}
+
+% % Annulus
+% \newcommand{\An}[3]{{\ocirc}_{#2}^{#1}(#3)}
+% %\newcommand{\An}[3]{{\textstyle\bigodot}_{#1,#2}(#3)}
+% % \newcommand{\R}{\mathcal{R}_{fl}}
+% \newcommand{\Above}{\mathcal{V}}
+
+% % Disc
+% \newcommand{\disc}[2]{\ovoid_{#1}(#2)}
+
+% % average
+% \newcommand{\ol}[1]{\overline{#1}}
+
+% % Slicings
+% \newcommand{\A}{\mathcal{A}}
+
+% %Neighbour
+% \newcommand{\N}{\mathcal{N}}
+
+% %vertical Layers
+% \newcommand{\La}{\mathcal{L}}
+% \newcommand{\G}{\mathcal{G}}
+
+% %Horizontal layers
+% \newcommand{\Co}{\mathcal{C}}
+% \newcommand{\Ca}{\mathcal{C}_{\ffp s}}
+
+% %
+% \newcommand{\W}{\mathcal{W}}
+
+% %I_{ff'}
+% \newcommand{\Iffp}{\mathcal{I}_{\ffp}}
+% \newcommand{\Ift}{\mathcal{I}_{ft}}
+% % \newcommand{\Iffp}{\mathcal{I}({\fbou , \fbou') }}
+% % \newcommand{\Ift}{\mathcal{I}{(\fbou,t)}}
+% \newcommand{\fint}{g}
+
+% %Operators
+% \newcommand{\HoneOp}{\boldsymbol{\mathcal{A}}}
+% \newcommand{\HhalfOp}{\boldsymbol{\mathcal{H}}}
+% \newcommand{\U}{\mathcal{U}}
+% \newcommand{\V}{\mathcal{V}}
+% \newcommand{\Q}{\boldsymbol{\mathcal{Q}}}
+
+
+% %Disjoint Union
+% \newcommand{\rotpi}{\rotatebox[origin=c]{180}{\Large $\Pi$}}
+
+
+%%%%%%%%%%%%%%
+%% Metadata %%
+%%%%%%%%%%%%%%
+\title[]{
+Virtual Element Method for a Quad-Curl Problem on Planar Domains
+} 
+\date{\today}
+\keywords{}
+
+\address{$^\dagger$ Department of Mathematics and Center for Computation \& Technology\\Louisiana State University\\Baton Rouge\\Louisiana 70803\\USA}
+\author[S. C. Brenner]{Susanne C. Brenner$^{\dagger}$}
+% \thanks{\textsuperscript{*}Corresponding author.}
+\email{brenner@math.lsu.edu}
+\author[L.-Y. Sung]{Li-Yeng Sung$^{\dagger}$}
+\email{sung@math.lsu.edu}
+\author[J. Tushar]{Jai Tushar$^{\dagger}$}
+\email{Jai.Tushar@lsu.edu}
+
+\begin{document}
+
+
+	\begin{abstract}
+		$\dots$  
+	\end{abstract}
+
+	
+
+	\keywords{$\dots$}
+
+	\maketitle
+
+	% Introduction
+	\input{Introduction.tex}
+
+	% Preliminaries
+	\input{Preliminaries.tex}
+
+	% % Hodge Decomposition and Energy Space
+	% \input{HodgeDecomAndEnergySpace.tex}
+
+	% Reduction
+	\input{Reduction.tex}
+
+	% Virtual Element Scheme
+	\input{Discretization.tex}
+
+	% Convergence analysis and proofs
+	\input{Convergence_analysis.tex}
+
+	\input{LemmaProofs.tex}
+
+	% Application to discontinuous skeletal methods
+	\input{Numerical_experiments.tex}
+
+	\section*{Acknowledgments}
+	$\dots$
+
+	\printbibliography
+
+\end{document}

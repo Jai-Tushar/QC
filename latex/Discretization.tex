@@ -1,0 +1,98 @@
+\section{Conforming Virtual Element Discretization}\label{sec:discretization}
+
+Let $\Th$ be a triangulation of the polygonal domain $\Omega \subset \R^2$ into a finite collection of simple polygons $D$. The mesh parameter $h$ is defined as $h := \max_{D \in \Th} h_D$, where $h_D$ denotes the diameter of $D$. Let $\ED$ be the set of edges associated with $D$. We make the following shape-regularity assumptions for all $D \in \Th$ (see \cite{Brenner-Guan-Sung-2017-Some-Estimates-VEM, beirao-da-veiga.brezzi.ea:2013:basic}). There exists a constant $\Theta \in (0,1)$ such that
+\begin{subequations}\label{meshreg_assum}
+    \begin{align}
+        &\mbox{$D$ is star-shaped with respect to a ball of radius $\Theta h_D$, and}  \label{meshreg_assum.1}\\
+        &\mbox{$|e| \geq \Theta h_D$ for any edge $e \in \ED$.} \label{meshreg_assum.2}
+    \end{align}
+\end{subequations}
+The local enhanced virtual element space $V_h(D) \subset H^1(D)$ (see \cite{ahmad.alsaedi.ea:2013:equivalent,Brenner-Guan-Sung-2017-Some-Estimates-VEM}) is defined as follows:
+\begin{align}\label{eq:VhK}
+    V_h(D) := \left\{ v_h \in H^1(D): v_h|_{\partial D} \in \Poly_{k}(\partial D), \;\; -\Delta v_h \in \Poly_{k}(D), \;\; \Pi^0_{k,D} v_h - \Pi^{1}_{k,D} v_h \in \Poly_{k-2}(D)  \right\}.
+\end{align}
+Here $\Poly_k(\partial D)$ (respectively, $\Poly_k(D)$) denote the space of continuous piecewise polynomials of degree at most $k$ on the boundary $\partial D$ (respectively, on $D$). The operators $\Pi^0_{k,D}$ and $\Pi^{1}_{k,D}$ are the standard $L^2$ and $H^1$-projections onto $\Poly_k(D)$, respectively (see \cite[Section 2.2]{Brenner-Guan-Sung-2017-Some-Estimates-VEM} for details). The global virtual element spaces $V_h$ and $V_h^0$ are defined by concatenating the local spaces as follows:
+\begin{align}
+    V_h := \{ v_h \in H^1(\Omega) : v_h|_D \in V_h(D) \text{ for all } D \in \Th \}, \label{eq:Vh} \\
+    V_h^0 := \{ v_h \in H_0^1(\Omega) : v_h|_D \in V_h(D) \text{ for all } D \in \Th \}. \label{eq:Vh0}
+\end{align}
+
+\subsection{$\Omega$ is simply connected ($\gamma = 0$).}
+The $\Poly_k$ Virtual Element Method for approximating the sequence of problems \eqref{eq:P.rho}-\eqref{eq:P.phi} is as follows.
+
+\begin{enumerate}
+    \item Find $\rho_h \in V_h$ such that
+          \begin{align}\label{eq:Ph.rhoh}
+            a_h(\rho_h, \psi_h) + (\Pi^0_{k,h}\rho_h,1) (\Pi^0_{k,h} \psi_h,1) = (\bs{f}, \curl{ \Pi^{1}_{k,h} \psi_h}) \quad \forall \psi_h \in V_h.
+          \end{align}
+
+    \item Find $\xi_h \in V_h$ given by 
+          \begin{align}\label{eq:Ph.xih}
+            \xi_h = \xi_{0,h} - \frac{(1,\xi_{0,h})}{(1, \xi_{1,h})} \xi_{1,h}, 
+          \end{align}
+          where $\xi_{0,h}, \xi_{1,h} \in V_h^0$ satisfy 
+          \begin{align}
+            a_h(\xi_{0,h}, \eta_h) + \beta(\Pi^0_{k,h} \xi_{0,h}, \Pi^0_{k,h} \eta_h) &= (\Pi^0_{k,h}\rho_h, \Pi^0_{k,h} \eta_h) \quad \forall \eta_h \in V_h^0, \label{eq:Ph.xi0h}\\
+            a_h(\xi_{1,h}, \eta_h) + \beta(\Pi^0_{k,h}\xi_{1,h},\Pi^0_{k,h} \eta_h) &= (1, \Pi^0_{k,h} \eta_h) \quad \forall \eta_h \in V_h^0. \label{eq:Ph.xi1h}
+          \end{align}
+
+    \item Find $\phi_h \in V_h$ such that
+          \begin{align}\label{eq:Ph.phih}
+            a_h(\phi_h, \psi_h) + (\Pi^0_{k,h}\phi_h,1) (\Pi^0_{k,h} \psi_h,1) = (\Pi^0_{k,h}\xi_h, \Pi^0_{k,h} \psi_h) \quad \forall \psi_h \in V_h.
+          \end{align}
+\end{enumerate}
+
+Here, the global bilinear form $a_h(\cdot, \cdot)$ is given elementwise by:
+\begin{align}
+    a_h(w_h, v_h) &= \sum_{D \in \Th} a^D_h(w_h, v_h) \quad \forall w_h, v_h \in V_h, \\
+                   &= \sum_{D \in \Th}  (\curl{\Pi^{1}_{k,D} w_h}, \curl{\Pi^{1}_{k,D} v_h})_D + S^D((I - \Pi^{1}_{k,D}) w_h, (I - \Pi^{1}_{k,D}) v_h). \label{eq:ah}
+\end{align}
+
+$\Pi^0_{k,h}$ and $\Pi^{1}_{k,h}$ are the global $L^2$ and $H^1$-projections onto $\Poly_k(\Th)$ (discontinuous piecewise polynomials of degree $\leq k$), respectively, and are understood in terms of their local counterparts. The symmetric positive definite stabilization term is denoted by $S^D(\cdot, \cdot)$. Finally, we post-process $\bs{u}_h \in [\Poly_k(\Th)]^2$ using the Hodge decomposition as follows:
+\begin{align}\label{uh.simplyConnected}
+    \bs{u}_h = \curl \Pi^{1}_{k,h} \phi_h.
+\end{align}
+
+\subsection{$\Omega$ is multiply connected ($\gamma > 0$).} The $\Poly_k$ Virtual Element Method for approximating the sequence of problems \eqref{eq:P.zeta.chi}-\eqref{eq:P.cj} is as follows.
+
+\begin{enumerate}
+    \item Find $(\zeta_h, \xi_h) \in V_h \times V_h^0$ given by
+     \begin{align}\label{eq:Ph.zeta.chi}
+        (\zeta_h, \xi_h) = (\zeta_{0,h}, \xi_{0,h}) - \frac{(1,\xi_{0,h})}{(1, \xi_{1,h})} (\zeta_{1,h}, \xi_{1,h}),
+     \end{align}
+     where $(\zeta_{,h}, \xi_{0,h}), (\zeta_{1,h}, \xi_{1,h}) \in V_h \times V_h^0$ solve the following two coupled systems:
+     \begin{align}
+            \A_h((\zeta_{0,h},\xi_{0,h}),(\psi_h, \eta_h)) + (\Pi^0_{k,h} \zeta_{0,h}, 1) (\Pi^0_{k,h} \psi_h,1) \nonumber\\
+              = \gamma^{-\frac{1}{2}}(\bs{f}, \curl{ \Pi^{1}_{k,h} \psi}) \quad \forall (\psi_h, \eta_h) \in V_h \times V_h^0, \label{eq:Ph.zeta0.xi0}\\
+            \A_h((\zeta_{1,h},\xi_{1,h}),(\psi_h, \eta_h)) + (\Pi^0_{k,h} \zeta_{1,h}, 1) (\Pi^0_{k,h} \psi_h,1) \nonumber\\
+            = (1,\Pi^0_{k,h} \eta_h) \quad \forall (\psi_h, \eta_h) \in V_h \times V_h^0. \label{eq:Ph.zeta1.xi1}
+      \end{align}
+      The global coupled bilinear form $\A_h(\cdot, \cdot)$ is defined by
+      \begin{align}\label{eq:Ah}
+          \A_h((\zeta_h,\xi_h),(\psi_h,\eta_h)) &= a_h(\zeta_h, \xi_h) + \gamma^{\frac{1}{2}} (\Pi^0_{k,h} \psi_h, \Pi^0_{k,h} \xi_h) - \gamma^{\frac{1}{2}} (\Pi^0_{k,h} \zeta_h, \Pi^0_{k,h} \eta_h) \nonumber\\
+          &\qquad+ a_h(\xi_h, \eta_h) + \beta(\Pi^0_{k,h} \xi_h, \Pi^0_{k,h} \eta_h).
+      \end{align}
+
+    \item Find $\phi_h \in V_h$ such that \eqref{eq:Ph.phih} holds.
+
+    \item The coefficients $c_{j,h} \; (1 \leq j \leq m)$, are determined by solving
+          \begin{align}\label{eq:P.cj}
+            \sum_{j=1}^m a_h(\varphi_{i,h}, \varphi_{j,h}) c_{j,h} = \gamma^{-1} (\bs{f}, \grad \Pi^{1}_{k,h} \varphi_{i,h}) \quad \mbox{for} \quad 1 \leq i \leq m.
+          \end{align}
+          Where the discrete harmonic functions $\varphi_{j,h}$ are determined by approximating \eqref{eq:P.varphi} as follows:
+          \begin{subequations}\label{eq:Ph.varphi}
+              \begin{align}
+                  a_h(\varphi_{j,h}, v_h) &= 0 \quad \forall v_h \in V_h^0, \label{eq:Ph.varphi.a}\\
+                  \varphi_{j,h}|_{\Gamma_0} &= 0, \label{eq:Ph.varphi.b}\\
+                  \varphi_{j,h}|_{\Gamma_l} &= \delta_{jl} \quad \mbox{for} \quad 1 \leq l \leq m,\label{eq:Ph.varphi.c}
+              \end{align}
+          \end{subequations}
+          with $a_h(\cdot,\cdot)$ given by \eqref{eq:ah}.
+\end{enumerate}
+
+Finally we post-process $\bs{u}_h \in [\Poly_k(\Th)]^2$ using the Hodge decomposition as follows:
+\begin{align}\label{uh.notSimplyConnected}
+    \bs{u}_h = \curl \Pi^{1}_{k,h} \phi_h + \sum_{j=1}^m c_{j,h} \grad \Pi^{1}_{k,h} \varphi_{j,h}.
+\end{align}
+
+

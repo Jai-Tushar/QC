@@ -1,0 +1,111 @@
+QC_exp3_driver
+--- Running order k = 1 ---
+---- refinement = 1 ---- 
+Elapsed time is 0.259895 seconds.
+---- refinement = 2 ---- 
+Elapsed time is 0.180458 seconds.
+Elapsed time is 0.334359 seconds.
+---- refinement = 3 ---- 
+Elapsed time is 0.715318 seconds.
+Elapsed time is 0.709114 seconds.
+---- refinement = 4 ---- 
+Elapsed time is 1.186011 seconds.
+Elapsed time is 2.169804 seconds.
+---- refinement = 5 ---- 
+Elapsed time is 2.832614 seconds.
+Elapsed time is 8.129092 seconds.
+---- refinement = 6 ---- 
+Elapsed time is 12.400328 seconds.
+Elapsed time is 42.562266 seconds.
+---- refinement = 7 ---- 
+Elapsed time is 85.155676 seconds.
+Elapsed time is 197.571444 seconds.
+--- Running order k = 2 ---
+---- refinement = 1 ---- 
+Elapsed time is 0.060964 seconds.
+---- refinement = 2 ---- 
+Elapsed time is 0.082018 seconds.
+Elapsed time is 0.333889 seconds.
+---- refinement = 3 ---- 
+Elapsed time is 0.293931 seconds.
+Elapsed time is 1.339874 seconds.
+---- refinement = 4 ---- 
+Elapsed time is 0.988383 seconds.
+Elapsed time is 3.666307 seconds.
+---- refinement = 5 ---- 
+Elapsed time is 3.517376 seconds.
+Elapsed time is 13.576996 seconds.
+---- refinement = 6 ---- 
+Elapsed time is 22.434503 seconds.
+Elapsed time is 62.437033 seconds.
+---- refinement = 7 ---- 
+Elapsed time is 123.663585 seconds.
+Elapsed time is 322.875144 seconds.
+--- Running order k = 3 ---
+---- refinement = 1 ---- 
+Elapsed time is 0.139522 seconds.
+---- refinement = 2 ---- 
+Elapsed time is 0.336642 seconds.
+Elapsed time is 1.132602 seconds.
+---- refinement = 3 ---- 
+Elapsed time is 1.130063 seconds.
+Elapsed time is 3.449791 seconds.
+---- refinement = 4 ---- 
+Elapsed time is 3.060296 seconds.
+Elapsed time is 9.902750 seconds.
+---- refinement = 5 ---- 
+Elapsed time is 7.125669 seconds.
+Elapsed time is 24.687738 seconds.
+---- refinement = 6 ---- 
+Elapsed time is 39.454718 seconds.
+Elapsed time is 124.376295 seconds.
+---- refinement = 7 ---- 
+Elapsed time is 235.205791 seconds.
+Elapsed time is 607.543666 seconds.
+
+=============================================
+Order k = 1
+
+           h |    nDofs |             rer uh |      slope |            rer xih |      slope |                 cj |      slope |             rer cj |      slope
+  ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+  2.6352e-01 |       96 |         0.0000e+00 |        NaN |         0.0000e+00 |        NaN |        -1.5092e-01 |        NaN |         0.0000e+00 |        NaN
+  1.6667e-01 |      200 |         5.5468e-01 |        NaN |         5.5625e-01 |        NaN |        -1.5258e-01 |        NaN |         1.0859e-02 |        NaN
+  8.8527e-02 |      644 |         3.9555e-01 |     0.5344 |         4.7814e-01 |     0.2392 |        -1.5201e-01 |     1.6834 |         3.7433e-03 |     1.6834
+  4.7670e-02 |     1930 |         2.3558e-01 |     0.8372 |         2.6526e-01 |     0.9518 |        -1.5187e-01 |     2.2038 |         9.5675e-04 |     2.2038
+  2.4005e-02 |     6584 |         1.4767e-01 |     0.6808 |         1.5495e-01 |     0.7836 |        -1.5180e-01 |     1.0766 |         4.5711e-04 |     1.0766
+  1.1835e-02 |    24092 |         9.6194e-02 |     0.6061 |         8.8037e-02 |     0.7995 |        -1.5177e-01 |     1.1989 |         1.9579e-04 |     1.1989
+  6.1122e-03 |    93334 |         6.0914e-02 |     0.6915 |         4.9748e-02 |     0.8638 |        -1.5175e-01 |     1.2352 |         8.6560e-05 |     1.2352
+
+=============================================
+Order k = 2
+
+           h |    nDofs |             rer uh |      slope |            rer xih |      slope |                 cj |      slope |             rer cj |      slope
+  ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+  2.6352e-01 |      264 |         0.0000e+00 |        NaN |         0.0000e+00 |        NaN |        -1.5218e-01 |        NaN |         0.0000e+00 |        NaN
+  1.6667e-01 |      552 |         2.3003e-01 |        NaN |         1.7977e-01 |        NaN |        -1.5214e-01 |        NaN |         3.1971e-04 |        NaN
+  8.8527e-02 |     1840 |         2.0059e-01 |     0.2165 |         1.3307e-01 |     0.4755 |        -1.5193e-01 |    -2.2493 |         1.3269e-03 |    -2.2493
+  4.7670e-02 |     5614 |         1.1408e-01 |     0.9118 |         6.4395e-02 |     1.1726 |        -1.5182e-01 |     0.8877 |         7.6589e-04 |     0.8877
+  2.4005e-02 |    19408 |         7.4773e-02 |     0.6157 |         3.8771e-02 |     0.7396 |        -1.5178e-01 |     1.6525 |         2.4651e-04 |     1.6525
+  1.1835e-02 |    71592 |         4.9773e-02 |     0.5755 |         2.5632e-02 |     0.5851 |        -1.5176e-01 |     0.8541 |         1.3475e-04 |     0.8541
+  6.1122e-03 |   278634 |         3.2012e-02 |     0.6680 |         1.6259e-02 |     0.6889 |        -1.5175e-01 |     1.4127 |         5.2980e-05 |     1.4127
+
+=============================================
+Order k = 3
+
+           h |    nDofs |             rer uh |      slope |            rer xih |      slope |                 cj |      slope |             rer cj |      slope
+  ----------------------------------------------------------------------------------------------------------------------------------------------------------------
+  2.6352e-01 |      468 |         0.0000e+00 |        NaN |         0.0000e+00 |        NaN |        -1.5140e-01 |        NaN |         0.0000e+00 |        NaN
+  1.6667e-01 |      980 |         1.9465e-01 |        NaN |         1.2458e-01 |        NaN |        -1.5196e-01 |        NaN |         3.6710e-03 |        NaN
+  8.8527e-02 |     3312 |         1.6941e-01 |     0.2195 |         9.0133e-02 |     0.5116 |        -1.5184e-01 |     2.3689 |         8.2010e-04 |     2.3689
+  4.7670e-02 |    10175 |         9.6881e-02 |     0.9028 |         4.9384e-02 |     0.9720 |        -1.5179e-01 |     1.4530 |         3.3362e-04 |     1.4530
+  2.4005e-02 |    35352 |         6.1551e-02 |     0.6612 |         3.0638e-02 |     0.6959 |        -1.5176e-01 |     1.1144 |         1.5533e-04 |     1.1144
+  1.1835e-02 |   130796 |         4.1792e-02 |     0.5474 |         2.0781e-02 |     0.5489 |        -1.5175e-01 |     1.1895 |         6.6972e-05 |     1.1895
+  6.1122e-03 |   509917 |         2.6849e-02 |     0.6696 |         1.3217e-02 |     0.6848 |        -1.5175e-01 |     1.3500 |         2.7446e-05 |     1.3500
+Level  h_max    h_ratio
+  1  2.6352e-01   1.581
+  2  1.6667e-01   1.883
+  3  8.8527e-02   1.857
+  4  4.7670e-02   1.986
+  5  2.4005e-02   2.028
+  6  1.1835e-02   1.936
+diary off

@@ -1,0 +1,31 @@
+\section{Hodge decomposition and the energy space $\mathbb{E}$}\label{sec:Hd.E}
+
+Any $\bs{v} \in H(\divr{}^0;\Omega)$ has a unique decomposition (see Chapter 3 in \cite{Girault-Raviart-1986-FEM-NS} and (1.2) in \cite{Brenner-Cui-Nan-Sung-2012-HodgeDecomposition2D}):
+\begin{align}\label{eq:HodgeDecomposition}
+    \bs{v} = \curl{\phi} + \sum_{j = 1}^{m} d_j \grad \varphi_j,
+\end{align}
+where $\phi \in H^1(\Omega) \cap L^2_0(\Omega)$, $m \in \mathbb{Z}^+_0$ is the Betti number, and $d_j (1 \leq j \leq m) \in \R$. The harmonic functions $\varphi_j$ are defined by 
+\begin{subequations}\label{eq:P.varphi}
+    \begin{align}
+        (\grad \varphi_j, \grad v) &= 0 \quad \forall v \in H_0^1(\Omega), \label{eq:P.varphi.a}\\
+        \varphi_j|_{\partial \Omega} &= 0, \label{eq:P.varphi.b}\\
+        \varphi_j|_{\Gamma_l} &= \delta_{jl} \quad \mbox{for} \quad 1 \leq l \leq m.\label{eq:P.varphi.c}
+    \end{align}
+\end{subequations}
+Here $\Gamma_l$ denote the $l$ components of the inner boundary when Betti number $m > 0$, and $\delta_{jl}$ is the Kronecker delta function.
+
+\medskip
+
+For any $\bs{v} \in \mathbb{E} \subset H(\divr{}^0;\Omega)$, we can apply the Hodge decomposition \eqref{eq:HodgeDecomposition} and the orthogonality it offers, for all $\rho \in H_0^1(\Omega)$, to get
+\begin{align*}
+    (\curl{\bs{v}}, \curl \rho) = (\curl{\phi}, \curl \rho).
+\end{align*}
+Since $\mathbb{E} \subset H_0(curl;\Omega)$, we also have via an integration by parts for $\curl{}$ identity that
+\begin{align*}
+    (\curl{\bs{v}}, \curl \rho) = (\bs{v}, \curl \rho).
+\end{align*}
+This implies that for any $\phi \in H^1(\Omega) \cap L_0^2(\Omega)$,
+% \begin{align}\label{eq:}
+    
+% \end{align}
+

@@ -1,0 +1,68 @@
+\section{Preliminaries}\label{sec:preliminaries}
+
+In two dimensions, for a vector field $\bs{v} = (v_1, v_2)$, the curl operator is a scalar function,
+\begin{align*}
+    \curl{\bs{v}} = \frac{\partial v_2}{\partial x} - \frac{\partial v_1}{\partial y}.
+\end{align*}
+For a scalar function $\phi$, the curl operator is a vector field,
+\begin{align*}
+    \curl{\phi} = \left[ \frac{\partial \phi}{\partial y}, -\frac{\partial \phi}{\partial x} \right]^\top = \mbox{rot} \; \phi.
+\end{align*}
+As a result, we have 
+\begin{align*}
+    (\curl{\phi}, \curl{v}) = (\grad{\phi},\grad{v}) \quad \forall \phi, v \in H^1(\Omega),
+\end{align*}
+and $\norm{L^2(\Omega)}{\curl{v}} = \seminorm{H^1(\Omega)}{v}$ for all $v \in H^1(\Omega)$.
+
+\smallskip
+
+We collect regularity results for elliptic Boundary Value Problems (BVPs) on polygonal domains (see \cite[Section 5.1]{grisvard:1985:elliptic} and \cite[Section 2.5]{Dauge-1988-Regularity-Corner-Domains}), with $\omega$ denoting the largest interior angle at the corners of $\Omega$.
+
+\begin{lemma}[Regularity of reaction-diffusion BVP]\label{lem:reg.reac-diff}
+    Given $g \in H^1(\Omega)$, let $\mu \in H_0^1(\Omega)$ satisfy
+    \begin{align*}
+        (\grad{\mu}, \grad{v}) + \beta (\mu, v) = (g, v) \quad \forall v \in H_0^1(\Omega).
+    \end{align*}
+    Then for any $\epsilon > 0, \mu \in H^{1+(\pi / \omega) - \epsilon}(\Omega)$. Also, we have the following continuous dependence on the data result, with positive constant $C_\epsilon$, depending on $\epsilon$ and $\Omega$,
+    \begin{align*}
+        \norm{H^{1+(\pi / \omega) - \epsilon}(\Omega)}{\mu} \leq C_\epsilon \norm{H^1(\Omega)}{g}.
+    \end{align*}
+\end{lemma}
+
+\begin{lemma}[Regularity of pure-Neumann BVP]\label{lem:reg.pure-neumann}
+    Given $g \in H^1(\Omega)$, let $\lambda \in H^1(\Omega)$ satisfy
+    \begin{align*}
+        (\grad{\lambda}, \grad{v}) + (\lambda, 1) (v,1) = (g, v) \quad \forall v \in H^1(\Omega).
+    \end{align*}
+    Then for any $\epsilon > 0, \lambda \in H^{1+(\pi / \omega) - \epsilon}(\Omega)$. Also, we have the following continuous dependence on the data result, with positive constant $C_\epsilon$, depending on $\epsilon$ and $\Omega$,
+    \begin{align*}
+        \norm{H^{1+(\pi / \omega) - \epsilon}(\Omega)}{\lambda} \leq C_\epsilon \norm{H^1(\Omega)}{g}.
+    \end{align*}
+\end{lemma}
+
+Using the above lemmas, we now state the regularity result for the energy space $\E$ defined in \eqref{eq:E} (see \cite[Section 2.1]{Brenner-Sun-Sung-2017-HodgeDecomposition2D} for a proof).
+\begin{theorem}[Regularity of the energy space]\label{thm:reg.E} 
+    The quad-curl energy space $\mathbb{E}$ defined in \eqref{eq:E} has 
+    regularity $[H^{(\pi / \omega)-\epsilon}(\Omega)]^2$ for any 
+    $\epsilon > 0$. Furthermore, if $\Omega$ is smooth, then the regularity of $\mathbb{E}$ increases to $[H^{2}(\Omega)]^2$. 
+\end{theorem}
+As a consequence of this, the authors in \cite[Section 2.2]{Brenner-Sun-Sung-2017-HodgeDecomposition2D} established the well-posedness of the quad-curl problem \eqref{eq:P} in the energy space $\E$.
+
+\smallskip
+
+We will use following Hilbert spaces in the rest of the article,
+\begin{align*}
+    H(\divr{}^0; \Omega) &:= \left\{ \bs{v} \in [L^2(\Omega)]^2: (\bs{v}, \grad \eta) = 0 \quad \forall \eta \in H_0^1(\Omega) \right\}, \\
+    % H_0(\mbox{curl};\Omega) &:= \left\{ \bs{v} \in [L^2(\Omega)]^2: \curl{\bs{v}} \in L^2(\Omega), \;\; \bs{n} \times \bs{v} = 0 \;\; \mbox{on} \;\; \partial\Omega\right\}, \\ 
+    L^2_0(\Omega) &:= \left\{ v \in L^2(\Omega): (1,v) = 0 \right\}.
+\end{align*}
+
+
+
+% $$
+% ,
+% $$
+% and the space of zero mean value functions by 
+% $$
+% L^2_0(\Omega) := \left\{ v \in L^2(\Omega): (1,v) = 0 \right\}.
+% $$

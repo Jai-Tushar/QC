@@ -1,0 +1,32 @@
+\section{Introduction}\label{sec:introduction}
+
+Consider a bounded polygonal domain $\Omega \subset \R^2$ with boundary $\partial \Omega$. We are interested in the following quad-curl problem,
+\begin{align}\label{eq:P.strong}
+    \begin{aligned}
+    (\curl{})^4\bs{u} + \beta \; (\curl{})^2\bs{u} + \gamma \; \bs{u} &= \bs{f} \quad \mbox{in} \quad \Omega, \\
+    \curl{\bs{u}} &= 0 \quad \mbox{on} \quad \partial \Omega, \\
+    \bs{n} \times \bs{u} &= 0 \quad \mbox{on} \quad \partial \Omega.
+    \end{aligned}
+\end{align} 
+Here $(\curl{\cdot})^4 = \curl(\curl(\curl(\curl \cdot)))$ and $(\curl{\cdot})^2 = \curl(\curl \cdot)$, are the quad-curl and curl-curl operators in two dimensions, $\bs{n}$ is the unit outward normal vector on $\partial \Omega$, and $\beta, \gamma \geq 0$ are given constants with $\gamma > 0$, if $\Omega$ is multiply connected. The forcing term $\bs{f}: \Omega \to \R^2$ is a given function.
+
+The weak formulation of \eqref{eq:P.strong} reads: find $\bs{u} \in \tilde{\E}$ such that
+\begin{align}\label{eq:P}
+    (\curl(\curl \bs{u}), \curl(\curl \bs{v})) + \beta (\curl \bs{u}, \curl \bs{v}) + \gamma (\bs{u}, \bs{v}) = (\bs{f}, \bs{v}) \quad \forall \bs{v} \in \tilde{\E},
+\end{align} 
+where the energy space $\tilde{\E}$ is defined as
+\begin{align*}
+    \tilde{\E} := \left\{ \bs{v} \in [L^2(\Omega)]^2: \curl{\bs{v}} \in H_0^1(\Omega), \;\; \bs{n} \times \bs{v} = 0 \;\; \mbox{on} \;\; \partial\Omega \right\}.
+\end{align*}
+ The notation $(\cdot, \cdot)$ denotes the $L^2(\Omega)$ (or $[L^2(\Omega)]^2$) inner-product. This quad-curl problem is linked to the Maxwell's transmission eigenvalue problem (see (2.8) and consider for e.g., the case of homogeneous media in \cite{Monk-Sun-2012-Maxwell-Curl-Conforming}). The authors here opt for a curl-conforming finite element method to discretize the problem. The quad-curl problem also has several applications including the resistive magnetohydrodynamic (MHD) \dots \corr{}{}{[JT: To do - Add more literature]}.
+
+\smallskip
+
+Another popular approach to numerically solve \eqref{eq:P.strong} is to use the Hodge decomposition of divergence-free vector fields (see \eqref{eq:HodgeDecomposition} in Section \ref{sec:Reduction}). This reduces the problem into a sequence of second-order problems, which can then be discretized using $H^1$-conforming finite element methods. This approach has been studied, for e.g., in \cite{Brenner-Sun-Sung-2017-HodgeDecomposition2D, Brenner-Cavanaugh-Sung-2024-HodgeDecomposition3D}  in two and three dimensions using simplicial and tetrahedral meshes, respectively. Since, we seek the solution in the divergence-free space (see Remark \ref{rem:kernel}), we solve \eqref{eq:P} using the reduced energy space $\E \subset \tilde \E$,
+\begin{align}\label{eq:E}
+    \E := \left\{ \bs{v} \in [L^2(\Omega)]^2: \curl{\bs{v}} \in H_0^1(\Omega), \;\; \divr{\bs{v}} = 0 \;\; \mbox{and} \;\; \bs{n} \times \bs{v} = 0 \;\; \mbox{on} \;\; \partial\Omega \right\}.
+\end{align}
+
+\smallskip
+
+Our goal in this paper is to extend the results to polygonal meshes using the conforming virtual element method (VEM). \corr{}{}{[JT: To do - Add literature on VEM for Maxwell and Hodge decomposition]}

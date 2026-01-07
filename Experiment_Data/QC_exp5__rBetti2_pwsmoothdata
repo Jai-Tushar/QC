@@ -1,0 +1,53 @@
+QC_exp3_driver
+--- Running order k = 1 ---
+---- refinement = 1 ---- 
+Elapsed time is 0.302749 seconds.
+---- refinement = 2 ---- 
+Elapsed time is 0.608714 seconds.
+Elapsed time is 1.190855 seconds.
+---- refinement = 3 ---- 
+Elapsed time is 1.937491 seconds.
+Elapsed time is 3.891747 seconds.
+---- refinement = 4 ---- 
+Elapsed time is 6.799235 seconds.
+Elapsed time is 18.443799 seconds.
+---- refinement = 5 ---- 
+Elapsed time is 49.598989 seconds.
+Elapsed time is 116.817477 seconds.
+---- refinement = 6 ---- 
+Elapsed time is 201.237964 seconds.
+Elapsed time is 473.656255 seconds.
+--- Running order k = 2 ---
+---- refinement = 1 ---- 
+Elapsed time is 0.169255 seconds.
+---- refinement = 2 ---- 
+Elapsed time is 0.791912 seconds.
+Elapsed time is 3.027568 seconds.
+---- refinement = 3 ---- 
+Elapsed time is 3.760063 seconds.
+Elapsed time is 10.178064 seconds.
+---- refinement = 4 ---- 
+Elapsed time is 11.345964 seconds.
+Elapsed time is 33.799087 seconds.
+---- refinement = 5 ---- 
+Elapsed time is 76.074912 seconds.
+Elapsed time is 195.382088 seconds.
+---- refinement = 6 ---- 
+Elapsed time is 319.213197 seconds.
+Elapsed time is 878.647261 seconds.
+--- Running order k = 3 ---
+---- refinement = 1 ---- 
+Elapsed time is 0.219941 seconds.
+---- refinement = 2 ---- 
+Elapsed time is 0.838484 seconds.
+Elapsed time is 2.974049 seconds.
+---- refinement = 3 ---- 
+Elapsed time is 3.779380 seconds.
+Elapsed time is 18.246053 seconds.
+---- refinement = 4 ---- 
+Elapsed time is 19.310716 seconds.
+Elapsed time is 63.070132 seconds.
+---- refinement = 5 ---- 
+Elapsed time is 152.633859 seconds.
+Elapsed time is 366.724358 seconds.
+---- refinement = 6 ---- 
