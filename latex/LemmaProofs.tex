@@ -1,50 +1,50 @@
 \section{Proof of Lemmas}\label{sec:CA.proofs} 
 
 
-\subsection{Proof of Lemma \ref{lem:Jh.approx}}\label{sec:pf:lem.Jh.approx}
- We split the defect $ J_h v_h - v_h$ using $\Pi^0_{k,h}$ as 
-    \begin{align}
-        \norm{L^2(\Omega)}{J_h v_h - v_h} \leq \norm{L^2(\Omega)}{J_h v_h - \Pi^0_{k,h} v_h} + \norm{L^2(\Omega)}{\Pi^0_{k,h} v_h - v_h}. \label{eq:Jh.approximation.1}
-    \end{align}
-    The first term in \eqref{eq:Jh.approximation.1} is bounded using the definition of $J_h$ in \eqref{def:Jh} as follows:
-    \begin{align*}
-        \norm{L^2(\Omega)}{\Pi^0_{k,h} v_h - J_h v_h}^2 &= (\Pi^0_{k,h} v_h - J_h v_h,\Pi^0_{k,h} v_h - J_h v_h) \\
-        &= (\Pi^0_{k,h} v_h - J_h v_h, \Pi^0_{k,h} v_h) \\
-        &= (\Pi^0_{k,h} v_h  - J_h v_h, \Pi^0_{k,h} v_h - v_h).
-    \end{align*}
-    Thus, upon using Causchy-Schwarz inequality and \eqref{eq:approxL2.L2p}, we have
-    $$ \norm{L^2(\Omega)}{\Pi^0_{k,h} v_h - J_h v_h} \lesssim \left(\sum_{D \in \Th} \norm{L^2(D)}{ \Pi^0_{k,D} v_h - v_h}^2\right)^{1/2} \lesssim \left( \sum_{D \in \Th} h_D^2 \seminorm{H^1(D)}{v_h}^2 \right)^{1/2}.$$
+% \subsection{Proof of Lemma \ref{lem:Jh.approx}}\label{sec:pf:lem.Jh.approx}
+%  We split the defect $ J_h v_h - v_h$ using $\Pi^0_{k,h}$ as 
+%     \begin{align}
+%         \norm{L^2(\Omega)}{J_h v_h - v_h} \leq \norm{L^2(\Omega)}{J_h v_h - \Pi^0_{k,h} v_h} + \norm{L^2(\Omega)}{\Pi^0_{k,h} v_h - v_h}. \label{eq:Jh.approximation.1}
+%     \end{align}
+%     The first term in \eqref{eq:Jh.approximation.1} is bounded using the definition of $J_h$ in \eqref{def:Jh} as follows:
+%     \begin{align*}
+%         \norm{L^2(\Omega)}{\Pi^0_{k,h} v_h - J_h v_h}^2 &= (\Pi^0_{k,h} v_h - J_h v_h,\Pi^0_{k,h} v_h - J_h v_h) \\
+%         &= (\Pi^0_{k,h} v_h - J_h v_h, \Pi^0_{k,h} v_h) \\
+%         &= (\Pi^0_{k,h} v_h  - J_h v_h, \Pi^0_{k,h} v_h - v_h).
+%     \end{align*}
+%     Thus, upon using Causchy-Schwarz inequality and \eqref{eq:approxL2.L2p}, we have
+%     $$ \norm{L^2(\Omega)}{\Pi^0_{k,h} v_h - J_h v_h} \lesssim \left(\sum_{D \in \Th} \norm{L^2(D)}{ \Pi^0_{k,D} v_h - v_h}^2\right)^{1/2} \lesssim \left( \sum_{D \in \Th} h_D^2 \seminorm{H^1(D)}{v_h}^2 \right)^{1/2}.$$
 
 
-\subsection{Proof of Lemma \ref{lem:Jh.stability}}\label{sec:pf:lem.Jh.stability}
-   Testing with $v_h = J_h w$ and using Cauchy-Schwarz yields the stability estimate for $J_h$,
-    $$\norm{L^2(\Omega)}{J_h w} \leq \norm{L^2(\Omega)}{\Pi^0_{k,h} w} \overset{\eqref{eq:stability.L2p}}{\lesssim} \norm{L^2(\Omega)}{w}.$$
+% \subsection{Proof of Lemma \ref{lem:Jh.stability}}\label{sec:pf:lem.Jh.stability}
+%    Testing with $v_h = J_h w$ and using Cauchy-Schwarz yields the stability estimate for $J_h$,
+%     $$\norm{L^2(\Omega)}{J_h w} \leq \norm{L^2(\Omega)}{\Pi^0_{k,h} w} \overset{\eqref{eq:stability.L2p}}{\lesssim} \norm{L^2(\Omega)}{w}.$$
 
-    To prove the $H^1$-stability of $J_h$, we proceed as follows,
-    \begin{align}
-        \seminorm{H^1(\Omega)}{J_h v_h}^2 &\lesssim \seminorm{H^1(\Omega)}{J_h v_h - v_h}^2 + \seminorm{H^1(\Omega)}{v_h}^2
-        = \sum_{D \in \Th} \seminorm{H^1(D)}{J_h v_h - v_h}^2 + \seminorm{H^1(\Omega)}{v_h}^2. \label{eq:Jh.approxH1.1}
-    \end{align}
-    Using the inverse estimate in Lemma \ref{lem:inverse.inequality} for $\delta_h := J_h v_h - v_h \in V_h(D)$, we have
-    \begin{align}
-        \seminorm{H^1(D)}{\delta_h}^2 &\lesssim h_D^{-2} \tnorm{k,D}{\delta_h}^2 \nonumber\\
-        &= h_D^{-1} \sum_{e \in \ED} \norm{L^2(e)}{\Pi^0_{k,e} \delta_h}^2 + h_D^{-2}\norm{L^2(D)}{\Pi^0_{k-2,D} \delta_h}^2 \nonumber \\
-        &\leq h_D^{-1} \norm{L^2(\partial D)}{\delta_h}^2 + h_D^{-2}\norm{L^2(D)}{\delta_h}^2, \label{eq:Jh.approxH1.2}
-    \end{align}
-    where we used the stability of $\Pi^0_{k,e}$ and $\Pi^0_{k-2,D}$ from \eqref{eq:stability.L2p}. Now using a multiplicative trace inequality \cite[Theorem 1.6.6]{Brenner.Scott:2008:MTFEM} followed by Young's inequality for $\epsilon > 0$, yields
-    \begin{align*}
-        h_D^{-1} \norm{L^2(\partial D)}{\delta_h}^2 \lesssim h_D^{-1} \norm{L^2(D)}{\delta_h} \norm{H^1(D)}{\delta_h}
-        \leq \frac{1}{2\epsilon} h_D^{-2} \norm{L^2(D)}{\delta_h}^2 + \frac{\epsilon}{2} \norm{H^1(D)}{\delta_h}^2.
-    \end{align*}
-    Substituting the above in \eqref{eq:Jh.approxH1.2}, gives
-    \begin{align*}
-        \seminorm{H^1(D)}{\delta_h}^2 \lesssim \frac{1}{2\epsilon} h_D^{-2} \norm{L^2(D)}{\delta_h}^2 + \frac{\epsilon}{2} \norm{H^1(D)}{\delta_h}^2.
-    \end{align*}
-    Hence, applying the approximation property of $J_h$ from Lemma \ref{lem:Jh.approx} {\color{blue} alongwith quasi-uniformity of the mesh}, and Poincar\'e-Friedrichs inequality yields    
-    \begin{align*}
-        \seminorm{H^1(\Omega)}{\delta_h}^2 = \sum_{D \in \Th} \seminorm{H^1(D)}{\delta_h}^2 &\lesssim \left(1+\frac{1}{2\epsilon}\right) \sum_{D \in \Th} h_D^{-2} \norm{L^2(D)}{\delta_h}^2 + \frac{\epsilon}{2} \sum_{D \in \Th} \norm{H^1(D)}{\delta_h}^2 \nonumber\\
-        &\approx \left(1+\frac{1}{2\epsilon}\right) h^{-2} \sum_{D \in \Th}  \norm{L^2(D)}{\delta_h}^2 + \frac{\epsilon}{2} \sum_{D \in \Th} \norm{H^1(D)}{\delta_h}^2 \nonumber\\
-        &\lesssim \left(1+\frac{1}{2\epsilon}\right) \sum_{D \in \Th} \seminorm{H^1(D)}{v_h}^2 + \frac{\epsilon}{2} \norm{H^1(\Omega)}{\delta_h}^2 \nonumber\\
-        &\lesssim\left(1+\frac{1}{2\epsilon}\right) \seminorm{H^1(\Omega)}{v_h}^2 + \frac{\epsilon}{2} \seminorm{H^1(\Omega)}{\delta_h}^2.
-    \end{align*}
-    Choose $\epsilon > 0$ sufficiently small to absorb the last term on the right-hand side into the left-hand side, and substitute the resulting bound in \eqref{eq:Jh.approxH1.1} to complete the proof. 
+%     To prove the $H^1$-stability of $J_h$, we proceed as follows,
+%     \begin{align}
+%         \seminorm{H^1(\Omega)}{J_h v_h}^2 &\lesssim \seminorm{H^1(\Omega)}{J_h v_h - v_h}^2 + \seminorm{H^1(\Omega)}{v_h}^2
+%         = \sum_{D \in \Th} \seminorm{H^1(D)}{J_h v_h - v_h}^2 + \seminorm{H^1(\Omega)}{v_h}^2. \label{eq:Jh.approxH1.1}
+%     \end{align}
+%     Using the inverse estimate in Lemma \ref{lem:inverse.inequality} for $\delta_h := J_h v_h - v_h \in V_h(D)$, we have
+%     \begin{align}
+%         \seminorm{H^1(D)}{\delta_h}^2 &\lesssim h_D^{-2} \tnorm{k,D}{\delta_h}^2 \nonumber\\
+%         &= h_D^{-1} \sum_{e \in \ED} \norm{L^2(e)}{\Pi^0_{k,e} \delta_h}^2 + h_D^{-2}\norm{L^2(D)}{\Pi^0_{k-2,D} \delta_h}^2 \nonumber \\
+%         &\leq h_D^{-1} \norm{L^2(\partial D)}{\delta_h}^2 + h_D^{-2}\norm{L^2(D)}{\delta_h}^2, \label{eq:Jh.approxH1.2}
+%     \end{align}
+%     where we used the stability of $\Pi^0_{k,e}$ and $\Pi^0_{k-2,D}$ from \eqref{eq:stability.L2p}. Now using a multiplicative trace inequality \cite[Theorem 1.6.6]{Brenner.Scott:2008:MTFEM} followed by Young's inequality for $\epsilon > 0$, yields
+%     \begin{align*}
+%         h_D^{-1} \norm{L^2(\partial D)}{\delta_h}^2 \lesssim h_D^{-1} \norm{L^2(D)}{\delta_h} \norm{H^1(D)}{\delta_h}
+%         \leq \frac{1}{2\epsilon} h_D^{-2} \norm{L^2(D)}{\delta_h}^2 + \frac{\epsilon}{2} \norm{H^1(D)}{\delta_h}^2.
+%     \end{align*}
+%     Substituting the above in \eqref{eq:Jh.approxH1.2}, gives
+%     \begin{align*}
+%         \seminorm{H^1(D)}{\delta_h}^2 \lesssim \frac{1}{2\epsilon} h_D^{-2} \norm{L^2(D)}{\delta_h}^2 + \frac{\epsilon}{2} \norm{H^1(D)}{\delta_h}^2.
+%     \end{align*}
+%     Hence, applying the approximation property of $J_h$ from Lemma \ref{lem:Jh.approx} {\color{blue} alongwith quasi-uniformity of the mesh}, and Poincar\'e-Friedrichs inequality yields    
+%     \begin{align*}
+%         \seminorm{H^1(\Omega)}{\delta_h}^2 = \sum_{D \in \Th} \seminorm{H^1(D)}{\delta_h}^2 &\lesssim \left(1+\frac{1}{2\epsilon}\right) \sum_{D \in \Th} h_D^{-2} \norm{L^2(D)}{\delta_h}^2 + \frac{\epsilon}{2} \sum_{D \in \Th} \norm{H^1(D)}{\delta_h}^2 \nonumber\\
+%         &\approx \left(1+\frac{1}{2\epsilon}\right) h^{-2} \sum_{D \in \Th}  \norm{L^2(D)}{\delta_h}^2 + \frac{\epsilon}{2} \sum_{D \in \Th} \norm{H^1(D)}{\delta_h}^2 \nonumber\\
+%         &\lesssim \left(1+\frac{1}{2\epsilon}\right) \sum_{D \in \Th} \seminorm{H^1(D)}{v_h}^2 + \frac{\epsilon}{2} \norm{H^1(\Omega)}{\delta_h}^2 \nonumber\\
+%         &\lesssim\left(1+\frac{1}{2\epsilon}\right) \seminorm{H^1(\Omega)}{v_h}^2 + \frac{\epsilon}{2} \seminorm{H^1(\Omega)}{\delta_h}^2.
+%     \end{align*}
+%     Choose $\epsilon > 0$ sufficiently small to absorb the last term on the right-hand side into the left-hand side, and substitute the resulting bound in \eqref{eq:Jh.approxH1.1} to complete the proof. 
