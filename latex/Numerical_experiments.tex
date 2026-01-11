@@ -14,7 +14,7 @@ where operator $\chi_i(\cdot)$ associates the function with its $i$-th degree of
     We solve \eqref{eq:P} using the scheme described in Section \ref{sec:discretization} for orders $k = 1,2,3,4$ on a sequence of unstructured Voronoi meshes. Since the virtual element solution is not known explicitly inside the element, we compare the manufactured solution with suitable projection of the discrete solution. The errors we measure are as follows:
     \begin{align*}
         e_{\bs{u}_h} := \norm{L^2(\Omega)}{ \bs{u} - \bs{u}_h} &= \sqrt{\sum_{D \in \Th} \norm{L^2(D)}{\bs{u} - \bs{u}_h}^2}, \\
-        e_{\xi_h} := \seminorm{1,h}{\curl{\bs{u}} - \Pi^{1}_{k,h} \xi_h} &= \sqrt{\sum_{D \in \Th} \seminorm{H^1(D)}{\curl{\bs{u}} - \Pi^{1}_{k,D} \xi_h}^2},
+        e_{\xi_h} := \seminorm{1,h}{\xi - \Pi^{1}_{k,h} \xi_h} &= \sqrt{\sum_{D \in \Th} \seminorm{H^1(D)}{\xi - \Pi^{1}_{k,D} \xi_h}^2}, \quad \mbox{with} \quad \xi = \curl{\bs{u}}.
     \end{align*}
     and are reported in Tables \ref{Table:smooth.structured} and \ref{Table:smooth.unstructured} for $k=1,2,3$ on a sequence of structured and unstructured voronoi meshes, respectively (see Figure \ref{Fig:Square_mesh}). We recall that in this experiment $\bs{u}_h$ is computed using \eqref{uh.simplyConnected}. 
     % The experimental rates of convergence are observed to be optimal, i.e., $\mathcal{O}(h^{k})$ for $e_{\bs{u}_h}$ and $\mathcal{O}(h^{k})$ for $e_{\xi_h}$.

@@ -69,10 +69,10 @@ Here $\mathcal{N}^{\partial D}$ is the set of boundary degrees of freedom associ
 
 In the subsequent analysis, we work with the following assumption:
 \begin{assumption}\label{assum:coercivity}
-    Let $\norm{h}{\cdot} = \sqrt{a_h(\cdot,\cdot)}$ denote the mesh-dependent energy norm such that 
+    Let $\norm{h_\beta}{\cdot} = \sqrt{a_h(\cdot,\cdot) + \beta (\Pi^0_{k,h} \cdot, \Pi^0_{k,h} \cdot)}$ denote the mesh-dependent energy norm such that 
     \begin{align}
-        \seminorm{H^1(\Omega)}{v_h} &\lesssim \norm{h}{v_h} \quad \forall v_h \in V_h^0, \label{eq:coercivity.Dirichlet} \\
-        \seminorm{H^1(\Omega)}{v_h} &\lesssim \norm{h}{v_h} \quad \forall v_h \in V_h \quad \mbox{with} \quad (v_h,1) = 0. \label{eq:coercivity.Neumann} 
+        \seminorm{H^1(\Omega)}{v_h} &\lesssim \norm{h_\beta}{v_h} \quad \forall v_h \in V_h^0, \label{eq:coercivity.Dirichlet} \\
+        \seminorm{H^1(\Omega)}{v_h} &\lesssim \norm{h_\beta}{v_h} \quad \forall v_h \in V_h \quad \mbox{with} \quad (v_h,1) = 0. \label{eq:coercivity.Neumann} 
     \end{align}
 \end{assumption}
 
@@ -81,11 +81,12 @@ We also define the piecewise-broken $H^1$-seminorm by
     \seminorm{1,h}{v} := \left( \sum_{D \in \Th} \seminorm{H^1(D)}{v}^2 \right)^{\frac{1}{2}} \quad \forall v \in H^1(\Th).
 \end{align*}
 
-Some useful estimates in the mesh-dependent norm are in order.
+Some useful estimates in the mesh-dependent norm and piecewise broken semi-norm are in order.
 \begin{lemma}\label{lem:est.mesh.dependent}
     The following estimates hold,
     \begin{align}
-        \norm{h}{\Ih{v} - \Pi^1_{k,h} \Ih{v}} + \seminorm{1,h}{\Ih{v} - \Pi^1_{k,h} \Ih{v}} &\lesssim h^{\min(\delta,k)} \seminorm{H^{1+\delta}(\Omega)}{v} \quad \forall v \in H^{1+\delta}(\Omega), \label{eq:est.Ih.h.norm}
+        \norm{h_0}{\Ih{v} - \Pi^1_{k,h} \Ih{v}} + \seminorm{1,h}{\Ih{v} - \Pi^1_{k,h} \Ih{v}} &\lesssim h^{\min(\delta,k)} \seminorm{H^{1+\delta}(\Omega)}{v} \quad \forall v \in H^{1+\delta}(\Omega), \label{eq:est.Ih.h.norm} \\
+        \norm{h_\beta}{v- \Ih{v}} + \norm{h_\beta}{v- \Pi^1_{k,h} v} &\lesssim \quad \forall v \in H^{1+\delta}(\Omega). \label{eq:est.hbeta.norm}
     \end{align}
 \end{lemma}
 
@@ -122,7 +123,7 @@ Some useful estimates in the mesh-dependent norm are in order.
 
 
 
-\subsection{$\Omega$ is simply connected $(\gamma = 0)$} Our first aim is to estimate the error $\xi - \xi_h$. To this end, we first write down the error equation by testing \eqref{eq:P.rho} with $\psi_h \in V_h \subset H^1(\Omega)$ and subtracting it from \eqref{eq:P.rho},
+\subsection{$\Omega$ is simply connected $(\gamma = 0)$} Our first aim is to estimate the error $\xi - \xi_h$. To this end, we first write down the error equation by testing \eqref{eq:P.rho} with $\psi_h \in V_h$ and subtracting it from \eqref{eq:Ph.rhoh},
 \begin{align}\label{eq:erreq.rho}
     (\curl{\rho}, \curl{\psi_h}) - a_h(\rho_h,\psi_h) = (\bs{f}, \curl{(\psi_h - \Pi^1_{k,h}(\psi_h))}) \quad \forall \psi_h \in V_h.
 \end{align}
@@ -172,11 +173,11 @@ The difference in \eqref{eq:err.rho.1.b} can be rewritten as follows:
     &\quad= \sum_{D \in \Th} S^D((I - \Pi^1_{k,D})\rho_h, (I - \Pi^1_{k,D})\ID{\lambda}) - (\curl{\rho_h}, \curl{(\ID{\lambda} - \Pi^1_{k,D}\ID{\lambda})}) \nonumber\\
     &\quad\leq  (\sum_{D \in \Th} S^D((I - \Pi^1_{k,D})\rho_h, (I - \Pi^1_{k,D})\rho_h))^{1/2} (\sum_{D \in \Th} S^D((I - \Pi^1_{k,D})\ID{\lambda}, (I - \Pi^1_{k,D})\ID{\lambda}))^{1/2} \nonumber\\
     &\qquad\qquad (\sum_{D \in \Th} \seminorm{H^1(D)}{\rho_h}^2)^{1/2} (\sum_{D \in \Th} \seminorm{H^1(D)}{\ID{\lambda} - \Pi^1_{k,D}\ID{\lambda}}^2)^{1/2} \nonumber\\
-    &\quad\lesssim \norm{h}{(I - \Pi^1_{k,h})\rho_h} \norm{h}{(I-\Pi^1_{k,h})\Ih{\lambda}} + \seminorm{H^1(\Omega)}{\rho_h} \seminorm{1,h}{(I - \Pi^1_{k,h})\Ih{\lambda}}. \label{eq:err.rho.1.c}
+    &\quad\lesssim \norm{h_0}{(I - \Pi^1_{k,h})\rho_h} \norm{h_0}{(I-\Pi^1_{k,h})\Ih{\lambda}} + \seminorm{H^1(\Omega)}{\rho_h} \seminorm{1,h}{(I - \Pi^1_{k,h})\Ih{\lambda}}. \label{eq:err.rho.1.c}
 \end{align}
 Where in the passage to the second equality we used the definition of $\Pi^1_{k,D}$ projector followed by Cauchy-Schwarz inequality and finally the definition of $\norm{h}{\cdot}$ and $\seminorm{1,h}{\cdot}$. Using the linearity and idempotency of $\Pi^1_{k,D}$ and $\rho_h \in L_0^2(\Omega)$ we have that
 \begin{align*}
-    \norm{h}{(I - \Pi^1_{k,h} \rho_h)}^2 &= S((I - \Pi^1_{k,h})\rho_h, (I - \Pi^1_{k,h})\rho_h) \nonumber\\ 
+    \norm{h_0}{(I - \Pi^1_{k,h} \rho_h)}^2 &= S((I - \Pi^1_{k,h})\rho_h, (I - \Pi^1_{k,h})\rho_h) \nonumber\\ 
     &\overset{\eqref{eq:Ph.rhoh}}{=} (\bs{f}, \curl{\Pi^1_{k,h} \rho_h}) - (\curl{\Pi^1_{k,h} \rho_h}, \curl{\Pi^1_{k,h} \rho_h}) \nonumber\\
     &\leq \sum_{D \in \Th} \norm{L^2(D)}{\bs{f}} \norm{H^1(D)}{\Pi^1_{k,D} \rho_h} + \norm{H^1(D)}{\Pi^1_{k,D} \rho_h}^2 \nonumber\\
     &\overset{\eqref{eq:stability.H1p}}{\leq}  \sum_{D \in \Th} \norm{L^2(D)}{\bs{f}} \norm{H^1(D)}{\rho_h} + \norm{H^1(D)}{\rho_h}^2 \overset{\eqref{eq:curl.data}}{\lesssim} \norm{L^2(\Omega)}{\bs{f}}^2.
@@ -196,76 +197,184 @@ Substituting the above bound and \eqref{eq:err.rho.1.a} into \eqref{eq:err.rho.1
 
 It remains to estimate the error for $\xi_h$. 
 \begin{lemma}
-    For any $\epsilon > 0$, there exists a positive constant dependent on $\epsilon$ and independent of $h$ such that
+    For any $\epsilon > 0$, there exists a positive constant dependent on $\epsilon$ and independent of $h$ such that for $k = 1,2$,
     \begin{align}
         \seminorm{H^1(\Omega)}{\xi - \xi_h} \lesssim h^{\min{((\pi / \omega) - \epsilon, k)}}. \label{eq:err.est.xi}
     \end{align}
 \end{lemma}
 \begin{proof}
-        Given $\rho \in H^1(\Omega),$ let $\tilde{\xi}_{0,h} \in V_h^0$ solve the following discrete auxiliary problem, 
-    \begin{align}\label{eq:P.xi0h.aux}
-        a_h(\tilde{\xi}_{0,h}, \eta_h) + \beta(\Pi^0_{k,h} \tilde{\xi}_{0,h}, \Pi^0_{k,h} \eta_h) = (\rho, \Pi^0_{k,h} \eta_h) \quad \forall \eta_h \in V_h^0.
+    Given $\rho_h \in V_h \cap L_0^2(\Omega)$, let $\tilde{\xi}_0 \in H_0^1(\Omega)$ solve the following auxiliary problem,
+    \begin{align}\label{eq:P.aux}
+        (\curl{\tilde{\xi}_0}, \curl{\eta}) + \beta(\tilde{\xi}_0, \eta) = (\rho_h, \eta) \quad \forall \eta \in H_0^1(\Omega).
+    \end{align}
+    Since $\rho_h \in V_h \subset H^1(\Omega)$, due to Lemma \ref{lem:reg.reac-diff}, 
+    \begin{align}\label{tildexi0.reg}
+        \tilde \xi_0 \in H^{1+(\pi/\omega)-\epsilon}(\Omega) \quad \mbox{and} \quad \norm{H^{1+(\pi/\omega)-\epsilon}(\Omega)}{\tilde \xi_0} \lesssim \norm{H^1(\Omega)}{\rho_h}.
+    \end{align}
+    It follows now from \eqref{eq:P.aux}, \eqref{eq:P.xi0}, and the duality estimate \eqref{eq:err.est.rho} that
+    \begin{align}\label{eq:xi0.a}
+        \seminorm{H^1(\Omega)}{\xi_0 - \tilde{\xi}_0} &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}.
     \end{align}
 
-    On comparing with \eqref{eq:Ph.xi0h} after using the definition of $\Pi^0_{k,h}$ on $(\Pi^0_{k,h} \rho_h, \Pi^0_{k,h} \eta_h)$, we have
-    \begin{align*}
-        a_h(\tilde{\xi}_{0,h} - \xi_{0,h}, \eta_h) + \beta (\Pi^0_{k,h}(\tilde{\xi}_{0,h} - \xi_{0,h}), \Pi^0_{k,h} \eta_h) = (\rho - \rho_h,\Pi^0_{k,h} \eta_h) \quad \forall \eta_h \in V_h^0.
-    \end{align*}
-    The right-hand side can be rewritten using the {\color{red} definition of $J_h$ in \eqref{def:Jh} as follows:
-    \begin{align*}
-        (\rho , J_h \eta_h) - (\rho_h, \Pi^0_{k,h} \eta_h) &= (\rho - \rho_h, J_h \eta_h) + (\rho_h, J_h \eta_h) - (\rho_h, \Pi^0_{k,h} \eta_h)  \\
-        &= (\rho - \rho_h, J_h \eta_h).
-    \end{align*}
-    }
+It follows from \eqref{eq:P.aux} and \eqref{eq:Ph.xi0h} that $\xi_{0,h}$ is also a virtual element approximation of $\tilde \xi_0$ and hence we have the following analogus abstract error estimate following \cite[Section 4.3]{Brenner-Sung-2018-VEM-Small-Edges-Faces},
+\begin{align}\label{err.abs.xi0h}
+    \norm{h_{\beta}}{\tilde \xi_0 - \xi_{0,h}} &\lesssim \norm{h_\beta}{\tilde \xi_0 - \Ih{\tilde \xi_0}} + \seminorm{1,h}{\tilde \xi_0 - \Pi^1_{k,h} \tilde \xi_0} + \norm{h_\beta}{\tilde \xi_0 - \Pi^1_{k,h} \tilde \xi_0} \nonumber\\
+    &\qquad + \beta h \norm{L^2(\Omega)}{\tilde \xi_0 - \Pi^0_{k,h} \tilde \xi_0} + \sup_{w_h \in V_h^0 \backslash \{0\}} \frac{(\rho_h, w_h - \Pi^0_{k,h} w_h)}{\seminorm{H^1(\Omega)}{w_h}}.
+\end{align}
 
-    It follows that 
-    \begin{align}\label{eq:aux.est.xi0h}
-        a_h(\tilde{\xi}_{0,h} - \xi_{0,h}, \eta_h) &\leq (\rho - \rho_h, J_h \eta_h) \quad \forall \eta_h \in V_h^0.
-    \end{align}
 
-    Testing \eqref{eq:aux.est.xi0h} with $\eta_h = \tilde{\xi}_{0,h} - \xi_{0,h} \in V_h^0$, using the dual norm estimate \eqref{eq:err.est.rho} with $\chi = J_h \eta_h$ and a Poincar\'e-Friedrichs inequality gives,
-    \begin{align*}
-        \norm{h}{\tilde{\xi}_{0,h} - \xi_{0,h}}^2 &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \seminorm{H^1(\Omega)}{J_h \eta_h} \norm{L^2(\Omega)}{\bs{f}}.
-    \end{align*}
-    Now the $H^1$ stability of the operator $J_h$ given in \eqref{eq:Jh.H1.stability} and Assumption \ref{assum:coercivity} lead to
-    \begin{align}\label{eq:est.xi0h}
-        \norm{h}{\tilde{\xi}_{0,h} - \xi_{0,h}} \lesssim h^{\min{((\pi / \omega) - \epsilon, k)}}\norm{L^2(\Omega)}{\bs{f}}
-    \end{align}
+% The term $a_h(\tilde \xi_0,v_h)$ in \eqref{err.abs.xi0h} can be rewritten as
+% \begin{align}\label{eq:err.xi0h}
+%     a_h(\tilde \xi_0, v_h) &= \sum_{D \in \Th} (\curl{\Pi^{1}_{k,D} \tilde \xi_0}, \curl{\Pi^1_{k,D} \eta_h}) + S^D((I - \Pi^1_{k,D}) \tilde \xi_0, (I - \Pi^1_{k,D}) \eta_h) \nonumber\\
+%     &= \sum_{D \in \Th} (\curl{\Pi^{1}_{k,D} \tilde \xi_0}, \curl{\eta_h}) + S^D((I - \Pi^1_{k,D}) \tilde \xi_0, (I - \Pi^1_{k,D}) \eta_h) \nonumber\\
+%     &= \sum_{D \in \Th} (\curl{(\Pi^{1}_{k,D} \tilde \xi_0 - \tilde \xi_0)}, \curl{(\eta_h - \Pi^1_{k,D} \eta_h})) + S^D((I - \Pi^1_{k,D}) \tilde \xi_0, (I - \Pi^1_{k,D}) \eta_h) \nonumber\\
+%     &\qquad\qquad + (\rho_h, \eta_h) - \beta(\tilde \xi_0, \eta_h).
+% \end{align}
+% To get the last equality, we used the definition of $\Pi^1_{k,D}$ and \eqref{eq:P.aux}. The first two terms in \eqref{eq:err.xi0h} can be estimated using Cauchy-Schwarz inequality and definition of $\norm{h_\beta}{\cdot}$-norm, to get
+% \begin{align}
+%     \sum_{D \in \Th} (\curl{(\Pi^{1}_{k,D} \tilde \xi_0 - \tilde \xi_0)}, \curl{(\eta_h - \Pi^1_{k,D} \eta_h)}) \lesssim \seminorm{1,h}{\Pi^1_{k,h} \tilde{\xi}_0 - \tilde \xi_0} \norm{h_\beta}{\eta_h} \label{eq:err.xi0h.a}\\
+%     \sum_{D \in \Th}  S^D((I - \Pi^1_{k,D}) \tilde \xi_0, (I - \Pi^1_{k,D}) \eta_h) \lesssim \norm{h_\beta}{\tilde \xi_0 - \Pi^1_{k,D} \tilde \xi_0} \norm{h_\beta}{\eta_h} \label{eq:err.xi0h.s}
+% \end{align}
+% On substituting \eqref{eq:err.xi0h} in \eqref{err.abs.xi0h}, we can estimate the rest of the terms using $\Pi^0_{k,h}$,
+% \begin{align}
+%     \beta(\tilde \xi_0, \Pi^0_{k,h} \eta_h) - \beta(\tilde \xi_0, \eta_h)
+% \end{align} 
 
-    Since $\tilde{\xi}_{0,h}$ is the virtual element approximation of $\xi_0$ (see \eqref{eq:P.xi0} and \eqref{eq:P.xi0h.aux}), we can obtain the following error equation by testing with $J_h \eta_h$ in \eqref{eq:P.xi0} and subtracting it from \eqref{eq:P.xi0h.aux},
-    \begin{align}\label{eq:erreq.xi0}
-        a_h(\tilde{\xi}_{0,h}, \eta_h) - (\curl{\xi_0}, \curl{J_h \eta_h}) + \beta(\Pi^0_{k,h} \tilde{\xi}_{0,h}, \Pi^0_{k,h} \eta_h) - \beta(\xi_0, J_h \eta_h) = 0 \quad \forall \eta_h \in V_h^0.
-    \end{align}
-     The first difference in \eqref{eq:erreq.xi0} can be rewritten in controllable quantities as follows:
-    \begin{align}\label{eq:err.xi0.1}
-        &a_h(\tilde{\xi}_{0,h} - \tilde{\xi}_0, \eta_h) + a_h(\tilde{\xi}_0, \eta_h) - (\curl{\xi_0}, \curl{J_h \eta_h}) \nonumber\\
-        &\quad= a_h(\tilde{\xi}_{0,h} - \tilde{\xi}_0, \eta_h) + \sum_{D \in \Th} (\curl{\Pi^1_{k,D} \xi_0}, \curl{\Pi^1_{k,D} \eta_h}) + S^D((I-\Pi^1_{k,D}) \xi_0, (I-\Pi^1_{k,D}) \eta_h) \nonumber\\
-        &\qquad\qquad- (\curl{\xi_0}, \curl{J_h \eta_h}) \nonumber\\
-        &\quad= a_h(\tilde{\xi}_{0,h} - \tilde{\xi}_0, \eta_h) + \sum_{D \in \Th} (\curl{(\Pi^1_{k,D} \xi_0} - \xi_0), \curl{\eta_h})+  S^D((I-\Pi^1_{k,D}) \xi_0, (I-\Pi^1_{k,D}) \eta_h) \nonumber\\
-        &\qquad\qquad - (\curl{\xi_0}, \curl{(\eta_h - J_h \eta_h)}).
-    \end{align}
-    To estimate the last term in \eqref{eq:err.xi0.1} {\color{red} we require  that $\curl{(\eta_h - J_h \eta_h)} \perp \curl{\Poly_k{(\Th)}}$,
-    \begin{align*}
-        (\curl{\xi_0}, \curl{(\eta_h - J_h \eta_h)}) = (\curl{(\xi_0 - \Pi^0_{k,h} \xi_0)}, \curl{(\eta_h - J_h \eta_h)}).
-    \end{align*}
-    }
-    The second difference in \eqref{eq:erreq.xi0} can be rewritten in controllable quantities as follows:
-    \begin{align}\label{eq:err.xi0.2}
-        &\beta(\Pi^0_{k,h} \tilde{\xi}_{0,h}, \Pi^0_{k,h} \eta_h) - \beta (\xi_0, \eta_h) - \beta(\xi_0, J_h \eta_h - \eta_h) 
-    \end{align}
-    The first difference in \eqref{eq:err.xi0.2} can be readily estimated using the definition of the $L^2$-projector to get,
-    \begin{align*}
-        \beta(\Pi^0_{k,h} \tilde{\xi}_{0,h}, \Pi^0_{k,h} \eta_h) - \beta (\xi_0, \eta_h) =\beta(\Pi^0_{k,h} (\tilde{\xi}_{0,h} - \xi_0), \Pi^0_{k,h} \eta_h) + \beta(\Pi^0_{k,h} \xi_0 - \xi_0,\eta_h).
-    \end{align*}
-    {\color{red} The last term in \eqref{eq:err.xi0.2} requires that $J_h \eta_h - \eta_h \perp \Poly_k(\Th)$,
-    \begin{align*}   
-        \beta(\xi_0, J_h \eta_h - \eta_h) = \beta(\xi_0 - \Pi^0_{k,h} \xi_0, J_h \eta_h - \eta_h).
-    \end{align*}
-    }
-    \corr{}{}{
-    [JT: The current operator $J_h$ is too strong to also satisfy the required orthogonality properties mentioned above. On going through the literature, we do have such a ``companion" operator defined in \cite[Theorem 2.5]{Khot-Nataraj-Verma-2023-Conforming-Companion-VEM} with the help of a simplicial sub-mesh. However that operator is too weak to also satisfy the orthogonality property of $J_h$. I am currently stuck here in the analysis.]  
-    }
 \end{proof}
+
+
+% \begin{proof}
+%         Given $\rho \in H^1(\Omega),$ let $\tilde{\xi}_{0,h} \in V_h^0$ solve the following discrete auxiliary problem, 
+%     \begin{align}\label{eq:P.xi0h.aux}
+%         a_h(\tilde{\xi}_{0,h}, \eta_h) + \beta(\Pi^0_{k,h} \tilde{\xi}_{0,h}, \Pi^0_{k,h} \eta_h) = (\rho, \Pi^0_{k,h} \eta_h) \quad \forall \eta_h \in V_h^0.
+%     \end{align}
+
+%     On comparing with \eqref{eq:Ph.xi0h} after using the definition of $\Pi^0_{k,h}$ on $(\Pi^0_{k,h} \rho_h, \Pi^0_{k,h} \eta_h)$, we have
+%     \begin{align*}
+%         a_h(\tilde{\xi}_{0,h} - \xi_{0,h}, \eta_h) + \beta (\Pi^0_{k,h}(\tilde{\xi}_{0,h} - \xi_{0,h}), \Pi^0_{k,h} \eta_h) = (\rho - \rho_h,\Pi^0_{k,h} \eta_h) \quad \forall \eta_h \in V_h^0.
+%     \end{align*}
+%     The right-hand side can be rewritten using the {\color{red} definition of $J_h$ in \eqref{def:Jh} as follows:
+%     \begin{align*}
+%         (\rho , J_h \eta_h) - (\rho_h, \Pi^0_{k,h} \eta_h) &= (\rho - \rho_h, J_h \eta_h) + (\rho_h, J_h \eta_h) - (\rho_h, \Pi^0_{k,h} \eta_h)  \\
+%         &= (\rho - \rho_h, J_h \eta_h).
+%     \end{align*}
+%     }
+
+%     It follows that 
+%     \begin{align}\label{eq:aux.est.xi0h}
+%         a_h(\tilde{\xi}_{0,h} - \xi_{0,h}, \eta_h) &\leq (\rho - \rho_h, J_h \eta_h) \quad \forall \eta_h \in V_h^0.
+%     \end{align}
+
+%     Testing \eqref{eq:aux.est.xi0h} with $\eta_h = \tilde{\xi}_{0,h} - \xi_{0,h} \in V_h^0$, using the dual norm estimate \eqref{eq:err.est.rho} with $\chi = J_h \eta_h$ and a Poincar\'e-Friedrichs inequality gives,
+%     \begin{align*}
+%         \norm{h}{\tilde{\xi}_{0,h} - \xi_{0,h}}^2 &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \seminorm{H^1(\Omega)}{J_h \eta_h} \norm{L^2(\Omega)}{\bs{f}}.
+%     \end{align*}
+%     Now the $H^1$ stability of the operator $J_h$ given in \eqref{eq:Jh.H1.stability} and Assumption \ref{assum:coercivity} lead to
+%     \begin{align}\label{eq:est.xi0h}
+%         \norm{h}{\tilde{\xi}_{0,h} - \xi_{0,h}} \lesssim h^{\min{((\pi / \omega) - \epsilon, k)}}\norm{L^2(\Omega)}{\bs{f}}
+%     \end{align}
+
+%     Since $\tilde{\xi}_{0,h}$ is the virtual element approximation of $\xi_0$ (see \eqref{eq:P.xi0} and \eqref{eq:P.xi0h.aux}), we can obtain the following error equation by testing with $J_h \eta_h$ in \eqref{eq:P.xi0} and subtracting it from \eqref{eq:P.xi0h.aux},
+%     \begin{align}\label{eq:erreq.xi0}
+%         a_h(\tilde{\xi}_{0,h}, \eta_h) - (\curl{\xi_0}, \curl{J_h \eta_h}) + \beta(\Pi^0_{k,h} \tilde{\xi}_{0,h}, \Pi^0_{k,h} \eta_h) - \beta(\xi_0, J_h \eta_h) = 0 \quad \forall \eta_h \in V_h^0.
+%     \end{align}
+%      The first difference in \eqref{eq:erreq.xi0} can be rewritten in controllable quantities as follows:
+%     \begin{align}\label{eq:err.xi0.1}
+%         &a_h(\tilde{\xi}_{0,h} - \tilde{\xi}_0, \eta_h) + a_h(\tilde{\xi}_0, \eta_h) - (\curl{\xi_0}, \curl{J_h \eta_h}) \nonumber\\
+%         &\quad= a_h(\tilde{\xi}_{0,h} - \tilde{\xi}_0, \eta_h) + \sum_{D \in \Th} (\curl{\Pi^1_{k,D} \xi_0}, \curl{\Pi^1_{k,D} \eta_h}) + S^D((I-\Pi^1_{k,D}) \xi_0, (I-\Pi^1_{k,D}) \eta_h) \nonumber\\
+%         &\qquad\qquad- (\curl{\xi_0}, \curl{J_h \eta_h}) \nonumber\\
+%         &\quad= a_h(\tilde{\xi}_{0,h} - \tilde{\xi}_0, \eta_h) + \sum_{D \in \Th} (\curl{(\Pi^1_{k,D} \xi_0} - \xi_0), \curl{\eta_h})+  S^D((I-\Pi^1_{k,D}) \xi_0, (I-\Pi^1_{k,D}) \eta_h) \nonumber\\
+%         &\qquad\qquad - (\curl{\xi_0}, \curl{(\eta_h - J_h \eta_h)}).
+%     \end{align}
+%     To estimate the last term in \eqref{eq:err.xi0.1} {\color{red} we require  that $\curl{(\eta_h - J_h \eta_h)} \perp \curl{\Poly_k{(\Th)}}$,
+%     \begin{align*}
+%         (\curl{\xi_0}, \curl{(\eta_h - J_h \eta_h)}) = (\curl{(\xi_0 - \Pi^0_{k,h} \xi_0)}, \curl{(\eta_h - J_h \eta_h)}).
+%     \end{align*}
+%     }
+%     The second difference in \eqref{eq:erreq.xi0} can be rewritten in controllable quantities as follows:
+%     \begin{align}\label{eq:err.xi0.2}
+%         &\beta(\Pi^0_{k,h} \tilde{\xi}_{0,h}, \Pi^0_{k,h} \eta_h) - \beta (\xi_0, \eta_h) - \beta(\xi_0, J_h \eta_h - \eta_h) 
+%     \end{align}
+%     The first difference in \eqref{eq:err.xi0.2} can be readily estimated using the definition of the $L^2$-projector to get,
+%     \begin{align*}
+%         \beta(\Pi^0_{k,h} \tilde{\xi}_{0,h}, \Pi^0_{k,h} \eta_h) - \beta (\xi_0, \eta_h) =\beta(\Pi^0_{k,h} (\tilde{\xi}_{0,h} - \xi_0), \Pi^0_{k,h} \eta_h) + \beta(\Pi^0_{k,h} \xi_0 - \xi_0,\eta_h).
+%     \end{align*}
+%     {\color{red} The last term in \eqref{eq:err.xi0.2} requires that $J_h \eta_h - \eta_h \perp \Poly_k(\Th)$,
+%     \begin{align*}   
+%         \beta(\xi_0, J_h \eta_h - \eta_h) = \beta(\xi_0 - \Pi^0_{k,h} \xi_0, J_h \eta_h - \eta_h).
+%     \end{align*}
+%     }
+%     \corr{}{}{
+%     [JT: The current operator $J_h$ is too strong to also satisfy the required orthogonality properties mentioned above. On going through the literature, we do have such a ``companion" operator defined in \cite[Theorem 2.5]{Khot-Nataraj-Verma-2023-Conforming-Companion-VEM} with the help of a simplicial sub-mesh. However that operator is too weak to also satisfy the orthogonality property of $J_h$. I am currently stuck here in the analysis.]  
+%     }
+% \end{proof}
+
+
+
+
+
+
+% It remains to estimate the error $e_{\rho} := \rho - \rho_h$.  To derive it we work with the following assumption. 
+
+
+
+% For any $v_h \in V_h$, we split the error using a triangle inequality
+% \begin{align}\label{eq:erho.split}
+%     \norm{h}{e_\rho} \leq \norm{h}{\rho - v_h} + \norm{h}{v_h - \rho_h}.
+% \end{align}
+% Since, for all $z_h \in V_h$,
+% $$ \norm{h}{z_h} = \frac{a_h(z_h, z_h)}{\norm{h}{z_h}} \leq \sup_{v_h \in V_h \backslash \{0\}} \frac{a_h(z_h, v_h)}{\norm{h}{v_h}}. $$
+% Thus, we have
+% $$ \norm{h}{v_h - \rho_h} \leq \sup_{v_h \in V_h \backslash \{0\}} \frac{a_h(v_h - \rho_h, v_h)}{\norm{h}{v_h}}. $$
+% Expand $v_h - \rho_h$ in the above inequality as follows:
+% \begin{align}\label{eq:erhoh.expand}
+%     \norm{h}{v_h - u_h} \leq \sup_{v_h \in V_h \backslash \{0\}} \frac{a_h(v_h - \rho, v_h)}{\norm{h}{v_h}} + \sup_{v_h \in V_h \backslash \{0\}} \frac{a_h(\rho - \rho_h, v_h)}{\norm{h}{v_h}}.
+% \end{align}
+
+% The first term on the right-hand side of \eqref{eq:erhoh.expand} is bounded using a Cauchy-Schwarz inequality to get  
+% \begin{align*}
+%     \frac{a_h(v_h - \rho, v_h)}{\norm{h}{v_h}} \leq \norm{h}{v_h - \rho}.
+% \end{align*}
+% The second term on the right-hand side of \eqref{eq:erhoh.expand} is bounded by deriving the equation of error for $\rho_h$ as follows.
+% \begin{align*}
+%     a_h(\rho - \rho_h, v_h) &= a_h(\rho, v_h) - a_h(\rho_h, v_h) \nonumber\\
+%     &\hspace{-0.17cm}\overset{\eqref{eq:Ph.rhoh}}{=} a_h(\rho, v_h) - (\bs{f}, \curl{\Pi^1_{k,h} v_h}) - (\Pi^0_{k,h} \rho_h,1) (\Pi^0_{k,h} v_h,1) \nonumber\\
+%     &= a_h(\rho, v_h) - (\bs{f}, \curl{\Pi^1_{k,h} v_h}),
+% \end{align*}
+% where in passage to the last equality, we used the definition of $\Pi^0_{k,h}$ and the fact that $\rho_h \in L_0^2(\Omega)$. Substituting the bounds into \eqref{eq:erhoh.expand}, and the resulting bound into \eqref{eq:erho.split} gives the following abstract estimate for the error $e_{\rho}$, 
+% \begin{align}\label{eq:errest.rho.h}
+%     \norm{h}{e_\rho} \lesssim \inf_{v_h \in V_h} \norm{h}{\rho - v_h} + \sup_{v_h \in V_h \backslash \{0\}} \frac{a_h(\rho, v_h) - (\bs{f}, \curl{\Pi^1_{k,h} v_h})}{\norm{h}{v_h}}.
+% \end{align} 
+
+% The term $a_h(\rho,v_h)$ in \eqref{eq:errest.rho.h} can be rewritten as
+% \begin{align}\label{eq:errest.rho.h.ah}
+%     a_h(\rho, v_h) &= \sum_{D \in \Th} (\curl{\Pi^{1}_{k,D} \rho}, \curl{\Pi^1_{k,D}v_h}) + S^D((I - \Pi^1_{k,D}) \rho, (I - \Pi^1_{k,D}) v_h) \nonumber\\
+%     &= \sum_{D \in \Th} (\curl{\Pi^{1}_{k,D} \rho}, \curl{v_h}) + S^D((I - \Pi^1_{k,D}) \rho, (I - \Pi^1_{k,D}) v_h) \nonumber\\
+%     &\hspace{-0.17cm}\overset{\eqref{eq:P.rho}}{=} \sum_{D \in \Th} (\curl{(\Pi^1_{k,D} \rho - \rho)}, \curl{v_h}) + (\bs{f}, \curl{v_h}) - (\rho,1) (w_h,1) + S^D((I - \Pi^1_{k,D}) \rho, (I - \Pi^1_{k,D}) v_h) \nonumber\\
+%     &= \sum_{D \in \Th} (\curl{(\Pi^{1}_{k,D} \rho - \rho)}, \curl{v_h - \Pi^1_{k,D} v_h}) + S^D((I - \Pi^1_{k,D}) \rho, (I - \Pi^1_{k,D}) v_h) + (\bs{f}, \curl{v_h}).
+% \end{align}
+% To get the last equality, we used the definition of $\Pi^1_{k,D}$ and the fact that $\rho \in L_0^2(\Omega)$. The first term in \eqref{eq:errest.rho.h.ah} is bounded using the Cauchy-Schwarz inequality, assumption \ref{assum:coercivity} and the piecewise-broken $H^1$-seminorm defined by
+% \begin{align*}
+%     \seminorm{h,1}{v} := \left( \sum_{D \in \Th} \seminorm{H^1(D)}{v}^2 \right)^{\frac{1}{2}} \quad \forall v \in H^1(\Th).
+% \end{align*}
+% as follows:
+% \begin{align*}
+%     \sum_{D \in \Th} (\curl{(\Pi^{1}_{k,D} \rho - \rho)}, \curl{v_h - \Pi^1_{k,D} v_h}) &\lesssim \left( \sum_{D \in \Th} \seminorm{H^1(D)}{\Pi^1_{k,D} \rho -\rho}^2 \right)^{\frac{1}{2}} \left( \sum_{D \in \Th} \seminorm{H^1(D)}{v_h}^2 \right)^{\frac{1}{2}} \nonumber\\
+%     &\lesssim \seminorm{h,1}{\Pi^1_{k,h} \rho - \rho} \norm{h}{v_h}.
+% \end{align*}
+% The second term in \eqref{eq:errest.rho.h.ah} is bounded similarly to get
+% \begin{align*}
+%     \sum_{D \in \Th} S^D((I - \Pi^1_{k,D}) \rho, (I - \Pi^1_{k,D}) v_h) &= a_h(\rho - \Pi^1_{k,h} \rho, v_h) 
+%     \lesssim \norm{h}{\rho - \Pi^1_{k,h} \rho} \norm{h}{v_h}.
+% \end{align*}
+% Thus, 
+% \begin{align*}
+%     a_h(\rho,v_h) - (\bs{f}, \curl{\Pi^1_{k,h} v_h}) \lesssim \seminorm{h,1}{\Pi^1_{k,h} \rho - \rho} + \norm{h}{\rho - \Pi^1_{k,h} \rho} + \left( \sup_{w_h \in V_h \backslash \{0\}} \frac{(\bs{f}, \curl{w_h - \Pi^1_{k,h} w_h})}{\seminorm{H^1(\Omega)}{w_h}}\right) \norm{h}{v_h}.
+% \end{align*}
+% putting the above inequality in \eqref{eq:errest.rho.h} for the choice $v_h = I_{k,h} \rho$ yields,
+% \begin{align}\label{eq:errest.rho.h.final}
+%     \norm{h}{\rho - \rho_h} &\lesssim \norm{h}{\rho - I_{k,h} \rho} + \seminorm{h,1}{\Pi^1_{k,h} \rho - \rho} + \norm{h}{\rho - \Pi^1_{k,h} \rho} + \sup_{w_h \in V_h} \frac{(\bs{f}, \curl{(w_h - \Pi^1_{k,h} w_h)})}{\seminorm{H^1(\Omega)}{w_h}}.
+% \end{align}
 
 
 

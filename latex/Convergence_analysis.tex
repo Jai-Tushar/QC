@@ -268,27 +268,27 @@ It remains to estimate the error for $\xi_h$.
 
 
 
-% \begin{remark}
+\begin{remark}
  
-% A naive discrete auxiliary problem, would lead to a suboptimal bound. To see this, consider the following discrete auxiliary problem: Given $\rho \in H^1(\Omega)$, find $\tilde{\xi}_{0,h} \in V_h^0$ such that    
+A naive discrete auxiliary problem, would lead to a suboptimal bound. To see this, consider the following discrete auxiliary problem: Given $\rho \in H^1(\Omega)$, find $\tilde{\xi}_{0,h} \in V_h^0$ such that    
     
-% \begin{align*}
-%     a_h(\tilde{\xi}_{0,h}, \eta_h) + \beta(\Pi^0_{k,h} \tilde{\xi}_{0,h}, \Pi^0_{k,h} \eta_h) = (\Pi^0_{k,h} \rho, \Pi^0_{k,h} \eta_h) \quad \forall \eta_h \in V_h^0.
-% \end{align*}
+\begin{align*}
+    a_h(\tilde{\xi}_{0,h}, \eta_h) + \beta(\Pi^0_{k,h} \tilde{\xi}_{0,h}, \Pi^0_{k,h} \eta_h) = (\Pi^0_{k,h} \rho, \Pi^0_{k,h} \eta_h) \quad \forall \eta_h \in V_h^0.
+\end{align*}
 
 
-% On comparing with \eqref{eq:Ph.xi0h}, we have
-% \begin{align*}
-%     a_h(\tilde{\xi}_{0,h} - \xi_{0,h}, \eta_h) + \beta (\Pi^0_{k,h}(\tilde{\xi}_{0,h} - \xi_{0,h}), \Pi^0_{k,h} \eta_h) = (\Pi^0_{k,h} (\rho - \rho_h), \Pi^0_{k,h} \eta_h) \quad \forall \eta_h \in V_h^0.
-% \end{align*}
-% It follows that
-% \begin{align}\label{eq:aux.est.xi0h.problem}
-%     a_h(\tilde{\xi}_{0,h} - \xi_{0,h}, \eta_h) &\leq (\Pi^0_{k,h} (\rho -  \rho_h), \Pi^0_{k,h} \eta_h) = (\rho - \rho_h, \Pi^0_{k,h} \eta_h) \nonumber\\
-%     &= (\rho - \rho_h, \eta_h) + (\rho - \rho_h, \Pi^0_{k,h} \eta_h - \eta_h) \nonumber\\
-%     &= (\rho - \rho_h, \eta_h) + (\rho - \rho_h - \Pi^0_{k,h}(\rho - \rho_h), \Pi^0_{k,h} \eta_h - \eta_h)
-% \end{align}
-% where we used the definition of $L^2$-projector to pass to the first equality. Since we do not have extra regularity on $\rho \in H^1(\Omega) \cap L_0^2(\Omega)$, the second term in \eqref{eq:aux.est.xi0h.problem} limits the approximation order to $h^2$, which is sub-optimal for many convex domains.
-% \end{remark}
+On comparing with \eqref{eq:Ph.xi0h}, we have
+\begin{align*}
+    a_h(\tilde{\xi}_{0,h} - \xi_{0,h}, \eta_h) + \beta (\Pi^0_{k,h}(\tilde{\xi}_{0,h} - \xi_{0,h}), \Pi^0_{k,h} \eta_h) = (\Pi^0_{k,h} (\rho - \rho_h), \Pi^0_{k,h} \eta_h) \quad \forall \eta_h \in V_h^0.
+\end{align*}
+It follows that
+\begin{align}\label{eq:aux.est.xi0h.problem}
+    a_h(\tilde{\xi}_{0,h} - \xi_{0,h}, \eta_h) &\leq (\Pi^0_{k,h} (\rho -  \rho_h), \Pi^0_{k,h} \eta_h) = (\rho - \rho_h, \Pi^0_{k,h} \eta_h) \nonumber\\
+    &= (\rho - \rho_h, \eta_h) + (\rho - \rho_h, \Pi^0_{k,h} \eta_h - \eta_h) \nonumber\\
+    &= (\rho - \rho_h, \eta_h) + (\rho - \rho_h - \Pi^0_{k,h}(\rho - \rho_h), \Pi^0_{k,h} \eta_h - \eta_h)
+\end{align}
+where we used the definition of $L^2$-projector to pass to the first equality. Since we do not have extra regularity on $\rho \in H^1(\Omega) \cap L_0^2(\Omega)$, the second term in \eqref{eq:aux.est.xi0h.problem} limits the approximation order to $h^2$, which is sub-optimal for many convex domains.
+\end{remark}
 
 
 
