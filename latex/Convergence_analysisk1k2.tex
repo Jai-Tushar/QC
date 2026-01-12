@@ -86,7 +86,7 @@ Some useful estimates in the mesh-dependent norm and piecewise broken semi-norm 
     The following estimates hold,
     \begin{align}
         \norm{h_0}{\Ih{v} - \Pi^1_{k,h} \Ih{v}} + \seminorm{1,h}{\Ih{v} - \Pi^1_{k,h} \Ih{v}} &\lesssim h^{\min(\delta,k)} \seminorm{H^{1+\delta}(\Omega)}{v} \quad \forall v \in H^{1+\delta}(\Omega), \label{eq:est.Ih.h.norm} \\
-        \norm{h_\beta}{v- \Ih{v}} + \norm{h_\beta}{v- \Pi^1_{k,h} v} &\lesssim \quad \forall v \in H^{1+\delta}(\Omega). \label{eq:est.hbeta.norm}
+        \norm{h_\beta}{v- \Ih{v}} + \norm{h_\beta}{v- \Pi^1_{k,h} v} &\lesssim h^{\min(\delta,k)} \seminorm{H^{1+\delta}(\Omega)}{v} \quad \forall v \in H^{1+\delta}(\Omega). \label{eq:est.hbeta.norm}
     \end{align}
 \end{lemma}
 
@@ -196,10 +196,11 @@ Substituting the above bound and \eqref{eq:err.rho.1.a} into \eqref{eq:err.rho.1
 
 
 It remains to estimate the error for $\xi_h$. 
-\begin{lemma}
+\begin{lemma}\label{lem:xi.est}
     For any $\epsilon > 0$, there exists a positive constant dependent on $\epsilon$ and independent of $h$ such that for $k = 1,2$,
     \begin{align}
-        \seminorm{H^1(\Omega)}{\xi - \xi_h} \lesssim h^{\min{((\pi / \omega) - \epsilon, k)}}. \label{eq:err.est.xi}
+        \seminorm{H^1(\Omega)}{\xi - \xi_h} &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}, \label{eq:err.est.xi} \\
+        \seminorm{1,h}{\xi - \Pi^1_{k,h} \xi_h} &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} (\norm{H^{1+(\pi/\omega) - \epsilon}(\Omega)}{\xi} + \norm{L^2(\Omega)}{\bs{f}}). \label{eq:err.est.Proj_xi}
     \end{align}
 \end{lemma}
 \begin{proof}
@@ -211,16 +212,110 @@ It remains to estimate the error for $\xi_h$.
     \begin{align}\label{tildexi0.reg}
         \tilde \xi_0 \in H^{1+(\pi/\omega)-\epsilon}(\Omega) \quad \mbox{and} \quad \norm{H^{1+(\pi/\omega)-\epsilon}(\Omega)}{\tilde \xi_0} \lesssim \norm{H^1(\Omega)}{\rho_h}.
     \end{align}
-    It follows now from \eqref{eq:P.aux}, \eqref{eq:P.xi0}, and the duality estimate \eqref{eq:err.est.rho} that
+    It follows now from \eqref{eq:P.xi0}, \eqref{eq:P.aux}, and the duality estimate \eqref{eq:err.est.rho} that
     \begin{align}\label{eq:xi0.a}
         \seminorm{H^1(\Omega)}{\xi_0 - \tilde{\xi}_0} &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}.
     \end{align}
 
-It follows from \eqref{eq:P.aux} and \eqref{eq:Ph.xi0h} that $\xi_{0,h}$ is also a virtual element approximation of $\tilde \xi_0$ and hence we have the following analogus abstract error estimate following \cite[Section 4.3]{Brenner-Sung-2018-VEM-Small-Edges-Faces},
+It follows from \eqref{eq:P.aux} and \eqref{eq:Ph.xi0h} that $\xi_{0,h}$ is also a virtual element approximation of $\tilde \xi_0$ and hence we have the following analogous abstract error estimate following \cite[Section 4.3]{Brenner-Sung-2018-VEM-Small-Edges-Faces},
 \begin{align}\label{err.abs.xi0h}
     \norm{h_{\beta}}{\tilde \xi_0 - \xi_{0,h}} &\lesssim \norm{h_\beta}{\tilde \xi_0 - \Ih{\tilde \xi_0}} + \seminorm{1,h}{\tilde \xi_0 - \Pi^1_{k,h} \tilde \xi_0} + \norm{h_\beta}{\tilde \xi_0 - \Pi^1_{k,h} \tilde \xi_0} \nonumber\\
     &\qquad + \beta h \norm{L^2(\Omega)}{\tilde \xi_0 - \Pi^0_{k,h} \tilde \xi_0} + \sup_{w_h \in V_h^0 \backslash \{0\}} \frac{(\rho_h, w_h - \Pi^0_{k,h} w_h)}{\seminorm{H^1(\Omega)}{w_h}}.
 \end{align}
+
+The numerator in the last term of \eqref{err.abs.xi0h} is estimated using the definition of $\Pi^0_{k,h}$, the fact that it minimizes it's respective norm, the fact $\rho_h, w_h \in V_h \subset H^1(\Omega)$ and the approximation property of $\Pi^0_{k,h}$ follows:
+\begin{align}
+    (\rho_h, w_h - \Pi^0_{k,h} w_h) &= (\rho_h - \Pi^0_{0,h} \rho_h, w_h - \Pi^0_{k,h} w_h) \nonumber\\
+    &\leq \norm{L^2(\Omega)}{\rho_h - \Pi^0_{0,h} \rho_h} \norm{L^2(\Omega)}{w_h - \Pi^0_{0,h} w_h} \nonumber\\
+    &\lesssim h^2 \seminorm{H^1(\Omega)}{\rho_h} \seminorm{H^1(\Omega)}{w_h}. \label{eq:err.abs.xi0h.source}
+\end{align}
+
+Using the approximation properties stated in \eqref{eq:est.hbeta.norm}, the definition of $\seminorm{1,h}{\cdot}$, the estimates \eqref{eq:approxH1.H1p} and \eqref{eq:approxL2.L2p} for $\delta = (\pi/\omega) - \epsilon$, and \eqref{eq:err.abs.xi0h.source}, we can get the following concrete bound on \eqref{err.abs.xi0h}.
+\begin{align*}
+    \norm{h_{\beta}}{\tilde \xi_0 - \xi_{0,h}} &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} (\seminorm{H^{1 + (\pi/\omega) - \epsilon}(\Omega)}{\tilde \xi_0} + \seminorm{H^1(\Omega)}{\rho_h}) \nonumber\\
+    &\hspace{-0.65cm}\overset{\eqref{tildexi0.reg},\eqref{eq:curl.data}}{\lesssim} h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}.
+\end{align*}
+Now, using Assumption \ref{assum:coercivity} in the above estimate yields
+\begin{align}\label{eq:xi0h.b}
+    \seminorm{H^1(\Omega)}{\tilde \xi_0 - \xi_{0,h}} \lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}.
+\end{align}
+Finally, a triangle inequality alongwith \eqref{eq:xi0.a} and \eqref{eq:xi0h.b} leads to \eqref{eq:err.xi0}
+\begin{align}\label{eq:err.xi0}
+     \seminorm{H^1(\Omega)}{\xi_0 - \xi_{0,h}} \lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}.
+\end{align}
+Similarly, we can get the following control on $\xi_1 - \xi_{1,h}$ (see \eqref{eq:P.xi1} and \eqref{eq:Ph.xi1h})
+\begin{align}\label{eq:err.xi1}
+     \seminorm{H^1(\Omega)}{\xi_1 - \xi_{1,h}} \lesssim h^{\min{((\pi/\omega) - \epsilon, k)}}.
+\end{align}
+The estimate \eqref{eq:err.est.xi} now follows from \eqref{eq:err.xi0}, \eqref{eq:err.xi1}, \eqref{eq:P.xi}, and \eqref{eq:Ph.xih}. Since, $\xi \in H^{1+(\pi/\omega) - \epsilon}(\Omega)$ we can get the estimate \eqref{eq:err.est.Proj_xi} using Lemma \ref{lem:H1p.properties} and \eqref{eq:err.est.xi}  as follows,
+\begin{align*}
+    \seminorm{1,h}{\xi - \Pi^1_{k,h} \xi_h} &\leq \seminorm{1,h}{\xi - \Pi^1_{k,h} \xi} + \seminorm{1,h}{\Pi^1_{k,h} (\xi - \xi_h)} \nonumber\\
+    &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{H^{1+(\pi/\omega) - \epsilon}(\Omega)}{\xi} + \seminorm{H^1(\Omega)}{\xi - \xi_h} \nonumber\\
+    &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} (\norm{H^{1+(\pi/\omega) - \epsilon}(\Omega)}{\xi} + \norm{L^2(\Omega)}{\bs{f}}).
+\end{align*}
+
+The error analysis for $\phi_h$ is analogous to that of $\xi_h$.
+
+\begin{lemma}\label{lem:est.phi}
+    For any $\epsilon > 0$, there esists a positive constant dependent on $\epsilon$ and independent of $h$ such that for $k = 1,2$,
+    \begin{align}
+        \seminorm{H^1(\Omega)}{\phi - \phi_h} &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \left(\norm{H^1(\Omega)}{\xi_h} + \norm{L^2(\Omega)}{\bs{f}}\right), \label{eq:err.est.phi} \\
+        \seminorm{1,h}{\phi - \Pi^1_{k,h} \phi_h} &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \left( \norm{H^1(\Omega)}{\xi_h} +\norm{L^2(\Omega)}{\bs{f}}\right). \label{eq:err.est.Proj_phi}
+    \end{align}
+\end{lemma}
+\begin{proof}
+    Given $\xi_h \in V_h^0$, let $\tilde{\phi} \in H^1(\Omega)$ solve the following auxiliary problem,
+    \begin{align}\label{eq:P.aux.phi}
+        (\curl{\tilde \phi}, \curl{\psi}) + (\tilde \phi, 1) (\tilde \psi, 1) = (\xi_h, \psi) \quad \forall \psi \in H^1(\Omega).
+    \end{align}
+    Since $\xi_h \in V_h \subset H^1(\Omega)$, due to Lemma \ref{lem:reg.pure-neumann}, 
+    \begin{align}\label{tildephi.reg}
+        \tilde \phi \in H^{1+(\pi/\omega)-\epsilon}(\Omega) \quad \mbox{and} \quad \norm{H^{1+(\pi/\omega)-\epsilon}(\Omega)}{\tilde \phi} \lesssim \norm{H^1(\Omega)}{\xi_h}.
+    \end{align}
+    Comparing \eqref{eq:P.phi} and \eqref{eq:P.aux.phi}, using a standard Poincar\'e inequality for $\xi - \xi_h \in H_0^1(\Omega)$ alongwith \eqref{eq:err.est.xi} gives,
+    \begin{align}\label{eq:phi.a}
+        \seminorm{H^1(\Omega)}{\phi - \tilde{\phi}} \lesssim \norm{L^2(\Omega)}{\xi - \xi_h} \lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}.
+    \end{align}
+
+    It follows from \eqref{eq:P.aux.phi} and \eqref{eq:Ph.phih} that $\phi_h$ is also a virtual element approximation of $\tilde \phi$ and hence using the fact the $\rho, \rho_h \in L_0^2(\Omega)$ we have the following analogous abstract error estimate following \cite[Section 4.3]{Brenner-Sung-2018-VEM-Small-Edges-Faces},
+    \begin{align*}
+        \norm{h_{\beta}}{\tilde \phi - \phi_h} &\lesssim \norm{h_0}{\tilde \phi - \Ih{\tilde \phi}} + \seminorm{1,h}{\tilde \phi - \Pi^1_{k,h} \tilde \phi} + \norm{h_0}{\tilde \phi - \Pi^1_{k,h} \tilde \phi} + \sup_{w_h \in V_h^0 \backslash \{0\}} \frac{(\xi_h, w_h - \Pi^0_{k,h} w_h)}{\seminorm{H^1(\Omega)}{w_h}}.
+    \end{align*}
+    Following similar arguments as in the proof of Lemma \ref{lem:xi.est} and \eqref{tildephi.reg}, we can get the following concrete bound,
+    \begin{align}\label{eq:phi.b}
+        \seminorm{H^1(\Omega)}{\tilde \phi - \phi_h} &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} (\norm{H^{1 + (\pi/\omega) - \epsilon}(\Omega)}{\tilde \phi} + \seminorm{H^1(\Omega)}{\xi_h}) \nonumber\\
+        &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{H^1(\Omega)}{\xi_h}.
+    \end{align}
+    Combining \eqref{eq:phi.a} and \eqref{eq:phi.b} using a triangle inequality leads to \eqref{eq:err.est.phi}. 
+
+    Moreover, it follows from \eqref{eq:P.phi} and Lemma \ref{lem:reg.pure-neumann} that 
+    \begin{align}\label{eq:reg.phi}
+        \phi \in H^{1+(\pi/\omega) - \epsilon}(\Omega) \quad \mbox{and} \quad \norm{H^{1+(\pi/\omega) - \epsilon}(\Omega)}{\phi} \lesssim \norm{H^1(\Omega)}{\xi}.    
+    \end{align}
+    Hence, using similar arguments as in the proof of \eqref{eq:err.est.Proj_xi} with \eqref{eq:reg.phi} leads to \eqref{eq:err.est.Proj_phi}.
+\end{proof}
+
+In view of Lemmas \ref{lem:xi.est}, \ref{lem:est.phi}, \eqref{u.simplyConnected} and \eqref{uh.simplyConnected}, we readily have the following result for simply connected domains.
+\begin{theorem}\label{thm:simplyconnected}
+    The approximations $\xi_h$ and $\bs{u}_h$ defined in \eqref{uh.simplyConnected} obtained by $\Poly_k$-virtual finite element method satisfy 
+    \begin{align}\label{eq:err.est.simplyconnected}
+        \norm{L^2(\Omega)}{\bs{u} - \bs{u}_h} + \seminorm{H^1(\Omega)}{\curl{\bs{u}} - \xi_h} \lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \left( \norm{H^1(\Omega)}{\xi_h} +\norm{L^2(\Omega)}{\bs{f}}\right).
+    \end{align}
+    for any $\epsilon > 0$, and $k = 1,2$, where $\omega$ is the largest angle at the corners of $\Omega$.
+\end{theorem} 
+\begin{proof}
+    The estimate for $\bs{u} - \bs{u}_h$ follows from \eqref{eq:err.est.Proj_phi} on observing the following,
+    $$\norm{L^2(\Omega)}{\bs{u} - \bs{u}_h} = \norm{L^2(\Omega)}{\curl{\phi} - \curl{\Pi^1_{k,h} \phi_h}}=\seminorm{1,h}{\phi - \Pi^1_{k,h} \phi_h}.$$
+    Recalling that $\xi = \curl{\bs{u}}$, the estimate for $\curl{\bs{u}} - \xi_h$ follows from \eqref{eq:err.est.xi}.
+\end{proof}
+
+
+% The numerator in the last term of \eqref{err.abs.xi0h} is estimated for $1 \leq l \leq k$ using the definition of $\Pi^0_{k,h}$ and using the fact that it minimizes it's respective norm as follows:
+% \begin{align}
+%     (\rho_h, w_h - \Pi^0_{k,h} w_h) &= \sum_{D \in \Th} (\rho_h - \Pi^0_{l-2,D} \rho_h, w_h - \Pi^0_{k,D} w_h) \nonumber\\
+%     &\leq \norm{L^2(\Omega)}{\rho_h - \Pi^0_{l-2,h} \rho_h} \norm{L^2(\Omega)}{w_h - \Pi^0_{0,h} w_h} \nonumber\\
+%     &\lesssim h \norm{L^2(\Omega)}{\rho_h - \Pi^0_{l-2,h} \rho_h} \norm{H^1(\Omega)}{w_h}.
+% \end{align}
 
 
 % The term $a_h(\tilde \xi_0,v_h)$ in \eqref{err.abs.xi0h} can be rewritten as

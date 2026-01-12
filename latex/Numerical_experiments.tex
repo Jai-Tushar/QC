@@ -1,10 +1,10 @@
 \section{Numerical Results}\label{sec:numexp}
 
-We choose the classical \texttt{Dofi-Dofi} definition of the stabilization term (see \cite{beirao-da-veiga.brezzi.ea:2013:basic}),
+We choose the boundary version of the classical \texttt{Dofi-Dofi} definition of the stabilization term (see \cite[Section 4.2]{brenner.sung:2018:virtual} and \cite{beirao-da-veiga.brezzi.ea:2013:basic}),
 \begin{align}
-    S^D(w_h, v_h) = \sum_{i=1}^{N_D^{\texttt{dof}}} \chi_i(w_h) \; \chi_i(v_h) \quad \forall w_h, v_h \in V_h(D),
+    S^D(w_h, v_h) = \sum_{i=1}^{N_{\partial D}^{\texttt{dof}}} \chi_i(w_h) \; \chi_i(v_h) \quad \forall w_h, v_h \in V_h(D),
 \end{align}
-where operator $\chi_i(\cdot)$ associates the function with its $i$-th degree of freedom, and $N_D^{\texttt{dof}}$ is the number of degrees of freedom associated with an element in $D \in \Th$.
+where operator $\chi_i(\cdot)$ associates the function with its $i$-th degree of freedom, and $N_{\partial D}^{\texttt{dof}}$ is the number of boundary degrees of freedom associated with the element in $D \in \Th$.
 
 \subsection{Smooth solution on a convex simply connected domain.}\label{exp:smooth_sol}
     We consider the problem \eqref{eq:P} with $\gamma = \beta = 0$ and $\Omega = (0,1)^2$. Given $\phi(x,y) = \sin^3(\pi x) \sin^3(\pi y)$, the manufactured solution is given by

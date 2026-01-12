@@ -21,7 +21,9 @@ Here $\Gamma_0$ denotes the outer boundary, $\Gamma_l$ denote the $l$ components
 
 \subsection{$\Omega$ is simply connected ($\gamma$ = 0).}
 The Hodge decomposition \eqref{eq:HodgeDecomposition} reduces to 
-$$ \bs{u} = \curl{\phi}. $$
+\begin{align}\label{u.simplyConnected}
+  \bs{u} = \curl{\phi}.
+\end{align}
  It now remains to find $\phi$. As shown in \cite{Brenner-Sun-Sung-2017-HodgeDecomposition2D}, this can be achieved by solving the following sequence of problems. 
 
 \begin{enumerate}
@@ -40,7 +42,7 @@ $$ \bs{u} = \curl{\phi}. $$
             (\curl{\xi_1}, \curl{\eta}) + \beta(\xi_1, \eta) = (1, \eta) \quad \forall \eta \in H_0^1(\Omega). \label{eq:P.xi1}
           \end{align}
 
-    \item Finally we find $\phi \in H^1(\Omega) \cap L_2^0(\Omega)$, or equivalently $\phi \in H^1(\Omega)$ such that
+    \item Finally we find $\phi \in H^1(\Omega)$, or equivalently $\phi \in H^1(\Omega)$ such that
           \begin{align}\label{eq:P.phi}
             (\curl{\phi}, \curl{\psi}) + (\phi,1) (\psi,1) = (\xi, \psi) \quad \forall \psi \in H^1(\Omega).
           \end{align}
