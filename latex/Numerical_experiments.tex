@@ -16,7 +16,7 @@ where operator $\chi_i(\cdot)$ associates the function with its $i$-th degree of
         e_{\bs{u}_h} := \norm{L^2(\Omega)}{ \bs{u} - \bs{u}_h} &= \sqrt{\sum_{D \in \Th} \norm{L^2(D)}{\bs{u} - \bs{u}_h}^2}, \\
         e_{\xi_h} := \seminorm{1,h}{\xi - \Pi^{1}_{k,h} \xi_h} &= \sqrt{\sum_{D \in \Th} \seminorm{H^1(D)}{\xi - \Pi^{1}_{k,D} \xi_h}^2}, \quad \mbox{with} \quad \xi = \curl{\bs{u}}.
     \end{align*}
-    and are reported in Tables \ref{Table:smooth.structured} and \ref{Table:smooth.unstructured} on a sequence of structured and unstructured voronoi meshes, respectively (see Figure \ref{Fig:Square_mesh}). We recall that in this experiment $\bs{u}_h$ is computed using \eqref{uh.simplyConnected}. The observed rates of convergence are in agreement with the theoretical rates predicted by Theorem \ref{thm:simplyconnected} and \eqref{eq:err.est.Proj_xi}.
+    and are reported in Tables \ref{Table:smooth.structured} and \ref{Table:smooth.unstructured} on a sequence of structured and unstructured voronoi meshes, respectively (see Figure \ref{Fig:Square_mesh}). We recall that in this experiment $\bs{u}_h$ is computed using \eqref{uh.simplyConnected}. The observed rates of convergence are in agreement with the theoretical rates predicted by Theorem \ref{thm:simplyconnected} and \eqref{eq:err.est.Proj_xi} with $\omega = \pi/2$.
 
 \begin{longtable}{@{}|l|l|l|l|l|l|@{}}
   \caption{Experimental errors and orders of convergence for Experiment \ref{exp:smooth_sol} on structured voronoi meshes.}
@@ -107,7 +107,7 @@ Then we solve the sequence of discrete problems \eqref{eq:Ph.rhoh}-\eqref{uh.sim
     \begin{align*}
         \texttt{rel} \; e_{\bs{u}_h}^i := \frac{\norm{L^2(\Omega)}{ \bs{u}_{h}^i - \bs{u}_{h}^{i+1}}}{\norm{L^2(\Omega)}{\bs{u}_{h}^{i+1}}}, \quad \mbox{and} \quad \texttt{rel} \; e_{\xi_h}^i := \frac{\seminorm{1,h_{i+1}}{\Pi^{1,i}_{k,h} \xi_h^{i} - \Pi^{1,i+1}_{k,h} \xi_h^{i+1}}}{\seminorm{1,h_{i+1}}{\Pi^{1,i+1}_{k,h} \xi_h^{i+1}}},
     \end{align*}
-    where $i$ denoetes the mesh level. Then we report them in Tables \ref{Table:smoothdata.structured} and \ref{Table:smoothdata.unstructured} on a sequence of structured and unstructured voronoi meshes, respectively (see Figures \ref{Fig:Square_mesh}). The observed rates of convergence are in agreement with the theoretical rates predicted by Theorem \ref{thm:simplyconnected} and \eqref{eq:err.est.Proj_xi}.
+    where $i$ denoetes the mesh level. Then we report them in Tables \ref{Table:smoothdata.structured} and \ref{Table:smoothdata.unstructured} on a sequence of structured and unstructured voronoi meshes, respectively (see Figures \ref{Fig:Square_mesh}). The observed rates of convergence are in agreement with the theoretical rates predicted by Theorem \ref{thm:simplyconnected} and \eqref{eq:err.est.Proj_xi} with $\omega = \pi/2$.
 
 \begin{longtable}{@{}|l|l|l|l|l|l|@{}}
   \caption{Relative errors and convergence rates for Experiment \ref{exp:smoothdata} on structured voronoi meshes for orders $k = 1,2$.}

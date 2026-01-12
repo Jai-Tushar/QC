@@ -3,7 +3,9 @@
 We start by collecting some mathematical tools which will be helpful in the forthcoming analysis. 
 
 \begin{lemma}[Sobolev inequality]\label{lem:Sobolev.inequality} Given any $\delta > 0$,
-    $$\norm{L^\infty(D)}{v} \lesssim h_D^{-1} \norm{L^2(D)}{v} + \seminorm{H^1(D)}{v} + h_D^{\delta} \seminorm{H^{1+\delta}(D)}{v} \quad \forall v \in H^{1+\delta}(D).$$
+    \begin{align}\label{eq:Sobolev.inequality}
+        \norm{L^\infty(D)}{v} \lesssim h_D^{-1} \norm{L^2(D)}{v} + \seminorm{H^1(D)}{v} + h_D^{\delta} \seminorm{H^{1+\delta}(D)}{v} \quad \forall v \in H^{1+\delta}(D).
+    \end{align}
 \end{lemma}
 
 \begin{lemma}[Bramble-Hilbert estimates]
@@ -53,7 +55,8 @@ Here $\mathcal{N}^{\partial D}$ is the set of boundary degrees of freedom associ
     Given $\delta > 0$, we have
     \begin{align}
         \seminorm{H^1(D)}{\ID{v}} &\lesssim \seminorm{H^1(D)}{v} + h_D^{\delta} \seminorm{H^{1+ \delta}(D)}{v}, \quad \forall v \in H^{1+\delta}(D) \label{eq:ID.stability} \\
-        \seminorm{H^1(D)}{v - \ID v} + \seminorm{H^1(D)}{\ID v - \Pi^1_{k,D} \ID v} &\lesssim h_D^{\min(\delta,k)} \seminorm{H^{1+\delta}(D)}{v}, \quad \forall v \in H^{1+\delta}(D)\label{eq:ID.approximation}
+        \seminorm{H^1(D)}{v - \ID v} + \seminorm{H^1(D)}{\ID v - \Pi^1_{k,D} \ID v} &\lesssim h_D^{\min(\delta,k)} \seminorm{H^{1+\delta}(D)}{v}, \quad \forall v \in H^{1+\delta}(D)\label{eq:ID.approximation} \\
+        \norm{L^2(D)}{v - \ID v} + \norm{L^2(D)}{\ID v - \Pi^1_{k,D} \ID v} &\lesssim h_D^{{\min(\delta,k)}+1} \seminorm{H^{1+\delta}(D)}{v}, \quad \forall v \in H^{1+\delta}(D)\label{eq:ID.approximation.L2}
     \end{align}   
 \end{lemma}
 
@@ -308,6 +311,11 @@ In view of Lemmas \ref{lem:xi.est}, \ref{lem:est.phi}, \eqref{u.simplyConnected}
     $$\norm{L^2(\Omega)}{\bs{u} - \bs{u}_h} = \norm{L^2(\Omega)}{\curl{\phi} - \curl{\Pi^1_{k,h} \phi_h}}=\seminorm{1,h}{\phi - \Pi^1_{k,h} \phi_h}.$$
     Recalling that $\xi = \curl{\bs{u}}$, the estimate for $\curl{\bs{u}} - \xi_h$ follows from \eqref{eq:err.est.xi}.
 \end{proof}
+
+
+\subsection{$\Omega$ is multiply connected $(\gamma > 0)$}
+
+
 
 
 % The numerator in the last term of \eqref{err.abs.xi0h} is estimated for $1 \leq l \leq k$ using the definition of $\Pi^0_{k,h}$ and using the fact that it minimizes it's respective norm as follows:
