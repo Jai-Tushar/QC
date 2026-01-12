@@ -260,11 +260,11 @@ The error analysis for $\phi_h$ is analogous to that of $\xi_h$.
     For any $\epsilon > 0$, there esists a positive constant dependent on $\epsilon$ and independent of $h$ such that for $k = 1,2$,
     \begin{align}
         \seminorm{H^1(\Omega)}{\phi - \phi_h} &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \left(\norm{H^1(\Omega)}{\xi_h} + \norm{L^2(\Omega)}{\bs{f}}\right), \label{eq:err.est.phi} \\
-        \seminorm{1,h}{\phi - \Pi^1_{k,h} \phi_h} &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \left( \norm{H^1(\Omega)}{\xi_h} +\norm{L^2(\Omega)}{\bs{f}}\right). \label{eq:err.est.Proj_phi}
+        \seminorm{1,h}{\phi - \Pi^1_{k,h} \phi_h} &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \left( \norm{H^1(\Omega)}{\xi} + \norm{H^1(\Omega)}{\xi_h} +\norm{L^2(\Omega)}{\bs{f}}\right). \label{eq:err.est.Proj_phi}
     \end{align}
 \end{lemma}
 \begin{proof}
-    Given $\xi_h \in V_h^0$, let $\tilde{\phi} \in H^1(\Omega)$ solve the following auxiliary problem,
+    Given $\xi_h \in V_h \cap L_0^2(\Omega)$, let $\tilde{\phi} \in H^1(\Omega)$ solve the following auxiliary problem,
     \begin{align}\label{eq:P.aux.phi}
         (\curl{\tilde \phi}, \curl{\psi}) + (\tilde \phi, 1) (\tilde \psi, 1) = (\xi_h, \psi) \quad \forall \psi \in H^1(\Omega).
     \end{align}
@@ -297,9 +297,9 @@ The error analysis for $\phi_h$ is analogous to that of $\xi_h$.
 
 In view of Lemmas \ref{lem:xi.est}, \ref{lem:est.phi}, \eqref{u.simplyConnected} and \eqref{uh.simplyConnected}, we readily have the following result for simply connected domains.
 \begin{theorem}\label{thm:simplyconnected}
-    The approximations $\xi_h$ and $\bs{u}_h$ defined in \eqref{uh.simplyConnected} obtained by $\Poly_k$-virtual finite element method satisfy 
+    The approximations $\xi_h$ and $\bs{u}_h$ obtained by $\Poly_k$-virtual finite element method satisfy 
     \begin{align}\label{eq:err.est.simplyconnected}
-        \norm{L^2(\Omega)}{\bs{u} - \bs{u}_h} + \seminorm{H^1(\Omega)}{\curl{\bs{u}} - \xi_h} \lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \left( \norm{H^1(\Omega)}{\xi_h} +\norm{L^2(\Omega)}{\bs{f}}\right).
+        \norm{L^2(\Omega)}{\bs{u} - \bs{u}_h} + \seminorm{H^1(\Omega)}{\curl{\bs{u}} - \xi_h} \lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \left( \norm{H^1(\Omega)}{\xi} + \norm{H^1(\Omega)}{\xi_h} +\norm{L^2(\Omega)}{\bs{f}}\right).
     \end{align}
     for any $\epsilon > 0$, and $k = 1,2$, where $\omega$ is the largest angle at the corners of $\Omega$.
 \end{theorem} 

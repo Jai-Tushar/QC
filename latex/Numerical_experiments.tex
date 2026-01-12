@@ -11,16 +11,15 @@ where operator $\chi_i(\cdot)$ associates the function with its $i$-th degree of
     \begin{align*}
         \bs{u} = \curl{\phi}, \quad \mbox{with} \quad \bs{f} = - \curl{(\Delta (\curl{\bs{u}}))}.
     \end{align*}
-    We solve \eqref{eq:P} using the scheme described in Section \ref{sec:discretization} for orders $k = 1,2,3,4$ on a sequence of unstructured Voronoi meshes. Since the virtual element solution is not known explicitly inside the element, we compare the manufactured solution with suitable projection of the discrete solution. The errors we measure are as follows:
+    We solve \eqref{eq:P} using the scheme described in Section \ref{sec:discretization} for orders $k = 1,2$ on a sequence of unstructured Voronoi meshes. Since the virtual element solution is not known explicitly inside the element, we compare the manufactured solution with suitable projection of the discrete solution. The errors we measure are as follows:
     \begin{align*}
         e_{\bs{u}_h} := \norm{L^2(\Omega)}{ \bs{u} - \bs{u}_h} &= \sqrt{\sum_{D \in \Th} \norm{L^2(D)}{\bs{u} - \bs{u}_h}^2}, \\
         e_{\xi_h} := \seminorm{1,h}{\xi - \Pi^{1}_{k,h} \xi_h} &= \sqrt{\sum_{D \in \Th} \seminorm{H^1(D)}{\xi - \Pi^{1}_{k,D} \xi_h}^2}, \quad \mbox{with} \quad \xi = \curl{\bs{u}}.
     \end{align*}
-    and are reported in Tables \ref{Table:smooth.structured} and \ref{Table:smooth.unstructured} for $k=1,2,3$ on a sequence of structured and unstructured voronoi meshes, respectively (see Figure \ref{Fig:Square_mesh}). We recall that in this experiment $\bs{u}_h$ is computed using \eqref{uh.simplyConnected}. 
-    % The experimental rates of convergence are observed to be optimal, i.e., $\mathcal{O}(h^{k})$ for $e_{\bs{u}_h}$ and $\mathcal{O}(h^{k})$ for $e_{\xi_h}$.
+    and are reported in Tables \ref{Table:smooth.structured} and \ref{Table:smooth.unstructured} on a sequence of structured and unstructured voronoi meshes, respectively (see Figure \ref{Fig:Square_mesh}). We recall that in this experiment $\bs{u}_h$ is computed using \eqref{uh.simplyConnected}. The observed rates of convergence are in agreement with the theoretical rates predicted by Theorem \ref{thm:simplyconnected} and \eqref{eq:err.est.Proj_xi}.
 
 \begin{longtable}{@{}|l|l|l|l|l|l|@{}}
-  \caption{Experimental errors and orders of convergence for Experiment \ref{exp:smooth_sol} on structured voronoi meshes for orders $k = 1,2,3$.}
+  \caption{Experimental errors and orders of convergence for Experiment \ref{exp:smooth_sol} on structured voronoi meshes.}
   \label{Table:smooth.structured}\\
   \hline
   $\qquad h$ & $\;\;\;N^{\texttt{Dofs}}$ & $\qquad e_{\bs{u}_h}$ & $\;\; \texttt{rate}$ & $\qquad e_{\xi_h}$ & $\;\; \texttt{rate}$ \\ \hline
@@ -40,17 +39,17 @@ where operator $\chi_i(\cdot)$ associates the function with its $i$-th degree of
   1.8634e-02 & 40001  & 1.1703e-03 & 1.9916 & 1.4422e-01 & 1.9903 \\
   9.3169e-03 & 156801 & 2.9336e-04 & 1.9962 & 3.6163e-02 & 1.9957 \\ \hline
 
-  \multicolumn{6}{|c|}{$k = 3$} \\ \hline
-  2.9814e-01 & 448    & 6.3438e-02 & -     & 8.2035e+00 & -     \\
-  1.4907e-01 & 1443   & 8.7780e-03 & 2.8534 & 1.1781e+00 & 2.7997 \\
-  7.4536e-02 & 5083   & 1.1387e-03 & 2.9465 & 1.5452e-01 & 2.9306 \\
-  3.7268e-02 & 18963  & 1.4425e-04 & 2.9807 & 1.9661e-02 & 2.9744 \\
-  1.8634e-02 & 73123  & 1.8128e-05 & 2.9923 & 2.4755e-03 & 2.9895 \\
-  9.3169e-03 & 287043 & 2.2713e-06 & 2.9966 & 3.1044e-04 & 2.9953 \\ \hline
+  % \multicolumn{6}{|c|}{$k = 3$} \\ \hline
+  % 2.9814e-01 & 448    & 6.3438e-02 & -     & 8.2035e+00 & -     \\
+  % 1.4907e-01 & 1443   & 8.7780e-03 & 2.8534 & 1.1781e+00 & 2.7997 \\
+  % 7.4536e-02 & 5083   & 1.1387e-03 & 2.9465 & 1.5452e-01 & 2.9306 \\
+  % 3.7268e-02 & 18963  & 1.4425e-04 & 2.9807 & 1.9661e-02 & 2.9744 \\
+  % 1.8634e-02 & 73123  & 1.8128e-05 & 2.9923 & 2.4755e-03 & 2.9895 \\
+  % 9.3169e-03 & 287043 & 2.2713e-06 & 2.9966 & 3.1044e-04 & 2.9953 \\ \hline
 \end{longtable}
 
 \begin{longtable}{@{}|l|l|l|l|l|l|@{}}
-  \caption{Experimental errors and orders of convergence for Experiment \ref{exp:smooth_sol} on unstructured Voronoi meshes for orders $k = 1,2,3$.}
+  \caption{Experimental errors and orders of convergence for Experiment \ref{exp:smooth_sol} on unstructured Voronoi meshes.}
   \label{Table:smooth.unstructured}\\
   \hline
   $\qquad h$ & $\;\;\;N^{\texttt{Dofs}}$ & $\qquad e_{\bs{u}_h}$ & $\;\; \texttt{rate}$ & $\qquad e_{\xi_h}$ & $\;\; \texttt{rate}$ \\ \hline
@@ -70,13 +69,13 @@ where operator $\chi_i(\cdot)$ associates the function with its $i$-th degree of
   2.0988e-02 & 82953  & 5.2424e-04 & 2.2171 & 6.3400e-02 & 2.2201 \\
   1.0757e-02 & 303467 & 1.4262e-04 & 1.9477 & 1.7275e-02 & 1.9453 \\ \hline
 
-  \multicolumn{6}{|c|}{$k = 3$} \\ \hline
-  3.7637e-01 & 267    & 6.7643e-02 & -     & 9.2612e+00 & -     \\
-  1.8360e-01 & 1050   & 9.0071e-03 & 2.8088 & 1.2075e+00 & 2.8381 \\
-  8.4283e-02 & 7200   & 5.2892e-04 & 3.6412 & 7.2091e-02 & 3.6199 \\
-  4.1405e-02 & 34839  & 5.0638e-05 & 3.3008 & 6.7755e-03 & 3.3269 \\
-  2.0988e-02 & 154429 & 5.4932e-06 & 3.2690 & 7.3215e-04 & 3.2747 \\
-  1.0757e-02 & 565200 & 7.6463e-07 & 2.9503 & 1.0195e-04 & 2.9497 \\ \hline
+  % \multicolumn{6}{|c|}{$k = 3$} \\ \hline
+  % 3.7637e-01 & 267    & 6.7643e-02 & -     & 9.2612e+00 & -     \\
+  % 1.8360e-01 & 1050   & 9.0071e-03 & 2.8088 & 1.2075e+00 & 2.8381 \\
+  % 8.4283e-02 & 7200   & 5.2892e-04 & 3.6412 & 7.2091e-02 & 3.6199 \\
+  % 4.1405e-02 & 34839  & 5.0638e-05 & 3.3008 & 6.7755e-03 & 3.3269 \\
+  % 2.0988e-02 & 154429 & 5.4932e-06 & 3.2690 & 7.3215e-04 & 3.2747 \\
+  % 1.0757e-02 & 565200 & 7.6463e-07 & 2.9503 & 1.0195e-04 & 2.9497 \\ \hline
 \end{longtable}
 
 
@@ -108,7 +107,7 @@ Then we solve the sequence of discrete problems \eqref{eq:Ph.rhoh}-\eqref{uh.sim
     \begin{align*}
         \texttt{rel} \; e_{\bs{u}_h}^i := \frac{\norm{L^2(\Omega)}{ \bs{u}_{h}^i - \bs{u}_{h}^{i+1}}}{\norm{L^2(\Omega)}{\bs{u}_{h}^{i+1}}}, \quad \mbox{and} \quad \texttt{rel} \; e_{\xi_h}^i := \frac{\seminorm{1,h_{i+1}}{\Pi^{1,i}_{k,h} \xi_h^{i} - \Pi^{1,i+1}_{k,h} \xi_h^{i+1}}}{\seminorm{1,h_{i+1}}{\Pi^{1,i+1}_{k,h} \xi_h^{i+1}}},
     \end{align*}
-    where $i$ denoetes the mesh level. Then we report them in Tables \ref{Table:smoothdata.structured} and \ref{Table:smoothdata.unstructured} on a sequence of structured and unstructured voronoi meshes, respectively (see Figures \ref{Fig:Square_mesh}).
+    where $i$ denoetes the mesh level. Then we report them in Tables \ref{Table:smoothdata.structured} and \ref{Table:smoothdata.unstructured} on a sequence of structured and unstructured voronoi meshes, respectively (see Figures \ref{Fig:Square_mesh}). The observed rates of convergence are in agreement with the theoretical rates predicted by Theorem \ref{thm:simplyconnected} and \eqref{eq:err.est.Proj_xi}.
 
 \begin{longtable}{@{}|l|l|l|l|l|l|@{}}
   \caption{Relative errors and convergence rates for Experiment \ref{exp:smoothdata} on structured voronoi meshes for orders $k = 1,2$.}
@@ -164,7 +163,7 @@ $$\bs{f} = \begin{cases}
     \left[ 1/2, 3/2 \right]^\top, \quad \mbox{if} \quad 2^{-1/2} \leq |x| < 1, \\
     \left[ 1, 2 \right]^\top, \;\;\;\qquad \mbox{if} \quad |x| \geq 1.
 \end{cases}$$
-The relative errors are reported in Table \ref{Table:nonsmoothdata.structured} and \ref{Table:nonsmoothdata.unstructured} on a sequence of structured and unstructured voronoi meshes (see Figure \ref{Fig:Lshape_mesh}) for orders $k = 1,2$.
+Since, the exact solution is unknown, we compute relative errors which are reported in Table \ref{Table:nonsmoothdata.structured} and \ref{Table:nonsmoothdata.unstructured} on a sequence of structured and unstructured voronoi meshes (see Figure \ref{Fig:Lshape_mesh}). The observed rates of convergence are in agreement with the theoretical rates predicted by Theorem \ref{thm:simplyconnected} for $\omega = 3 \pi / 2$, and the convergence rates for $\xi_h$ are pre-asymptotic. 
 
 
 \begin{figure}[htbp]
@@ -187,7 +186,7 @@ The relative errors are reported in Table \ref{Table:nonsmoothdata.structured} a
 \end{figure}
 
 \begin{longtable}{@{}|l|l|l|l|l|l|@{}}
-  \caption{Relative errors and convergence rates for Experiment \ref{exp:nonsmoothdata} on structured voronoi meshes for orders $k = 1,2$.}
+  \caption{Relative errors and convergence rates for Experiment \ref{exp:nonsmoothdata} on structured voronoi meshes.}
   \label{Table:nonsmoothdata.structured}\\
   \hline
   $\qquad h$ & $\;\;\;N^{\texttt{Dofs}}$ & $\quad \texttt{rel}\;e_{\bs{u}_h}$ & $\;\; \texttt{rate}$ & $\quad \texttt{rel}\;e_{\xi_h}$ & $\;\; \texttt{rate}$ \\ \hline
@@ -210,7 +209,7 @@ The relative errors are reported in Table \ref{Table:nonsmoothdata.structured} a
 
 
 \begin{longtable}{@{}|l|l|l|l|l|l|@{}}
-  \caption{Relative errors and convergence rates for Experiment \ref{exp:nonsmoothdata} on unstructured voronoi meshes for orders $k = 1,2$.}
+  \caption{Relative errors and convergence rates for Experiment \ref{exp:nonsmoothdata} on unstructured voronoi meshes.}
   \label{Table:nonsmoothdata.unstructured}\\
   \hline
   $\qquad h$ & $\;\;\;N^{\texttt{Dofs}}$ & $\quad \texttt{rel}\;e_{\bs{u}_h}$ & $\;\; \texttt{rate}$ & $\quad \texttt{rel}\;e_{\xi_h}$ & $\;\; \texttt{rate}$ \\ \hline
