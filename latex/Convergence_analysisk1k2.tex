@@ -38,7 +38,7 @@ We start by collecting some mathematical tools which will be helpful in the fort
     \end{align}
 \end{lemma}
 
-The interpolation operator, which takes any sufficiently smooth function and maps it to the virtual element space. For $s > 1$, the global interpolation operator $\Ih{}: H^s(\Omega) \rightarrow V_h$ is the global counterpart of the local interpolation operator $\ID{}: H^s(D) \rightarrow V_h(D)$ for all $D \in \Th$ such that for any $v \in H^s(D)$,
+Now we recall the virtual element interpolation operator, which takes any sufficiently smooth function and maps it to the virtual element space. For $s > 1$, the global interpolation operator $\Ih{}: H^s(\Omega) \rightarrow V_h$ is the global counterpart of the local interpolation operator $\ID{}: H^s(D) \rightarrow V_h(D)$ for all $D \in \Th$ such that for any $v \in H^s(D)$,
 \begin{align}
     \ID{v(p)} &= v(p) \quad \forall p \in \mathcal{N}^{\partial D}, \label{eq:ID.boundary} \\
     \Pi^0_{k-2,D} \ID{v} &= \Pi^0_{k-2,D} v \label{eq:ID.internal}. 
@@ -70,7 +70,7 @@ Here $\mathcal{N}^{\partial D}$ is the set of boundary degrees of freedom associ
 %     $$\tnorm{k,D}{v_h}^2 = h_D \sum_{e \in \E_D} \norm{L^2(e)}{\Pi^0_{k,e} v_h}^2 + \norm{L^2(D)}{\Pi^0_{k-2,D} v_h}^2.$$
 % \end{lemma}
 
-In the subsequent analysis, we work with the following assumption:
+In the subsequent analysis, we work with the following assumption which is made concrete in Remark \ref{coercivity.assum}.
 \begin{assumption}\label{assum:coercivity}
     Let $\norm{h_\beta}{\cdot} = \sqrt{a_h(\cdot,\cdot) + \beta (\Pi^0_{k,h} \cdot, \Pi^0_{k,h} \cdot)}$ denote the mesh-dependent energy norm such that 
     \begin{align}
@@ -92,6 +92,11 @@ Some useful estimates in the mesh-dependent norm and piecewise broken semi-norm 
         \norm{h_\beta}{v- \Ih{v}} + \norm{h_\beta}{v- \Pi^1_{k,h} v} &\lesssim h^{\min(\delta,k)} \seminorm{H^{1+\delta}(\Omega)}{v} \quad \forall v \in H^{1+\delta}(\Omega). \label{eq:est.hbeta.norm}
     \end{align}
 \end{lemma}
+
+\begin{remark}\label{coercivity.assum}
+    \corr{}{}{[JT: To do - Making concrete Assumption 5.7]}
+    
+\end{remark}
 
 
 % In order to prove optimal error estimates for $\xi_h$ without assuming extra regularity on $\rho$, we define the following global conforming linear operator,

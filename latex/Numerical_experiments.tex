@@ -1,10 +1,6 @@
 \section{Numerical Results}\label{sec:numexp}
 
-We choose the boundary version of the classical \texttt{Dofi-Dofi} definition of the stabilization term (see \cite[Section 4.2]{brenner.sung:2018:virtual} and \cite{beirao-da-veiga.brezzi.ea:2013:basic}),
-\begin{align}
-    S^D(w_h, v_h) = \sum_{i=1}^{N_{\partial D}^{\texttt{dof}}} \chi_i(w_h) \; \chi_i(v_h) \quad \forall w_h, v_h \in V_h(D),
-\end{align}
-where operator $\chi_i(\cdot)$ associates the function with its $i$-th degree of freedom, and $N_{\partial D}^{\texttt{dof}}$ is the number of boundary degrees of freedom associated with the element in $D \in \Th$.
+We use the boundary version for the classical \texttt{Dofi-Dofi} stabilizer defined in \eqref{def:bd.stab} in our numerical experiments.
 
 \subsection{Smooth solution on a convex simply connected domain.}\label{exp:smooth_sol}
     We consider the problem \eqref{eq:P} with $\gamma = \beta = 0$ and $\Omega = (0,1)^2$. Given $\phi(x,y) = \sin^3(\pi x) \sin^3(\pi y)$, the manufactured solution is given by
@@ -24,29 +20,22 @@ where operator $\chi_i(\cdot)$ associates the function with its $i$-th degree of
   \hline
   $\qquad h$ & $\;\;\;N^{\texttt{Dofs}}$ & $\qquad e_{\bs{u}_h}$ & $\;\; \texttt{rate}$ & $\qquad e_{\xi_h}$ & $\;\; \texttt{rate}$ \\ \hline
   \multicolumn{6}{|c|}{$k = 1$} \\ \hline
-  2.9814e-01 & 90    & 1.1627 & -     & 9.8919e+01 & -     \\
-  1.4907e-01 & 280   & 5.4896e-01 & 1.0827 & 5.1407e+01 & 0.9443 \\
-  7.4536e-02 & 960   & 2.4669e-01 & 1.1540 & 2.5100e+01 & 1.0343 \\
-  3.7268e-02 & 3520  & 1.1807e-01 & 1.0631 & 1.2425e+01 & 1.0145 \\
-  1.8634e-02 & 13440 & 5.8296e-02 & 1.0181 & 6.1970e+00 & 1.0036 \\
-  9.3169e-03 & 52480 & 2.9054e-02 & 1.0047 & 3.0971e+00 & 1.0006 \\ \hline
+  3.7637e-01 & 48     & 1.1963e+00 & -      & 1.0194e+02 & -      \\
+  1.8360e-01 & 184    & 5.3872e-01 & 1.1114 & 5.1507e+01 & 0.9510 \\
+  8.4283e-02 & 1234   & 1.8091e-01 & 1.4016 & 1.8902e+01 & 1.2876 \\
+  4.1405e-02 & 5947   & 8.1748e-02 & 1.1176 & 8.6614e+00 & 1.0979 \\
+  2.0988e-02 & 26477  & 3.8903e-02 & 1.0929 & 4.1493e+00 & 1.0831 \\
+  1.0757e-02 & 96734  & 2.0202e-02 & 0.9804 & 2.1549e+00 & 0.9803 \\ \hline
 
-  \multicolumn{6}{|c|}{ $k = 2$} \\ \hline
-  2.9814e-01 & 251    & 2.7454e-01 & -     & 3.0855e+01 & -     \\
-  1.4907e-01 & 801    & 7.1278e-02 & 1.9455 & 8.6421e+00 & 1.8361 \\
-  7.4536e-02 & 2801   & 1.8366e-02 & 1.9564 & 2.2548e+00 & 1.9384 \\
-  3.7268e-02 & 10401  & 4.6543e-03 & 1.9804 & 5.7300e-01 & 1.9764 \\
-  1.8634e-02 & 40001  & 1.1703e-03 & 1.9916 & 1.4422e-01 & 1.9903 \\
-  9.3169e-03 & 156801 & 2.9336e-04 & 1.9962 & 3.6163e-02 & 1.9957 \\ \hline
-
-  % \multicolumn{6}{|c|}{$k = 3$} \\ \hline
-  % 2.9814e-01 & 448    & 6.3438e-02 & -     & 8.2035e+00 & -     \\
-  % 1.4907e-01 & 1443   & 8.7780e-03 & 2.8534 & 1.1781e+00 & 2.7997 \\
-  % 7.4536e-02 & 5083   & 1.1387e-03 & 2.9465 & 1.5452e-01 & 2.9306 \\
-  % 3.7268e-02 & 18963  & 1.4425e-04 & 2.9807 & 1.9661e-02 & 2.9744 \\
-  % 1.8634e-02 & 73123  & 1.8128e-05 & 2.9923 & 2.4755e-03 & 2.9895 \\
-  % 9.3169e-03 & 287043 & 2.2713e-06 & 2.9966 & 3.1044e-04 & 2.9953 \\ \hline
+  \multicolumn{6}{|c|}{$k = 2$} \\ \hline
+  3.7637e-01 & 145    & 3.0531e-01 & -      & 3.4261e+01 & -      \\
+  1.8360e-01 & 567    & 7.2772e-02 & 1.9977 & 8.8858e+00 & 1.8800 \\
+  8.4283e-02 & 3867   & 1.1100e-02 & 2.4152 & 1.3484e+00 & 2.4218 \\
+  4.1405e-02 & 18693  & 2.3647e-03 & 2.1756 & 2.8656e-01 & 2.1789 \\
+  2.0988e-02 & 82953  & 5.2424e-04 & 2.2171 & 6.3400e-02 & 2.2201 \\
+  1.0757e-02 & 303467 & 1.4262e-04 & 1.9477 & 1.7275e-02 & 1.9453 \\ \hline
 \end{longtable}
+
 
 \begin{longtable}{@{}|l|l|l|l|l|l|@{}}
   \caption{Experimental errors and orders of convergence for Experiment \ref{exp:smooth_sol} on unstructured Voronoi meshes.}
@@ -157,7 +146,7 @@ Then we solve the sequence of discrete problems \eqref{eq:Ph.rhoh}-\eqref{uh.sim
 
 \subsection{Piecewise smooth data on a non-convex simply connected domain.}\label{exp:nonsmoothdata}
 
-We solve \eqref{eq:P} on a L-shaped domain $\Omega = (-1,1)^2 \; \backslash \; [0,1) \times (-1,0]$ with $\beta = \gamma = 0$, and a piecewise constant vector field $\bs{f}$,
+We solve \eqref{eq:P} on a L-shaped domain $\Omega = (-1,1)^2 \; \backslash \; (0,1) \times (-1,0)$ with $\beta = \gamma = 0$, and a piecewise constant vector field $\bs{f}$,
 $$\bs{f} = \begin{cases}
     \left[ 1/4, 5/4 \right]^\top, \quad \mbox{if} \quad |x| < 2^{-1/2}, \\
     \left[ 1/2, 3/2 \right]^\top, \quad \mbox{if} \quad 2^{-1/2} \leq |x| < 1, \\

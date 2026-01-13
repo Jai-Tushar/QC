@@ -1,6 +1,6 @@
 \section{Proof of Lemmas}\label{sec:CA.proofs} 
 We choose the boundary version of the classical \texttt{Dofi-Dofi} definition of the stabilization term (see \cite[Section 4.2]{brenner.sung:2018:virtual} and \cite{beirao-da-veiga.brezzi.ea:2013:basic}),
-\begin{align}
+\begin{align}\label{def:bd.stab}
     S^D(w_h, v_h) = \sum_{i=1}^{N_{\partial D}^{\texttt{dof}}} \chi_i(w_h) \; \chi_i(v_h) \quad \forall w_h, v_h \in V_h(D),
 \end{align}
 where operator $\chi_i(\cdot)$ associates the function with its $i$-th degree of freedom, and $N_{\partial D}^{\texttt{dof}}$ is the number of boundary degrees of freedom associated with the element in $D \in \Th$.
@@ -35,10 +35,12 @@ Now using the approximation property of $\Pi^1_{k,D}$ in Lemma \ref{lem:H1p.prop
 \begin{align*}
     \norm{h_\beta}{v - \Ih{v}}^2 &= \sum_{D \in \Th} \seminorm{H^1(D)}{\Pi^1_{k,D}(v - \ID v)}^2 + \sum_{i=1}^{N_{\partial D}^{\texttt{dof}}} \chi_i((I-\Pi^1_{k,D})(I-\ID{})v)^2
     + \beta \norm{L^2(D)}{\Pi^0_{k,D}(v - \ID v)}^2 \\
-    &\lesssim \sum_{D \in \Th} \seminorm{H^1(D)}{v - \ID v}^2 + \norm{L^\infty(D)}{(I-\ID{})v}^2 +  \norm{L^\infty(D)}{\Pi^1_{k,D}(I-\Pi^1_{k,D})v}^2 
+    &= \sum_{D \in \Th} \seminorm{H^1(D)}{\Pi^1_{k,D}(v - \ID v)}^2 + \sum_{i=1}^{N_{\partial D}^{\texttt{dof}}} \chi_i(\Pi^1_{k,D}(I-\ID{})v)^2
+    + \beta \norm{L^2(D)}{\Pi^0_{k,D}(v - \ID v)}^2 \\
+    &\lesssim \sum_{D \in \Th} \seminorm{H^1(D)}{v - \ID v}^2 +  \norm{L^\infty(D)}{\Pi^1_{k,D}(I-\Pi^1_{k,D})v}^2 
     + \beta \norm{L^2(D)}{v - \ID v}^2,
 \end{align*}    
-where we used the stability of projectors \eqref{eq:stability.H1p}, \eqref{eq:stability.L2p} and the property \eqref{eq:stab.p2}. The first and last terms are bounded using the approximation properties of $\ID$ from Lemma \ref{lem:ID.properties}. The second term is bounded using the Sobolev inequality \eqref{eq:Sobolev.inequality} followed by the approximation properties of $\ID$ from Lemma \ref{lem:ID.properties}. The third term can be estimated as in \cite[(4.24)]{brenner.sung:2018:virtual}. Combining all the resulting bounds leads to the desired estimate on the second term in \eqref{eq:est.hbeta.norm}.
+where in the passage to the second equality we use the fact that $\chi_i(v - \ID{v}) = 0$ for boundary degrees of freedom by definition of interpolation operator \eqref{eq:ID.boundary}. In the last inequality we used the stability of projectors \eqref{eq:stability.H1p}, \eqref{eq:stability.L2p} and the property \eqref{eq:stab.p2}. The first and last terms are bounded using the approximation properties of $\ID$ from Lemma \ref{lem:ID.properties}. The second term can be estimated as in \cite[(4.24)]{brenner.sung:2018:virtual}. Combining all the resulting bounds leads to the desired estimate on the second term in \eqref{eq:est.hbeta.norm}.
 
 
 % \subsection{Proof of Lemma \ref{lem:Jh.approx}}\label{sec:pf:lem.Jh.approx}
