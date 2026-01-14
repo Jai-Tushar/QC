@@ -224,7 +224,7 @@ Since, the exact solution is unknown, we compute relative errors which are repor
 
 \subsection{Piecewise smooth data on a multiply connected domain with Betti number 1.}\label{exp:Betti1}
 
-In this experiment we consider the domain $\Omega = (0,1)^2 \; \backslash \; [1/4, 3/4]^2$ with Betti number $1$. We choose $\beta = \gamma = 1$ and the same piecewise smooth data $\bs{f}$ used in Experiment \ref{exp:nonsmoothdata}. We solve the sequence of discrete problems \eqref{eq:Ph.zeta.chi}-\eqref{eq:Ph.varphi.c} and post-process $\bs{u}_h$ using the relation \eqref{uh.notSimplyConnected} for orders $k = 1,2$. The relative errors are reported in Table \ref{Table:Betti1.struc} and \ref{Table:Betti1.unstruc} on a sequence of structured and unstructured voronoi meshes, respectively (see Figure \ref{Fig:Betti1_mesh}). We also report the relative error in the coefficient $c_j$,
+In this experiment we consider the domain $\Omega = (0,1)^2 \; \backslash \; (1/4, 3/4)^2$ with Betti number $1$. We choose $\beta = \gamma = 1$ and the same piecewise smooth data $\bs{f}$ used in Experiment \ref{exp:nonsmoothdata}. We solve the sequence of discrete problems \eqref{eq:Ph.zeta.chi}-\eqref{eq:Ph.varphi.c} and post-process $\bs{u}_h$ using the relation \eqref{uh.notSimplyConnected} for orders $k = 1,2$. The relative errors are reported in Table \ref{Table:Betti1.struc} and \ref{Table:Betti1.unstruc} on a sequence of structured and unstructured voronoi meshes, respectively (see Figure \ref{Fig:Betti1_mesh}). We also report the relative error in the coefficient $c_j$,
 $$\texttt{rel} \; e_{c_j}^i = \frac{|c_j^i - c_j^{i+1}|}{|c_j^{i+1}|},$$
 as well as the values of $c_j$ for orders $k = 1,2$
 
@@ -315,7 +315,7 @@ as well as the values of $c_j$ for orders $k = 1,2$
 
 \subsection{Piecewise smooth data on a multiply connected domain with Betti number 2.}\label{exp:Betti2}
 
-We solve \eqref{eq:P} on a domain $\Omega = (-1,1)^2 \; \backslash \; [1/4, 3/4]^2 \cup [-1/4, -3/4]^2$ with Betti number $2$. We choose $\beta = \gamma = 1$ and the same piecewise smooth data $\bs{f}$ used in Experiment \ref{exp:nonsmoothdata}. The relative errors are reported in Table \ref{Table:Betti2} on a sequence of structured voronoi meshes (see Figure \ref{Fig:Betti2_mesh}). We also report the relative error in the coefficients $c_1, c_2$ and their values.
+We solve \eqref{eq:P} on a domain $\Omega = (-1,1)^2 \; \backslash \; (1/4, 3/4)^2 \cup (-1/4, -3/4)^2$ with Betti number $2$. We choose $\beta = \gamma = 1$ and the same piecewise smooth data $\bs{f}$ used in Experiment \ref{exp:nonsmoothdata}. The relative errors are reported in Table \ref{Table:Betti2} on a sequence of structured voronoi meshes (see Figure \ref{Fig:Betti2_mesh}). We also report the relative error in the coefficients $c_1, c_2$ and their values.
 
 \begin{figure}[htbp]
 \centering
