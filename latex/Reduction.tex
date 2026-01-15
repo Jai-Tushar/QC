@@ -32,7 +32,11 @@ The Hodge decomposition \eqref{eq:HodgeDecomposition} reduces to
             (\curl{\rho}, \curl{\psi}) + (\rho,1) (\psi,1) = (\bs{f}, \curl{\psi}) \quad \forall \psi \in H^1(\Omega).
           \end{align}
 
-    \item Find $\xi \in H^1(\Omega) \cap L_2^0(\Omega)$ given by 
+    \item Find $\xi \in H^1(\Omega) \cap L_2^0(\Omega)$ such that,
+          \begin{align}\label{eq:xi}
+            (\curl{\xi}, \curl{\eta}) + \beta(\xi, \eta) = (\rho, \eta) \quad \forall \eta \in H_0^1(\Omega) \cap L_0^2(\Omega),    
+          \end{align}
+          or equivalently 
           \begin{align}\label{eq:P.xi}
             \xi = \xi_0 - \frac{(1,\xi_0)}{(1, \xi_1)} \xi_1, 
           \end{align}

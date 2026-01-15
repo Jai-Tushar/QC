@@ -176,7 +176,7 @@ It remains to estimate the error for $\xi_h$.
     For any $\epsilon > 0$, there exists a positive constant dependent on $\epsilon$ and independent of $h$ such that for $k = 1,2$,
     \begin{align}
         \seminorm{H^1(\Omega)}{\xi - \xi_h} &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}, \label{eq:err.est.xi} \\
-        \seminorm{1,h}{\xi - \Pi^1_{k,h} \xi_h} &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} (\norm{H^{1+(\pi/\omega) - \epsilon}(\Omega)}{\xi} + \norm{L^2(\Omega)}{\bs{f}}). \label{eq:err.est.Proj_xi}
+         \seminorm{H^1(\Omega)}{\xi - \Pi^1_{k,h} \xi_h}&\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}. \label{eq:err.est.Proj_xi}
     \end{align}
 \end{lemma}
 \begin{proof}
@@ -227,8 +227,9 @@ The estimate \eqref{eq:err.est.xi} now follows from \eqref{eq:err.xi0}, \eqref{e
 \begin{align*}
     \seminorm{1,h}{\xi - \Pi^1_{k,h} \xi_h} &\leq \seminorm{1,h}{\xi - \Pi^1_{k,h} \xi} + \seminorm{1,h}{\Pi^1_{k,h} (\xi - \xi_h)} \nonumber\\
     &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{H^{1+(\pi/\omega) - \epsilon}(\Omega)}{\xi} + \seminorm{H^1(\Omega)}{\xi - \xi_h} \nonumber\\
-    &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} (\norm{H^{1+(\pi/\omega) - \epsilon}(\Omega)}{\xi} + \norm{L^2(\Omega)}{\bs{f}}).
+    &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}.
 \end{align*}
+In the last step we used Lemma \ref{lem:reg.reac-diff} on \eqref{eq:xi} followed by \eqref{eq:curl.data}. This completes the proof.
 \end{proof}
 
 The error analysis for $\phi_h$ is analogous to that of $\xi_h$.
@@ -292,18 +293,72 @@ The convergence analysis for the multiply connected case follows ideas similar t
 \begin{align}\label{eq:err.zeta0.xi0}
     \A((\zeta_0,\xi_0),(\psi_h,\eta_h)) - \A_h((\zeta_{0,h},\xi_{0,h}),(\psi_h,\eta_h)) = \gamma^{-1/2} (\bs{f}, \curl{(\psi_h - \Pi^1_{k,h} \psi_h)})
 \end{align}
-Furthermore, testing \eqref{eq:P.zeta0.xi0} with $(\zeta_0, \xi_0)$ and \eqref{eq:Ph.zeta0.xi0} with $(\zeta_{0,h}, \xi_{0,h})$, and in view of $\zeta_0, \zeta_{0,h} \in L_0^2(\Omega)$, Assumption \ref{assum:coercivity} and Young's inequality, we can obtain
 
-\begin{align}\label{eq:data.zeta0.xi0}
-    \seminorm{H^1(\Omega)}{\zeta_0}^2 + \seminorm{H^1(\Omega)}{\xi_0}^2 \lesssim \norm{L^2(\Omega)}{\bs{f}}^2, \quad \mbox{and} \quad
-    \seminorm{H^1(\Omega)}{\zeta_{0,h}}^2 + \seminorm{H^1(\Omega)}{\xi_{0,h}} \lesssim \gamma^{-1/2} \norm{L^2(\Omega)}{\bs{f}}.
+Furthermore, testing \eqref{eq:P.zeta0.xi0} with $(\zeta_0, \xi_0)$ and Young's inequality gives
+
+\begin{align}
+    \seminorm{H^1(\Omega)}{\zeta_0}^2 + (\zeta_0,1)^2 + \seminorm{H^1(\Omega)}{\xi_0}^2 &\lesssim \norm{L^2(\Omega)}{\bs{f}}^2, \nonumber\\
+    \norm{H^1(\Omega)}{\zeta_0}^2 + \seminorm{H^1(\Omega)}{\xi_0}^2 &\lesssim \norm{L^2(\Omega)}{\bs{f}}^2. \label{eq:data.zeta0.xi0}
+\end{align}
+where in the last inequality is a consequence of Poincar\'e-Wirtinger inequality. Similarly, testing \eqref{eq:Ph.zeta0.xi0} with $(\zeta_{0,h}, \xi_{0,h})$, and in view of Assumption \ref{assum:coercivity} and stability of $\Pi^1_{k,h}$, we obtain
+\begin{align}\label{eq:data.zeta0h.xi0h}
+    \norm{H^1(\Omega)}{\zeta_{0,h}}^2 + \seminorm{H^1(\Omega)}{\xi_{0,h}}^2 \lesssim \norm{L^2(\Omega)}{\bs{f}}.
+\end{align} 
+% Furthermore, testing \eqref{eq:P.zeta0.xi0} with $(\zeta_0, \xi_0)$ and \eqref{eq:Ph.zeta0.xi0} with $(\zeta_{0,h}, \xi_{0,h})$, and in view of $\zeta_0, \zeta_{0,h} \in L_0^2(\Omega)$, Assumption \ref{assum:coercivity} and Young's inequality, we can obtain
+
+% \begin{align}\label{eq:data.zeta0.xi0}
+%     \seminorm{H^1(\Omega)}{\zeta_0}^2 + \seminorm{H^1(\Omega)}{\xi_0}^2 \lesssim \norm{L^2(\Omega)}{\bs{f}}^2, \quad \mbox{and} \quad
+%     \seminorm{H^1(\Omega)}{\zeta_{0,h}}^2 + \seminorm{H^1(\Omega)}{\xi_{0,h}}^2 \lesssim \norm{L^2(\Omega)}{\bs{f}}.
+% \end{align}
+
+We estimate the error for $\xi_{0,h}$ in $H^1(\Omega)'$ by using a duality argument. To this end, consider the following dual problem. Given $\chi \in H^1(\Omega)$, let $(\lambda, \mu) \in H^1(\Omega) \times H_0^1(\Omega)$ solve
+\begin{align}\label{eq:DP.coupled}
+    \A((\psi,\eta),(\lambda,\mu)) + (\psi,1)(\lambda,1) = (\psi,\chi) \quad \forall (\psi,\eta) \in H^1(\Omega) \times H_0^1(\Omega).
+\end{align} 
+Observe that testing the above well-posed dual problem with $(\lambda, \mu)$ gives the following stability estimate,
+\begin{align}\label{eq:DP.stab.est}
+    \norm{H^1(\Omega)}{\lambda}^2 + \norm{H^1(\Omega)}{\mu}^2 \lesssim \norm{L^2(\Omega)}{\chi}^2.
+\end{align}
+Using the definition of $\A(\cdot,\cdot)$, we can rewrite \eqref{eq:DP.coupled} as the following coupled system:
+\begin{align}
+    (\curl{\psi}, \curl{\lambda}) + (\psi,1)(\lambda,1) &= (\psi,\chi) + \gamma^{1/2}(\psi,\mu) \quad \forall \psi \in H^1(\Omega), \           \label{eq:DP.coupled.1}\\
+    (\curl{\eta}, \curl{\mu}) + \beta(\eta, \mu) &= -\gamma^{1/2}(\lambda,\eta) \quad \forall \eta \in H_0^1(\Omega). \label{eq:DP.coupled.2}
+\end{align}
+Thus, using Lemma \ref{lem:reg.pure-neumann} on \eqref{eq:DP.coupled.1}, and Lemma \ref{lem:reg.reac-diff} on \eqref{eq:DP.coupled.2}, followed by the stability estimate \eqref{eq:DP.stab.est}, we have the following regularity result for the dual problem,
+\begin{align}\label{eq:DP.regularity}
+    \norm{H^{1+(\pi/\omega)-\epsilon}(\Omega)}{\lambda} + \norm{H^{1+(\pi/\omega)-\epsilon}(\Omega)}{\mu} \lesssim \norm{H^1(\Omega)}{\chi}.
 \end{align}
 
+Testing \eqref{eq:DP.coupled} with $(\psi, \eta) = (\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}) \in H^1(\Omega) \times H_0^1(\Omega)$ and using the fact that $\xi_0, \xi_{0,h} \in L_0^2(\Omega)$, we have
+\begin{align}
+    (\xi_0 - \xi_{0,h}, \chi)  &= \A((\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}),(\lambda,\mu)) \nonumber\\
+    &=  \A((\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}),(\lambda - \Ih{\lambda},\mu - \Ih{\mu})) + \A((\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}),(\Ih{\lambda},\Ih{\mu})). \label{eq:err.coupled.xi0.1}
+\end{align}
 
+The first term in \eqref{eq:err.coupled.xi0.1} is bounded using the definition of $\A$, Cauchy-Schwarz inequality, \eqref{eq:data.zeta0.xi0}, and \eqref{eq:data.zeta0h.xi0h} to get
+\begin{align}\label{eq:err.coupled.xi0.1.a}
+    &\A((\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}),(\lambda - \Ih{\lambda},\mu - \Ih{\mu})) \nonumber\\
+    &\lesssim \left(\norm{H^1(\Omega)}{\zeta_0 - \zeta_{0,h}} + 
+    \seminorm{H^1(\Omega)}{\xi_0 - \xi_{0,h}}\right)
+     \times \left( \norm{H^1(\Omega)}{\lambda - \Ih{\lambda}} + \seminorm{H^1(\Omega)}{\mu - \Ih{\mu}} \right) \nonumber\\
+    &\lesssim  \left( \norm{H^1(\Omega)}{\lambda - \Ih{\lambda}} + \seminorm{H^1(\Omega)}{\mu - \Ih{\mu}} \right) \norm{L^2(\Omega)}{\bs{f}}.
+\end{align}
 
-
-
-
+The second term in \eqref{eq:err.coupled.xi0.1} is bounded using the error equation \eqref{eq:erreq.rho} for $(\psi_h,\eta_h) = (\Ih{\lambda}, \Ih{\mu})$ as follows:
+\begin{align}\label{eq:err.coupled.xi0.1.b}
+    &\A((\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}),(\Ih{\lambda},\Ih{\mu})) \nonumber\\
+    &= \gamma^{-1/2} (\bs{f}, \curl{(\Ih{\lambda} - \Pi^1_{k,h} \Ih{\lambda})}) + \A_h((\zeta_{0,h},\xi_{0,h}),(\Ih{\lambda},\Ih{\mu})) - \A((\zeta_{0,h},\xi_{0,h}),(\Ih{\lambda},\Ih{\mu})) \nonumber\\
+    &\lesssim \norm{L^2(\Omega)}{\bs{f}} \seminorm{1,h}{(I-\Pi^1_{k,h})\Ih{\lambda}} + \A_h((\zeta_{0,h},\xi_{0,h}),(\Ih{\lambda},\Ih{\mu})) - \A((\zeta_{0,h},\xi_{0,h}),(\Ih{\lambda},\Ih{\mu})).
+\end{align}
+The difference in \eqref{eq:err.coupled.xi0.1.b} can be rewritten as follows:
+\begin{align*}
+    &\A_h((\zeta_{0,h},\xi_{0,h}),(\Ih{\lambda},\Ih{\mu})) - \A((\zeta_{0,h},\xi_{0,h}),(\Ih{\lambda},\Ih{\mu})) \nonumber\\
+    &\quad= \left(a_h(\zeta_{0,h}, \Ih{\lambda}) - (\curl{\zeta_{0,h}}, \curl{\Ih{\lambda}})\right) 
+    + \left(a_h(\xi_{0,h}, \Ih{\mu}) - (\curl{\xi_{0,h}}, \curl{\Ih{\mu}})\right) \\
+    &\qquad +\left(\gamma^{1/2} (\Pi^0_{k,h} \Ih{\lambda}, \Pi^0_{k,h}\xi_{0,h}) - \gamma^{1/2}(\Ih{\lambda}, \xi_{0,h})\right) + \left(\gamma^{1/2} (\xi_{0,h}, \Ih{\mu})-\gamma^{1/2}(\Pi^0_{k,h} \zeta_{0,h}, \Pi^0_{k,h} \Ih{\mu})\right) \\
+    &\qquad  +\left(\beta(\Pi^0_{k,h}\xi_{0,h}, \Pi^0_{k,h}\Ih{\mu}) - \beta(\xi_{0,h}, \Ih{\mu})\right) \\
+    &\quad =: T_1 + T_2 + T_3 + T_4 + T_5.
+\end{align*}
 
 
 
