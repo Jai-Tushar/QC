@@ -1,14 +1,14 @@
-\section{Proof of Lemmas}\label{sec:CA.proofs} 
-We choose the boundary version of the classical \texttt{Dofi-Dofi} definition of the stabilization term (see \cite[Section 4.2]{brenner.sung:2018:virtual} and \cite{beirao-da-veiga.brezzi.ea:2013:basic}),
-\begin{align}\label{def:bd.stab}
-    S^D(w_h, v_h) = \sum_{i=1}^{N_{\partial D}^{\texttt{dof}}} \chi_i(w_h) \; \chi_i(v_h) \quad \forall w_h, v_h \in V_h(D),
-\end{align}
-where operator $\chi_i(\cdot)$ associates the function with its $i$-th degree of freedom, and $N_{\partial D}^{\texttt{dof}}$ is the number of boundary degrees of freedom associated with the element in $D \in \Th$. We have the following property associated with this choice of stabilization (see Remark 4.3 \cite{brenner.sung:2018:virtual}),
-\begin{align}
-    % \sum_{i=1}^{N_{\partial D}^{\texttt{dof}}} \chi_i(q)^2 \approx \norm{L^\infty(\partial D)}{q}^2 \quad \forall q \in \Poly_k(\partial D), \label{eq:stab.p1}\\
-    \sum_{i=1}^{N_{\partial D}^{\texttt{dof}}} \chi_i(w)^2 \lesssim \norm{L^\infty(D)}{w}^2 \quad \forall w \in C(\bar{D}) \label{eq:stab.p2},
-\end{align}
-where the hidden constants depend on $\Theta$ and $k$.
+\section{Proof of some Lemmas}\label{sec:CA.proofs} 
+% We choose the boundary version of the classical \texttt{Dofi-Dofi} definition of the stabilization term (see \cite[Section 4.2]{brenner.sung:2018:virtual} and \cite{beirao-da-veiga.brezzi.ea:2013:basic}),
+% \begin{align}\label{def:bd.stab}
+%     S^D(w_h, v_h) = \sum_{i=1}^{N_{\partial D}^{\texttt{dof}}} \chi_i(w_h) \; \chi_i(v_h) \quad \forall w_h, v_h \in V_h(D),
+% \end{align}
+% where operator $\chi_i(\cdot)$ associates the function with its $i$-th degree of freedom, and $N_{\partial D}^{\texttt{dof}}$ is the number of boundary degrees of freedom associated with the element in $D \in \Th$. We have the following property associated with this choice of stabilization (see Remark 4.3 \cite{brenner.sung:2018:virtual}),
+% \begin{align}
+%     % \sum_{i=1}^{N_{\partial D}^{\texttt{dof}}} \chi_i(q)^2 \approx \norm{L^\infty(\partial D)}{q}^2 \quad \forall q \in \Poly_k(\partial D), \label{eq:stab.p1}\\
+%     \sum_{i=1}^{N_{\partial D}^{\texttt{dof}}} \chi_i(w)^2 \lesssim \norm{L^\infty(D)}{w}^2 \quad \forall w \in C(\bar{D}) \label{eq:stab.p2},
+% \end{align}
+% where the hidden constants depend on $\Theta$ and $k$.
 
 \subsection{Proof of Lemma \ref{lem:est.mesh.dependent}}\label{sec:pf:lem:est.mesh.dependent}
 Observing that $\Pi^1_{k,h}((I - \Pi^1_{k,h})\Ih v) = 0$ due to linearity and idempotency of $\Pi^0_{k,h}$ we deduce that

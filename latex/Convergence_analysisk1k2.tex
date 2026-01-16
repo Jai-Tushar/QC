@@ -23,8 +23,8 @@ We start by collecting some mathematical tools which will be helpful in the fort
 \begin{lemma}[$H^1$-projector stability and approximation]\label{lem:L2p.properites} Given $\delta > 0$,
     \begin{align}
         \seminorm{H^1(D)}{\Pi^1_{k,D} v} &\leq \seminorm{H^1(D)}{v} \quad \forall v \in H^1(D), \label{eq:stability.H1p} \\
-        \seminorm{H^1(D)}{v - \Pi^1_{k,D} v} &\lesssim h_D^{\min(\delta,k)} \seminorm{H^{1+\delta}(D)}{v} \quad \forall v \in H^{1+\delta}(D). \label{eq:approxH1.H1p} 
-        % \norm{L^2(D)}{v - \Pi^1_{k,D} v} &\lesssim h_D^{l+1} \seminorm{H^{l+1}(D)}{v} \quad \forall v \in H^{l+1}(D), \quad 0 \leq l \leq k. \label{eq:approxL2.H1p} \\
+        \seminorm{H^1(D)}{v - \Pi^1_{k,D} v} &\lesssim h_D^{\min(\delta,k)} \seminorm{H^{1+\delta}(D)}{v} \quad \forall v \in H^{1+\delta}(D), \label{eq:approxH1.H1p}  \\
+        \norm{L^2(D)}{v - \Pi^1_{k,D} v} &\lesssim h_D^{\min(\delta,k)+1} \seminorm{H^{1+\delta}(D)}{v} \quad \forall v \in H^{1+\delta}(D). \label{eq:approxL2.H1p}
         % \seminorm{H^1(D)}{v - \Pi^1_{k,D} v} &\lesssim h_D^{l} \seminorm{H^{l+1}(D)}{v} \quad \forall v \in H^{l+1}(D), \quad 1 \leq l \leq k. \label{eq:approxH1.H1p}.
     \end{align}
 \end{lemma}
@@ -53,9 +53,9 @@ Here $\mathcal{N}^{\partial D}$ is the set of boundary degrees of freedom associ
 \begin{lemma}[Interpolation operator stability and approximation]\label{lem:ID.properties}
     Given $\delta > 0$, we have
     \begin{align}
-        \seminorm{H^1(D)}{\ID{v}} &\lesssim \seminorm{H^1(D)}{v} + h_D^{\delta} \seminorm{H^{1+ \delta}(D)}{v}, \quad \forall v \in H^{1+\delta}(D) \label{eq:ID.stability} \\
-        \seminorm{H^1(D)}{v - \ID v} + \seminorm{H^1(D)}{v - \Pi^1_{k,D} \ID v} &\lesssim h_D^{\min(\delta,k)} \seminorm{H^{1+\delta}(D)}{v}, \quad \forall v \in H^{1+\delta}(D)\label{eq:ID.approximation} \\
-        \norm{L^2(D)}{v - \ID v} + \norm{L^2(D)}{v - \Pi^1_{k,D} \ID v} &\lesssim h_D^{{\min(\delta,k)}+1} \seminorm{H^{1+\delta}(D)}{v}, \quad \forall v \in H^{1+\delta}(D)\label{eq:ID.approximation.L2}
+        \seminorm{H^1(D)}{\ID{v}} &\lesssim \seminorm{H^1(D)}{v} + h_D^{\delta} \seminorm{H^{1+ \delta}(D)}{v} \quad \forall v \in H^{1+\delta}(D), \label{eq:ID.stability} \\
+        \seminorm{H^1(D)}{v - \ID v} + \seminorm{H^1(D)}{v - \Pi^1_{k,D} \ID v} &\lesssim h_D^{\min(\delta,k)} \seminorm{H^{1+\delta}(D)}{v} \quad \forall v \in H^{1+\delta}(D),\label{eq:ID.approximation} \\
+        \norm{L^2(D)}{v - \ID v} + \norm{L^2(D)}{v - \Pi^1_{k,D} \ID v} &\lesssim h_D^{{\min(\delta,k)}+1} \seminorm{H^{1+\delta}(D)}{v} \quad \forall v \in H^{1+\delta}(D).\label{eq:ID.approximation.L2}
     \end{align}   
 \end{lemma}
 
@@ -151,17 +151,25 @@ The difference in \eqref{eq:err.rho.1.b} can be rewritten as follows:
     &\qquad\qquad (\sum_{D \in \Th} \seminorm{H^1(D)}{\rho_h}^2)^{1/2} (\sum_{D \in \Th} \seminorm{H^1(D)}{\ID{\lambda} - \Pi^1_{k,D}\ID{\lambda}}^2)^{1/2} \nonumber\\
     &\quad\lesssim \norm{h_0}{(I - \Pi^1_{k,h})\rho_h} \norm{h_0}{(I-\Pi^1_{k,h})\Ih{\lambda}} + \seminorm{H^1(\Omega)}{\rho_h} \seminorm{1,h}{(I - \Pi^1_{k,h})\Ih{\lambda}}. \label{eq:err.rho.1.c}
 \end{align}
-Where in the passage to the second equality we used the definition of $\Pi^1_{k,D}$ projector followed by Cauchy-Schwarz inequality and finally the definition of $\norm{h}{\cdot}$ and $\seminorm{1,h}{\cdot}$. Using the linearity and idempotency of $\Pi^1_{k,D}$ and $\rho_h \in L_0^2(\Omega)$ we have that
+Where in the passage to the second equality we used the definition of $\Pi^1_{k,D}$ projector followed by Cauchy-Schwarz inequality and finally the definition of $\norm{h}{\cdot}$ and $\seminorm{1,h}{\cdot}$. 
+% Using the linearity and idempotency of $\Pi^1_{k,D}$ and $\rho_h \in L_0^2(\Omega)$ we have that
+% \begin{align*}
+%     \norm{h_0}{(I - \Pi^1_{k,h})\rho_h}^2 &= S((I - \Pi^1_{k,h})\rho_h, (I - \Pi^1_{k,h})\rho_h) \nonumber\\ 
+%     &\overset{\eqref{eq:Ph.rhoh}}{=} (\bs{f}, \curl{\Pi^1_{k,h} \rho_h}) - (\curl{\Pi^1_{k,h} \rho_h}, \curl{\Pi^1_{k,h} \rho_h}) \nonumber\\
+%     &\leq \sum_{D \in \Th} \norm{L^2(D)}{\bs{f}} \norm{H^1(D)}{\Pi^1_{k,D} \rho_h} + \norm{H^1(D)}{\Pi^1_{k,D} \rho_h}^2 \nonumber\\
+%     &\overset{\eqref{eq:stability.H1p}}{\leq}  \sum_{D \in \Th} \norm{L^2(D)}{\bs{f}} \norm{H^1(D)}{\rho_h} + \norm{H^1(D)}{\rho_h}^2 \overset{\eqref{eq:curl.data}}{\lesssim} \norm{L^2(\Omega)}{\bs{f}}^2.
+% \end{align*}
+Using the definition of the stabilization \eqref{def:bd.stab}, the approximation properties of $\Pi^1_{k,D}$ \eqref{eq:approxH1.H1p} and \eqref{eq:approxL2.H1p}, and \eqref{eq:curl.data}, we have
 \begin{align*}
-    \norm{h_0}{(I - \Pi^1_{k,h} \rho_h)}^2 &= S((I - \Pi^1_{k,h})\rho_h, (I - \Pi^1_{k,h})\rho_h) \nonumber\\ 
-    &\overset{\eqref{eq:Ph.rhoh}}{=} (\bs{f}, \curl{\Pi^1_{k,h} \rho_h}) - (\curl{\Pi^1_{k,h} \rho_h}, \curl{\Pi^1_{k,h} \rho_h}) \nonumber\\
-    &\leq \sum_{D \in \Th} \norm{L^2(D)}{\bs{f}} \norm{H^1(D)}{\Pi^1_{k,D} \rho_h} + \norm{H^1(D)}{\Pi^1_{k,D} \rho_h}^2 \nonumber\\
-    &\overset{\eqref{eq:stability.H1p}}{\leq}  \sum_{D \in \Th} \norm{L^2(D)}{\bs{f}} \norm{H^1(D)}{\rho_h} + \norm{H^1(D)}{\rho_h}^2 \overset{\eqref{eq:curl.data}}{\lesssim} \norm{L^2(\Omega)}{\bs{f}}^2.
+    \norm{h_0}{(I - \Pi^1_{k,h})\rho_h}^2 &= \sum_{D \in \Th} S^D((I - \Pi^1_{k,h})\rho_h, (I - \Pi^1_{k,h})\rho_h) \nonumber\\ 
+    &\hspace{-0.15cm}\overset{\eqref{eq:stab.p2}}{\lesssim} \sum_{D \in \Th} \norm{L^\infty(D)}{(I - \Pi^1_{k,h}) \rho_h}^2 \nonumber\\
+    &\hspace{-0.15cm}\overset{\eqref{eq:Sobolev.inequality}}{\lesssim} \sum_{D \in \Th} h_D^{-1} \norm{L^2(D)}{(I - \Pi^1_{k,h}) \rho_h}^2 + \seminorm{H^1(D)}{(I-\Pi^1_{k,h}) \rho_h}^2 \nonumber\\
+    &\lesssim \norm{L^2(\Omega)}{\bs{f}}.
 \end{align*}
 The regularity of the dual problem from Lemma \ref{lem:reg.pure-neumann}, the above bound, the estimate \eqref{eq:est.Ih.h.norm} with $\delta = (\pi/\omega)-\epsilon$, and \eqref{eq:curl.data} lead to the following bound on \eqref{eq:err.rho.1.c},
-\begin{align*}
+\begin{align}\label{eq:ref4coupled}
     a_h(\rho_h,\Ih{\lambda}) - (\curl{\rho_h}, \curl{\Ih{\lambda}}) \lesssim h^{\min{((\pi / \omega)-\epsilon,k)}} \norm{L^2(\Omega)}{\bs{f}} \seminorm{H^{1+(\pi/\omega)-\epsilon}(\Omega)}{\lambda}.  
-\end{align*}
+\end{align}
 
 Substituting in \eqref{eq:err.rho.1.b}, again using \eqref{eq:est.Ih.h.norm} and the data dependence relation of the dual problem in Lemma \ref{lem:reg.pure-neumann} yield
 \begin{align*}
@@ -173,7 +181,7 @@ Substituting the above bound and \eqref{eq:err.rho.1.a} into \eqref{eq:err.rho.1
 
 It remains to estimate the error for $\xi_h$. 
 \begin{lemma}\label{lem:xi.est}
-    For any $\epsilon > 0$, there exists a positive constant dependent on $\epsilon$ and independent of $h$ such that for $k = 1,2$,
+    For any $\epsilon > 0$, there exists a positive constant dependent on $\epsilon$ and independent of $h$ such that for $k = 1,2$ and $\gamma = 0$,
     \begin{align}
         \seminorm{H^1(\Omega)}{\xi - \xi_h} &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}, \label{eq:err.est.xi} \\
          \seminorm{H^1(\Omega)}{\xi - \Pi^1_{k,h} \xi_h}&\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}. \label{eq:err.est.Proj_xi}
@@ -237,16 +245,16 @@ The error analysis for $\phi_h$ is analogous to that of $\xi_h$.
 \begin{lemma}\label{lem:est.phi}
     For any $\epsilon > 0$, there esists a positive constant dependent on $\epsilon$ and independent of $h$ such that for $k = 1,2$,
     \begin{align}
-        \seminorm{H^1(\Omega)}{\phi - \phi_h} &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \left(\norm{H^1(\Omega)}{\xi_h} + \norm{L^2(\Omega)}{\bs{f}}\right), \label{eq:err.est.phi} \\
-        \seminorm{1,h}{\phi - \Pi^1_{k,h} \phi_h} &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \left( \norm{H^1(\Omega)}{\xi} + \norm{H^1(\Omega)}{\xi_h} +\norm{L^2(\Omega)}{\bs{f}}\right). \label{eq:err.est.Proj_phi}
+        \seminorm{H^1(\Omega)}{\phi - \phi_h} &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}, \label{eq:err.est.phi} \\
+        \seminorm{1,h}{\phi - \Pi^1_{k,h} \phi_h} &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}. \label{eq:err.est.Proj_phi}
     \end{align}
 \end{lemma}
 \begin{proof}
-    Given $\xi_h \in V_h \cap L_0^2(\Omega)$, let $\tilde{\phi} \in H^1(\Omega)$ solve the following auxiliary problem,
+    Given $\xi_h \in V_h^0 \cap L_0^2(\Omega)$ (which is true by construction of $\xi_h$). Let $\tilde{\phi} \in H^1(\Omega)$ solve the following auxiliary problem,
     \begin{align}\label{eq:P.aux.phi}
         (\curl{\tilde \phi}, \curl{\psi}) + (\tilde \phi, 1) (\tilde \psi, 1) = (\xi_h, \psi) \quad \forall \psi \in H^1(\Omega).
     \end{align}
-    Since $\xi_h \in V_h \subset H^1(\Omega)$, due to Lemma \ref{lem:reg.pure-neumann}, 
+    Since $\xi_h \subset H^1(\Omega)$, due to Lemma \ref{lem:reg.pure-neumann}, 
     \begin{align}\label{tildephi.reg}
         \tilde \phi \in H^{1+(\pi/\omega)-\epsilon}(\Omega) \quad \mbox{and} \quad \norm{H^{1+(\pi/\omega)-\epsilon}(\Omega)}{\tilde \phi} \lesssim \norm{H^1(\Omega)}{\xi_h}.
     \end{align}
@@ -262,9 +270,11 @@ The error analysis for $\phi_h$ is analogous to that of $\xi_h$.
     Following similar arguments as in the proof of Lemma \ref{lem:xi.est} and \eqref{tildephi.reg}, we can get the following concrete bound,
     \begin{align}\label{eq:phi.b}
         \seminorm{H^1(\Omega)}{\tilde \phi - \phi_h} &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} (\norm{H^{1 + (\pi/\omega) - \epsilon}(\Omega)}{\tilde \phi} + \seminorm{H^1(\Omega)}{\xi_h}) \nonumber\\
-        &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{H^1(\Omega)}{\xi_h}.
+        &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} (\norm{H^1(\Omega)}{\xi_h - \xi} + \norm{H^1(\Omega)}{\xi} + \seminorm{H^1(\Omega)}{\xi}) \nonumber\\
+        &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} (\seminorm{H^1(\Omega)}{\xi_h - \xi} + \norm{H^{1+(\pi/\omega) - \epsilon}(\Omega)}{\xi}) \nonumber\\
+        &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}.
     \end{align}
-    Combining \eqref{eq:phi.a} and \eqref{eq:phi.b} using a triangle inequality leads to \eqref{eq:err.est.phi}. 
+    Where in the second inequality we used \eqref{tildexi0.reg} followed by a triangle inequality. In the third inequality we used Poincar\'e inequality and $H^{1+(\pi/\omega)-\epsilon}(\Omega) \hookrightarrow H^1(\Omega)$. Finally the last inequality is obtained by \eqref{eq:err.est.xi} and Lemma \ref{lem:reg.reac-diff} on \eqref{eq:xi} followed by \eqref{eq:curl.data}. Finally, a triangle inequality alongwith \eqref{eq:phi.a} and \eqref{eq:phi.b} leads to \eqref{eq:err.est.phi}.
 
     Moreover, it follows from \eqref{eq:P.phi} and Lemma \ref{lem:reg.pure-neumann} that 
     \begin{align}\label{eq:reg.phi}
@@ -277,7 +287,7 @@ In view of Lemmas \ref{lem:xi.est}, \ref{lem:est.phi}, \eqref{u.simplyConnected}
 \begin{theorem}\label{thm:simplyconnected}
     The approximations $\xi_h$ and $\bs{u}_h$ obtained by $\Poly_k$-virtual finite element method satisfy 
     \begin{align}\label{eq:err.est.simplyconnected}
-        \norm{L^2(\Omega)}{\bs{u} - \bs{u}_h} + \seminorm{H^1(\Omega)}{\curl{\bs{u}} - \xi_h} \lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \left( \norm{H^1(\Omega)}{\xi} + \norm{H^1(\Omega)}{\xi_h} +\norm{L^2(\Omega)}{\bs{f}}\right).
+        \norm{L^2(\Omega)}{\bs{u} - \bs{u}_h} + \seminorm{H^1(\Omega)}{\curl{\bs{u}} - \xi_h} \lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}.
     \end{align}
     for any $\epsilon > 0$, and $k = 1,2$, where $\omega$ is the largest angle at the corners of $\Omega$.
 \end{theorem} 
@@ -294,13 +304,13 @@ The convergence analysis for the multiply connected case follows ideas similar t
     \A((\zeta_0,\xi_0),(\psi_h,\eta_h)) - \A_h((\zeta_{0,h},\xi_{0,h}),(\psi_h,\eta_h)) = \gamma^{-1/2} (\bs{f}, \curl{(\psi_h - \Pi^1_{k,h} \psi_h)})
 \end{align}
 
-Furthermore, testing \eqref{eq:P.zeta0.xi0} with $(\zeta_0, \xi_0)$ and Young's inequality gives
+Furthermore, testing \eqref{eq:P.zeta0.xi0} with $(\zeta_0, \xi_0)$ and applying Young's inequality gives
 
 \begin{align}
     \seminorm{H^1(\Omega)}{\zeta_0}^2 + (\zeta_0,1)^2 + \seminorm{H^1(\Omega)}{\xi_0}^2 &\lesssim \norm{L^2(\Omega)}{\bs{f}}^2, \nonumber\\
     \norm{H^1(\Omega)}{\zeta_0}^2 + \seminorm{H^1(\Omega)}{\xi_0}^2 &\lesssim \norm{L^2(\Omega)}{\bs{f}}^2. \label{eq:data.zeta0.xi0}
 \end{align}
-where in the last inequality is a consequence of Poincar\'e-Wirtinger inequality. Similarly, testing \eqref{eq:Ph.zeta0.xi0} with $(\zeta_{0,h}, \xi_{0,h})$, and in view of Assumption \ref{assum:coercivity} and stability of $\Pi^1_{k,h}$, we obtain
+where the last inequality is a consequence of Poincar\'e-Wirtinger inequality. Similarly, testing \eqref{eq:Ph.zeta0.xi0} with $(\zeta_{0,h}, \xi_{0,h})$, and in view of Assumption \ref{assum:coercivity} and stability of $\Pi^1_{k,h}$, we obtain
 \begin{align}\label{eq:data.zeta0h.xi0h}
     \norm{H^1(\Omega)}{\zeta_{0,h}}^2 + \seminorm{H^1(\Omega)}{\xi_{0,h}}^2 \lesssim \norm{L^2(\Omega)}{\bs{f}}.
 \end{align} 
@@ -311,56 +321,93 @@ where in the last inequality is a consequence of Poincar\'e-Wirtinger inequality
 %     \seminorm{H^1(\Omega)}{\zeta_{0,h}}^2 + \seminorm{H^1(\Omega)}{\xi_{0,h}}^2 \lesssim \norm{L^2(\Omega)}{\bs{f}}.
 % \end{align}
 
-We estimate the error for $\xi_{0,h}$ in $H^1(\Omega)'$ by using a duality argument. To this end, consider the following dual problem. Given $\chi \in H^1(\Omega)$, let $(\lambda, \mu) \in H^1(\Omega) \times H_0^1(\Omega)$ solve
-\begin{align}\label{eq:DP.coupled}
-    \A((\psi,\eta),(\lambda,\mu)) + (\psi,1)(\lambda,1) = (\psi,\chi) \quad \forall (\psi,\eta) \in H^1(\Omega) \times H_0^1(\Omega).
-\end{align} 
-Observe that testing the above well-posed dual problem with $(\lambda, \mu)$ gives the following stability estimate,
-\begin{align}\label{eq:DP.stab.est}
-    \norm{H^1(\Omega)}{\lambda}^2 + \norm{H^1(\Omega)}{\mu}^2 \lesssim \norm{L^2(\Omega)}{\chi}^2.
-\end{align}
-Using the definition of $\A(\cdot,\cdot)$, we can rewrite \eqref{eq:DP.coupled} as the following coupled system:
-\begin{align}
-    (\curl{\psi}, \curl{\lambda}) + (\psi,1)(\lambda,1) &= (\psi,\chi) + \gamma^{1/2}(\psi,\mu) \quad \forall \psi \in H^1(\Omega), \           \label{eq:DP.coupled.1}\\
-    (\curl{\eta}, \curl{\mu}) + \beta(\eta, \mu) &= -\gamma^{1/2}(\lambda,\eta) \quad \forall \eta \in H_0^1(\Omega). \label{eq:DP.coupled.2}
-\end{align}
-Thus, using Lemma \ref{lem:reg.pure-neumann} on \eqref{eq:DP.coupled.1}, and Lemma \ref{lem:reg.reac-diff} on \eqref{eq:DP.coupled.2}, followed by the stability estimate \eqref{eq:DP.stab.est}, we have the following regularity result for the dual problem,
-\begin{align}\label{eq:DP.regularity}
-    \norm{H^{1+(\pi/\omega)-\epsilon}(\Omega)}{\lambda} + \norm{H^{1+(\pi/\omega)-\epsilon}(\Omega)}{\mu} \lesssim \norm{H^1(\Omega)}{\chi}.
-\end{align}
+\begin{lemma}\label{lem:xi.est.mc}
+    For any $\epsilon > 0$, there exists a positive constant dependent on $\epsilon$ and independent of $h$ such that for $k = 1,2$ and $\gamma > 0$,
+    \begin{align}
+        \seminorm{H^1(\Omega)}{\xi - \xi_h} &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}, \label{eq:err.est.xi.mc} \\
+         \seminorm{H^1(\Omega)}{\xi - \Pi^1_{k,h} \xi_h}&\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}. \label{eq:err.est.Proj_xi.mc}
+    \end{align}
+\end{lemma}
 
-Testing \eqref{eq:DP.coupled} with $(\psi, \eta) = (\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}) \in H^1(\Omega) \times H_0^1(\Omega)$ and using the fact that $\xi_0, \xi_{0,h} \in L_0^2(\Omega)$, we have
-\begin{align}
-    (\xi_0 - \xi_{0,h}, \chi)  &= \A((\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}),(\lambda,\mu)) \nonumber\\
-    &=  \A((\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}),(\lambda - \Ih{\lambda},\mu - \Ih{\mu})) + \A((\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}),(\Ih{\lambda},\Ih{\mu})). \label{eq:err.coupled.xi0.1}
-\end{align}
-
-The first term in \eqref{eq:err.coupled.xi0.1} is bounded using the definition of $\A$, Cauchy-Schwarz inequality, \eqref{eq:data.zeta0.xi0}, and \eqref{eq:data.zeta0h.xi0h} to get
-\begin{align}\label{eq:err.coupled.xi0.1.a}
-    &\A((\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}),(\lambda - \Ih{\lambda},\mu - \Ih{\mu})) \nonumber\\
-    &\lesssim \left(\norm{H^1(\Omega)}{\zeta_0 - \zeta_{0,h}} + 
-    \seminorm{H^1(\Omega)}{\xi_0 - \xi_{0,h}}\right)
-     \times \left( \norm{H^1(\Omega)}{\lambda - \Ih{\lambda}} + \seminorm{H^1(\Omega)}{\mu - \Ih{\mu}} \right) \nonumber\\
-    &\lesssim  \left( \norm{H^1(\Omega)}{\lambda - \Ih{\lambda}} + \seminorm{H^1(\Omega)}{\mu - \Ih{\mu}} \right) \norm{L^2(\Omega)}{\bs{f}}.
-\end{align}
-
-The second term in \eqref{eq:err.coupled.xi0.1} is bounded using the error equation \eqref{eq:erreq.rho} for $(\psi_h,\eta_h) = (\Ih{\lambda}, \Ih{\mu})$ as follows:
-\begin{align}\label{eq:err.coupled.xi0.1.b}
-    &\A((\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}),(\Ih{\lambda},\Ih{\mu})) \nonumber\\
-    &= \gamma^{-1/2} (\bs{f}, \curl{(\Ih{\lambda} - \Pi^1_{k,h} \Ih{\lambda})}) + \A_h((\zeta_{0,h},\xi_{0,h}),(\Ih{\lambda},\Ih{\mu})) - \A((\zeta_{0,h},\xi_{0,h}),(\Ih{\lambda},\Ih{\mu})) \nonumber\\
-    &\lesssim \norm{L^2(\Omega)}{\bs{f}} \seminorm{1,h}{(I-\Pi^1_{k,h})\Ih{\lambda}} + \A_h((\zeta_{0,h},\xi_{0,h}),(\Ih{\lambda},\Ih{\mu})) - \A((\zeta_{0,h},\xi_{0,h}),(\Ih{\lambda},\Ih{\mu})).
-\end{align}
-The difference in \eqref{eq:err.coupled.xi0.1.b} can be rewritten as follows:
-\begin{align*}
-    &\A_h((\zeta_{0,h},\xi_{0,h}),(\Ih{\lambda},\Ih{\mu})) - \A((\zeta_{0,h},\xi_{0,h}),(\Ih{\lambda},\Ih{\mu})) \nonumber\\
-    &\quad= \left(a_h(\zeta_{0,h}, \Ih{\lambda}) - (\curl{\zeta_{0,h}}, \curl{\Ih{\lambda}})\right) 
-    + \left(a_h(\xi_{0,h}, \Ih{\mu}) - (\curl{\xi_{0,h}}, \curl{\Ih{\mu}})\right) \\
-    &\qquad +\left(\gamma^{1/2} (\Pi^0_{k,h} \Ih{\lambda}, \Pi^0_{k,h}\xi_{0,h}) - \gamma^{1/2}(\Ih{\lambda}, \xi_{0,h})\right) + \left(\gamma^{1/2} (\xi_{0,h}, \Ih{\mu})-\gamma^{1/2}(\Pi^0_{k,h} \zeta_{0,h}, \Pi^0_{k,h} \Ih{\mu})\right) \\
-    &\qquad  +\left(\beta(\Pi^0_{k,h}\xi_{0,h}, \Pi^0_{k,h}\Ih{\mu}) - \beta(\xi_{0,h}, \Ih{\mu})\right) \\
-    &\quad =: T_1 + T_2 + T_3 + T_4 + T_5.
-\end{align*}
-
-
-
-
-
+\begin{proof}
+    We begin by estimating the error for $\xi_{0,h}$ in $H^1(\Omega)'$ using a duality argument. To this end, consider the following dual problem. Given $\chi \in H^1(\Omega)$, let $(\lambda, \mu) \in H^1(\Omega) \times H_0^1(\Omega)$ solve
+    \begin{align}\label{eq:DP.coupled}
+        \A((\psi,\eta),(\lambda,\mu)) + (\psi,1)(\lambda,1) = (\psi,\chi) \quad \forall (\psi,\eta) \in H^1(\Omega) \times H_0^1(\Omega).
+    \end{align} 
+    Observe that testing the above well-posed dual problem with $(\lambda, \mu)$ gives the following stability estimate,
+    \begin{align}\label{eq:DP.stab.est}
+        \norm{H^1(\Omega)}{\lambda}^2 + \norm{H^1(\Omega)}{\mu}^2 \lesssim \norm{L^2(\Omega)}{\chi}^2.
+    \end{align}
+    Using the definition of $\A(\cdot,\cdot)$, we can rewrite \eqref{eq:DP.coupled} as the following coupled system:
+    \begin{align}
+        (\curl{\psi}, \curl{\lambda}) + (\psi,1)(\lambda,1) &= (\psi,\chi) + \gamma^{1/2}(\psi,\mu) \quad \forall \psi \in H^1(\Omega), \           \label{eq:DP.coupled.1}\\
+        (\curl{\eta}, \curl{\mu}) + \beta(\eta, \mu) &= -\gamma^{1/2}(\lambda,\eta) \quad \forall \eta \in H_0^1(\Omega). \label{eq:DP.coupled.2}
+    \end{align}
+    Thus, using Lemma \ref{lem:reg.pure-neumann} on \eqref{eq:DP.coupled.1}, and Lemma \ref{lem:reg.reac-diff} on \eqref{eq:DP.coupled.2}, followed by the stability estimate \eqref{eq:DP.stab.est}, we have the following regularity result for the dual problem,
+    \begin{align}\label{eq:DP.regularity}
+        \norm{H^{1+(\pi/\omega)-\epsilon}(\Omega)}{\lambda} + \norm{H^{1+(\pi/\omega)-\epsilon}(\Omega)}{\mu} \lesssim \norm{H^1(\Omega)}{\chi}.
+    \end{align}
+    
+    Testing \eqref{eq:DP.coupled} with $(\psi, \eta) = (\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}) \in H^1(\Omega) \times H_0^1(\Omega)$ and using the fact that $\xi_0, \xi_{0,h} \in L_0^2(\Omega)$, we have
+    \begin{align}
+        (\xi_0 - \xi_{0,h}, \chi)  &= \A((\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}),(\lambda,\mu)) \nonumber\\
+        &=  \A((\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}),(\lambda - \Ih{\lambda},\mu - \Ih{\mu})) + \A((\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}),(\Ih{\lambda},\Ih{\mu})). \label{eq:err.coupled.xi0.1}
+    \end{align}
+    
+    The first term in \eqref{eq:err.coupled.xi0.1} is bounded using the definition of $\A$, Cauchy-Schwarz inequality, \eqref{eq:data.zeta0.xi0}, \eqref{eq:data.zeta0h.xi0h}, Lemma \ref{lem:ID.properties} and \eqref{eq:DP.regularity} to get
+    \begin{align}\label{eq:err.coupled.xi0.1.a}
+        &\A((\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}),(\lambda - \Ih{\lambda},\mu - \Ih{\mu})) \nonumber\\
+        &\lesssim \left(\norm{H^1(\Omega)}{\zeta_0 - \zeta_{0,h}} + 
+        \seminorm{H^1(\Omega)}{\xi_0 - \xi_{0,h}}\right)
+         \times \left( \norm{H^1(\Omega)}{\lambda - \Ih{\lambda}} + \seminorm{H^1(\Omega)}{\mu - \Ih{\mu}} \right) \nonumber\\
+        &\lesssim  \left( \norm{H^1(\Omega)}{\lambda - \Ih{\lambda}} + \seminorm{H^1(\Omega)}{\mu - \Ih{\mu}} \right) \norm{L^2(\Omega)}{\bs{f}} \nonumber\\
+        &\lesssim h^{\min{((\pi / \omega)-\epsilon,k)}} \norm{H^1(\Omega)}{\chi} \norm{L^2(\Omega)}{\bs{f}}
+    \end{align}
+    
+    The second term in \eqref{eq:err.coupled.xi0.1} is bounded using the error equation \eqref{eq:err.zeta0.xi0} for $(\psi_h,\eta_h) = (\Ih{\lambda}, \Ih{\mu})$ as follows:
+    \begin{align}\label{eq:err.coupled.xi0.1.b}
+        &\A((\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}),(\Ih{\lambda},\Ih{\mu})) \nonumber\\
+        &= \gamma^{-1/2} (\bs{f}, \curl{(\Ih{\lambda} - \Pi^1_{k,h} \Ih{\lambda})}) + \A_h((\zeta_{0,h},\xi_{0,h}),(\Ih{\lambda},\Ih{\mu})) - \A((\zeta_{0,h},\xi_{0,h}),(\Ih{\lambda},\Ih{\mu})) \nonumber\\
+        &\lesssim \norm{L^2(\Omega)}{\bs{f}} \seminorm{1,h}{(I-\Pi^1_{k,h})\Ih{\lambda}} + \A_h((\zeta_{0,h},\xi_{0,h}),(\Ih{\lambda},\Ih{\mu})) - \A((\zeta_{0,h},\xi_{0,h}),(\Ih{\lambda},\Ih{\mu})).
+    \end{align}
+    The difference in \eqref{eq:err.coupled.xi0.1.b} can be rewritten as follows:
+    \begin{align*}
+        &\A_h((\zeta_{0,h},\xi_{0,h}),(\Ih{\lambda},\Ih{\mu})) - \A((\zeta_{0,h},\xi_{0,h}),(\Ih{\lambda},\Ih{\mu})) \nonumber\\
+        &\quad= \left(a_h(\zeta_{0,h}, \Ih{\lambda}) - (\curl{\zeta_{0,h}}, \curl{\Ih{\lambda}})\right) 
+        + \left(a_h(\xi_{0,h}, \Ih{\mu}) - (\curl{\xi_{0,h}}, \curl{\Ih{\mu}})\right) \\
+        &\qquad +\left(\gamma^{1/2} (\Pi^0_{k,h} \Ih{\lambda}, \Pi^0_{k,h}\xi_{0,h}) - \gamma^{1/2}(\Ih{\lambda}, \xi_{0,h})\right) + \left(\gamma^{1/2} (\zeta_{0,h}, \Ih{\mu})-\gamma^{1/2}(\Pi^0_{k,h} \zeta_{0,h}, \Pi^0_{k,h} \Ih{\mu})\right) \\
+        &\qquad  +\left(\beta(\Pi^0_{k,h}\xi_{0,h}, \Pi^0_{k,h}\Ih{\mu}) - \beta(\xi_{0,h}, \Ih{\mu})\right) \\
+        &\quad =: T_1 + T_2 + T_3 + T_4 + T_5.
+    \end{align*}
+    
+    The terms $T_1$ and $T_2$ can be bounded similar to \eqref{eq:ref4coupled} to obtain
+    \begin{align}\label{eq:err.coupled.xi0.T1.T2}
+        T_1 + T_2 &\lesssim h^{\min{((\pi / \omega)-\epsilon,k)}} \norm{L^2(\Omega)}{\bs{f}} \left( \norm{H^{1+(\pi/\omega)-\epsilon}(\Omega)}{\lambda} + \norm{H^{1+(\pi/\omega)-\epsilon}(\Omega)}{\mu} \right) \nonumber\\
+        &\hspace{-0.15cm}\overset{\eqref{eq:DP.regularity}}{\lesssim} h^{\min{((\pi / \omega)-\epsilon,k)}}  \norm{L^2(\Omega)}{\bs{f}} \norm{H^1(\Omega)}{\chi}.
+    \end{align}
+    
+    The term $T_3$ is estimated using the definition of $\Pi^0_{k,h}$ and Cauchy-Schwarz inequality as follows,
+    \begin{align}
+        T_3 &= \gamma^{1/2} (\Pi^0_{k,h} \Ih{\lambda} - \Ih{\lambda}, \xi_{0,h}) \nonumber\\
+            &\lesssim \norm{L^2(\Omega)}{\Pi^0_{k,h} \Ih{\lambda} - \Ih{\lambda}} \norm{L^2(\Omega)}{\xi_{0,h}} \nonumber\\
+            &\lesssim h^{\min{((\pi / \omega)-\epsilon,k)}} \seminorm{H^{1+(\pi/\omega)-\epsilon}(\Omega)}{\lambda} \seminorm{H^1(\Omega)}{\xi_{0,h}} \nonumber\\
+            &\hspace{-.65cm}\overset{\eqref{eq:DP.regularity},\eqref{eq:data.zeta0h.xi0h}}{\lesssim} h^{\min{((\pi / \omega)-\epsilon,k)}} \norm{L^2(\Omega)}{\bs{f}} \norm{H^1(\Omega)}{\chi}. \label{eq:err.coupled.xi0.T3}
+    \end{align}
+    
+    Where the term $\norm{L^2(\Omega)}{\Pi^0_{k,h} \Ih{\lambda} - \Ih{\lambda}}$ is bounded analogous to \cite[Lemma 3.16]{brenner.sung:2018:virtual} using \eqref{eq:ID.stability} and approximation property of $\Pi^0_{k,h}$. The terms $T_4$ and $T_5$ are bounded analogously.
+    \begin{align}
+        T_4 + T_5 &\lesssim h^{\min{((\pi / \omega)-\epsilon,k)}} \norm{L^2(\Omega)}{\bs{f}} \norm{H^1(\Omega)}{\chi}. \label{eq:err.coupled.xi0.T4.T5}
+    \end{align}
+    
+    Substituting the bounds \eqref{eq:err.coupled.xi0.T1.T2}, \eqref{eq:err.coupled.xi0.T3}, and \eqref{eq:err.coupled.xi0.T4.T5} into \eqref{eq:err.coupled.xi0.1.b}, and noting that the term $\seminorm{1,h}{(I - \Pi^1_{k,h}) \Ih{\lambda}}$ can be bounded similar to the simply connected case gives
+    \begin{align}\label{eq:err.coupled.xi0.1.b.final}
+        \A((\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}),(\Ih{\lambda},\Ih{\mu}))
+        \lesssim h^{\min{((\pi / \omega)-\epsilon,k)}} \norm{L^2(\Omega)}{\bs{f}} \norm{H^1(\Omega)}{\chi}.
+    \end{align}
+    
+    Thus combining \eqref{eq:err.coupled.xi0.1.a} and \eqref{eq:err.coupled.xi0.1.b.final} in \eqref{eq:err.coupled.xi0.1} leads to the following estimate,
+    \begin{align}\label{eq:err.coupled.xi0.final}
+        |(\xi_0 - \xi_{0,h}, \chi)| \lesssim h^{\min{((\pi / \omega)-\epsilon,k)}} \norm{L^2(\Omega)}{\bs{f}} \norm{H^1(\Omega)}{\chi} \quad \forall \chi \in H^1(\Omega).
+    \end{align}
+      
+\end{proof}
