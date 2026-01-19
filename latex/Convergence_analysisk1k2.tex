@@ -320,17 +320,16 @@ where the last inequality is a consequence of Poincar\'e-Wirtinger inequality. S
 %     \seminorm{H^1(\Omega)}{\zeta_0}^2 + \seminorm{H^1(\Omega)}{\xi_0}^2 \lesssim \norm{L^2(\Omega)}{\bs{f}}^2, \quad \mbox{and} \quad
 %     \seminorm{H^1(\Omega)}{\zeta_{0,h}}^2 + \seminorm{H^1(\Omega)}{\xi_{0,h}}^2 \lesssim \norm{L^2(\Omega)}{\bs{f}}.
 % \end{align}
-
-\begin{lemma}\label{lem:xi.est.mc}
+Now analogous to the simply connected case, we estimate the error for $\zeta_{0,h}$ and $\zeta_{1,h}$ in $H^1(\Omega)'$.
+\begin{lemma}\label{lem:zetah.dual}
     For any $\epsilon > 0$, there exists a positive constant dependent on $\epsilon$ and independent of $h$ such that for $k = 1,2$ and $\gamma > 0$,
     \begin{align}
-        \seminorm{H^1(\Omega)}{\xi - \xi_h} &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}, \label{eq:err.est.xi.mc} \\
-         \seminorm{H^1(\Omega)}{\xi - \Pi^1_{k,h} \xi_h}&\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}. \label{eq:err.est.Proj_xi.mc}
+       | (\zeta_0-\zeta_{0,h}, \chi) | &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \norm{H^1(\Omega)}{\chi} \norm{L^2(\Omega)}{\bs{f}} \quad \forall \chi \in H^1(\Omega) \label{eq:err.est.zeta0h}\\
+       | (\zeta_1-\zeta_{1,h}, \chi) | &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \norm{H^1(\Omega)}{\chi} \quad \forall \chi \in H^1(\Omega).\label{eq:err.est.zeta1h}
     \end{align}
 \end{lemma}
-
 \begin{proof}
-    We begin by estimating the error for $\xi_{0,h}$ in $H^1(\Omega)'$ using a duality argument. To this end, consider the following dual problem. Given $\chi \in H^1(\Omega)$, let $(\lambda, \mu) \in H^1(\Omega) \times H_0^1(\Omega)$ solve
+     Consider the following dual problem. Given $\chi \in H^1(\Omega)$, let $(\lambda, \mu) \in H^1(\Omega) \times H_0^1(\Omega)$ solve
     \begin{align}\label{eq:DP.coupled}
         \A((\psi,\eta),(\lambda,\mu)) + (\psi,1)(\lambda,1) = (\psi,\chi) \quad \forall (\psi,\eta) \in H^1(\Omega) \times H_0^1(\Omega).
     \end{align} 
@@ -348,9 +347,9 @@ where the last inequality is a consequence of Poincar\'e-Wirtinger inequality. S
         \norm{H^{1+(\pi/\omega)-\epsilon}(\Omega)}{\lambda} + \norm{H^{1+(\pi/\omega)-\epsilon}(\Omega)}{\mu} \lesssim \norm{H^1(\Omega)}{\chi}.
     \end{align}
     
-    Testing \eqref{eq:DP.coupled} with $(\psi, \eta) = (\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}) \in H^1(\Omega) \times H_0^1(\Omega)$ and using the fact that $\xi_0, \xi_{0,h} \in L_0^2(\Omega)$, we have
+    Testing \eqref{eq:DP.coupled} with $(\psi, \eta) = (\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}) \in H^1(\Omega) \times H_0^1(\Omega)$ and using the fact that $\zeta_0, \zeta_{0,h} \in L_0^2(\Omega)$, we have
     \begin{align}
-        (\xi_0 - \xi_{0,h}, \chi)  &= \A((\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}),(\lambda,\mu)) \nonumber\\
+        (\zeta_0 - \zeta_{0,h}, \chi)  &= \A((\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}),(\lambda,\mu)) \nonumber\\
         &=  \A((\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}),(\lambda - \Ih{\lambda},\mu - \Ih{\mu})) + \A((\zeta_0 - \zeta_{0,h}, \xi_0 - \xi_{0,h}),(\Ih{\lambda},\Ih{\mu})). \label{eq:err.coupled.xi0.1}
     \end{align}
     
@@ -405,9 +404,59 @@ where the last inequality is a consequence of Poincar\'e-Wirtinger inequality. S
         \lesssim h^{\min{((\pi / \omega)-\epsilon,k)}} \norm{L^2(\Omega)}{\bs{f}} \norm{H^1(\Omega)}{\chi}.
     \end{align}
     
-    Thus combining \eqref{eq:err.coupled.xi0.1.a} and \eqref{eq:err.coupled.xi0.1.b.final} in \eqref{eq:err.coupled.xi0.1} leads to the following estimate,
-    \begin{align}\label{eq:err.coupled.xi0.final}
-        |(\xi_0 - \xi_{0,h}, \chi)| \lesssim h^{\min{((\pi / \omega)-\epsilon,k)}} \norm{L^2(\Omega)}{\bs{f}} \norm{H^1(\Omega)}{\chi} \quad \forall \chi \in H^1(\Omega).
+    Thus combining \eqref{eq:err.coupled.xi0.1.a} and \eqref{eq:err.coupled.xi0.1.b.final} in \eqref{eq:err.coupled.xi0.1} leads to the following estimate \eqref{eq:err.est.zeta0h}. Furthermore, it is easy to see that one can readily obtain \eqref{eq:err.est.zeta1h} following similar arguments.
+    % \begin{align}\label{eq:err.coupled.xi0.final}
+    %     |(\zeta_0 - \zeta_{0,h}, \chi)| \lesssim h^{\min{((\pi / \omega)-\epsilon,k)}} \norm{L^2(\Omega)}{\bs{f}} \norm{H^1(\Omega)}{\chi} \quad \forall \chi \in H^1(\Omega).
+    % \end{align}
+\end{proof}
+
+\begin{lemma}\label{lem:xi.est.mc}
+    For any $\epsilon > 0$, there exists a positive constant dependent on $\epsilon$ and independent of $h$ such that for $k = 1,2$ and $\gamma > 0$,
+    \begin{align}
+        \seminorm{H^1(\Omega)}{\xi - \xi_h} &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}, \label{eq:err.est.xi.mc} \\
+         \seminorm{H^1(\Omega)}{\xi - \Pi^1_{k,h} \xi_h}&\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}. \label{eq:err.est.Proj_xi.mc}
     \end{align}
-      
+\end{lemma}
+
+\begin{proof}
+    Consider the auxiliary problem. Given $\zeta_{0,h} \in V_h^0 \cap L_0^2(\Omega)$, let $\tilde \xi_0 \in H_0^1(\Omega)$ solve
+    \begin{align}\label{eq:P.aux.xi0}
+        (\curl{\tilde \xi_0}, \curl{\eta}) + \beta(\tilde \xi_0, \eta) = \gamma^{1/2}(\zeta_{0,h}, \eta) \quad \forall \eta \in H_0^1(\Omega).
+    \end{align}
+    This implies
+    \begin{align}\label{tildexi0.reg.mc}
+        \tilde \xi_0 \in H^{1+(\pi/\omega)-\epsilon}(\Omega) \quad \mbox{and} \quad \norm{H^{1+(\pi/\omega)-\epsilon}(\Omega)}{\tilde \xi_0} \lesssim \norm{L^2(\Omega)}{\zeta_{0,h}}.
+    \end{align}         
+    due to Lemma \ref{lem:reg.reac-diff}.   
+    Compaing the $\xi_0$ part of the coupled problem \eqref{eq:P.zeta0.xi0}, 
+    \begin{align}
+        (\curl{\xi_0}, \curl{\eta}) + \beta(\xi_0, \eta) &= \gamma^{1/2}(\zeta_0, \eta) \quad \forall \eta \in H_0^1(\Omega), \label{eq:P.xi0}
+    \end{align}
+    with \eqref{eq:P.aux.xi0}, and using the duality estimate \eqref{eq:err.est.zeta0h} gives,
+    \begin{align}\label{eq:xi0.a.mc}
+        \seminorm{H^1(\Omega)}{\xi_0 - \tilde \xi_0} \lesssim  h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}.
+    \end{align}
+    Now it follows from 
+    \begin{align}
+        a_h(\xi_{0,h}, \eta_h) + \beta(\Pi^0_{k,h} \xi_{0,h}, \Pi^0_{k,h} \eta_h) &= \gamma^{1/2}(\Pi^0_{k,h}\zeta_{0,h}, \Pi^0_{k,h}\eta_h) \quad \forall \eta_h \in V_h^0, \label{eq:Ph.mc.xi0h}
+    \end{align}
+    which is the $\xi_{0,h}$ part of the coupled discrete problem \eqref{eq:Ph.zeta0.xi0}, and \eqref{eq:P.aux.xi0} that $\xi_{0,h}$ is also a virtual element approximation of $\tilde \xi_0$. Hence, using similar arguments as in the proof of Lemma \ref{lem:xi.est}, we can get the following estimate,
+    \begin{align}
+        \seminorm{H^1(\Omega)}{\tilde \xi_0 - \xi_{0,h}} &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} (\norm{H^{1 + (\pi/\omega) - \epsilon}(\Omega)}{\tilde \xi_0} + \seminorm{H^1(\Omega)}{\zeta_{0,h}}) \nonumber\\
+        &\hspace{-0.25cm}\overset{\eqref{tildexi0.reg.mc}}{\lesssim} h^{\min{((\pi/\omega) - \epsilon, k)}} (\norm{L^2(\Omega)}{\zeta_{0,h}} + \seminorm{H^1(\Omega)}{\zeta_{0,h}}) \nonumber\\
+        &\hspace{-0.25cm}\overset{\eqref{eq:data.zeta0.xi0}}{\lesssim} h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}. \label{eq:xi0h.b.mc}
+    \end{align}
+    Combining \eqref{eq:xi0h.b.mc} with \eqref{eq:xi0.a.mc} via a triangle inequality leads to
+    \begin{align}
+        \seminorm{H^1(\Omega)}{\xi_0 - \xi_{0,h}} &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}. \label{eq:xi0h.mc}
+    \end{align}
+    Following similar arguments as above on the $\xi_1$ part of the coupled problem \eqref{eq:P.zeta1.xi1} and its discrete counterpart \eqref{eq:Ph.zeta1.xi1}, and using \eqref{eq:err.est.zeta1h} gives,
+    \begin{align}
+        \seminorm{H^1(\Omega)}{\xi_1 - \xi_{1,h}} &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}}. \label{eq:xi1h.mc}
+    \end{align}
+    Now in view of \eqref{eq:xi1h.mc}, \eqref{eq:xi0h.mc} and \eqref{eq:Ph.zeta.chi}, the estimate \eqref{eq:err.est.xi.mc} readily follows. Finally, the estimate \eqref{eq:err.est.Proj_xi.mc} follows from similar arguments as in the proof of \eqref{eq:err.est.Proj_xi} and using Lemma \ref{lem:reg.reac-diff} on \eqref{eq:P.mc.xi}.
+    % Similarly, we can obtain the following estimate for $\xi_{1,h}$,
+    % \begin{align}
+    %     \seminorm{H^1(\Omega)}{\xi_1 - \xi_{1,h}} &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}. \label{eq:xi1h.mc}
+    % \end{align}
 \end{proof}

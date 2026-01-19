@@ -32,11 +32,11 @@ The Hodge decomposition \eqref{eq:HodgeDecomposition} reduces to
             (\curl{\rho}, \curl{\psi}) + (\rho,1) (\psi,1) = (\bs{f}, \curl{\psi}) \quad \forall \psi \in H^1(\Omega).
           \end{align}
 
-    \item Find $\xi \in H^1(\Omega) \cap L_2^0(\Omega)$ such that,
+    \item Find $\xi$ such that
           \begin{align}\label{eq:xi}
             (\curl{\xi}, \curl{\eta}) + \beta(\xi, \eta) = (\rho, \eta) \quad \forall \eta \in H_0^1(\Omega) \cap L_0^2(\Omega),    
           \end{align}
-          or equivalently 
+          or equivalently, find $\xi \in H_0^1(\Omega) \cap L_0^2(\Omega)$ such that
           \begin{align}\label{eq:P.xi}
             \xi = \xi_0 - \frac{(1,\xi_0)}{(1, \xi_1)} \xi_1, 
           \end{align}
@@ -58,7 +58,12 @@ $$ \bs{u} = \curl{\phi} + \sum_{j = 1}^{m} c_j \grad \varphi_j. $$
 It remains to find $\phi, c_j,$ and $\varphi_j$. Following \cite{Brenner-Sun-Sung-2017-HodgeDecomposition2D}, this is equivalent to solving the following sequence of problems. 
 
 \begin{enumerate}
-    \item Find $(\zeta, \xi) \in H^1(\Omega) \times H_0^1(\Omega)$ given by
+    \item Find $(\zeta, \xi) \in H^1(\Omega) \cap L_2^0(\Omega) \times H_0^1(\Omega) \cap L_0^2(\Omega)$ such that
+    \begin{align}
+      (\curl{\xi}, \curl{\psi}) + \gamma^{1/2}(\psi, \xi) &= \gamma^{-1/2} (\bs{f}, \curl{\psi}) \quad \forall \psi \in H^1(\Omega) \cap L_2^0(\Omega), \label{eq:P.mc.zeta}\\
+      -\gamma^{1/2}(\zeta, \eta) + (\curl{\xi}, \curl{\eta}) + \beta(\xi, \eta) &= 0 \quad \forall \eta \in H_0^1(\Omega) \cap L_0^2(\Omega). \label{eq:P.mc.xi}
+    \end{align}
+    or equivalently, find $(\zeta, \xi)$ such that
      \begin{align}\label{eq:P.zeta.chi}
         (\zeta, \xi) = (\zeta_0, \xi_0) - \frac{(1,\xi_0)}{(1, \xi_1)} (\zeta_1, \xi_1),
      \end{align}
