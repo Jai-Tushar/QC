@@ -460,3 +460,81 @@ Now analogous to the simply connected case, we estimate the error for $\zeta_{0,
     %     \seminorm{H^1(\Omega)}{\xi_1 - \xi_{1,h}} &\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}. \label{eq:xi1h.mc}
     % \end{align}
 \end{proof}
+
+
+It remains to estimate the error in the approximation of harmonic part $\varphi_j$ and the real numbers $c_j$ for $1 \leq j \leq m$. The error estimate for $\varphi_j$ can be estimated readily by using the abstract error estimate for second order elliptic problems approximated by virtual element methods \cite[Section 4.3]{Brenner-Sung-2018-VEM-Small-Edges-Faces} and the regularity of $\varphi_j \in H^{1+(\pi/\omega)-\epsilon}(\Omega)$.
+
+\begin{lemma}\label{lem:est.phi.mc}
+    For any $\epsilon > 0$, there exists a positive constant dependent on $\epsilon$ and independent of $h$ such that for $k = 1,2, \gamma > 0$, and $1 \leq j \leq m$,
+    \begin{align}
+        \seminorm{H^1(\Omega)}{\varphi_j - \varphi_{j,h}} &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}}, \label{eq:err.est.varphi} \\
+        \seminorm{H^1(\Omega)}{\varphi_j - \Pi^1_{k,h} \varphi_{j,h}}&\lesssim h^{\min{((\pi/\omega) - \epsilon, k)}}. \label{eq:err.est.Proj_varphi}
+    \end{align}
+\end{lemma}
+\begin{proof}
+    It follows from \eqref{eq:P.varphi}, \eqref{eq:Ph.varphi} and the abstract error estimate \cite[Section 4.3]{Brenner-Sung-2018-VEM-Small-Edges-Faces}, we have
+    \begin{align*}
+         \norm{h_0}{\varphi_j - \varphi_{j,h}} &\lesssim \norm{h_0}{\varphi_j - \Ih{\varphi_j}} + \seminorm{1,h}{\varphi_j - \Pi^1_{k,h} \varphi_j} + \norm{h_0}{\varphi_j - \Pi^1_{k,h} \varphi_j}. 
+    \end{align*}
+    Using Lemma \ref{lem:est.mesh.dependent} and Assumption \ref{assum:coercivity} leads to
+    \begin{align}
+         \norm{h_0}{\varphi_j - \varphi_{j,h}} &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \norm{H^{1+(\pi/\omega)-\epsilon}(\Omega)}{\varphi_j} \label{eq:varphi.a}
+    \end{align}
+    In view of \eqref{eq:P.varphi} there exists a lifting $g_j \in H^1(\Omega)$ such that $g_j|_{\Gamma_0} = 0$ and $g_j|_{\Gamma_l} = \delta_{jl}$ for $1 \leq l \leq m$. Moreover, since 
+    boundary data are just constants and finite $(j = \{ 1, \dots, m\})$, we can ensure $\norm{H^1(\Omega)}{g_j} \leq C_\Omega$. Thus, applying Lemma \ref{lem:reg.reac-diff} to \eqref{eq:varphi.a} gives
+    \begin{align}
+        \norm{H^{1+(\pi / \omega)-\epsilon}(\Omega)}{\varphi_j} \lesssim \norm{H^1(\Omega)}{g_j} \lesssim C_\Omega, \label{eq:varphi.data}
+    \end{align}
+    which results to \eqref{eq:err.est.varphi}. Finally, using similar arguments as in the proof of \eqref{eq:err.est.Proj_xi} with the regularity result for $\varphi_j$ leads to \eqref{eq:err.est.Proj_varphi}.
+\end{proof}
+
+Before comparing $c_j$ and $c_{j,h}$, we first note that \eqref{eq:err.est.Proj_phi} implies
+\begin{align}\label{eq:err.est.cj.f}
+    |(\bs{f}, \grad{\varphi_j}) - (\bs{f}, \grad{\Pi^1_{k,h} \varphi_{j,h}})| \lesssim  h^{\min{((\pi / \omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}.
+\end{align}
+
+Testing \eqref{eq:P.varphi.a} with $\varphi_j - \Ih{\varphi_j} \in V_h^0 \subset H_0^1(\Omega)$
+and \eqref{eq:Ph.varphi.a} with $\varphi_{j,h} - \Ih{\varphi_j} \in V_h^0$ results in
+\begin{align}\label{eq:err.est.cj.a.1}
+    (\grad{\varphi_i}, \grad{\varphi_j}) - a_h(\varphi_{i,h}, \varphi_{j,h}) &= (\grad{\varphi_i}, \grad{\Ih{\varphi_j}}) - a_h(\varphi_{i,h}, \Ih{\varphi_j}) \nonumber\\
+    &= \sum_{D \in \Th} (\grad{\varphi_i}, \grad{(\ID{\varphi_j} - \Pi^1_{k,D}\ID{\varphi_j})}) + (\grad{(\varphi_i - \Pi^1_{k,D} \varphi_{i,h})}, \grad{\Pi^1_{k,D}\ID{\varphi_j}}) \nonumber\\
+    &\quad\qquad + S^D((I - \Pi^1_{k,D})\varphi_{i,h}, (I - \Pi^1_{k,D})\ID{\varphi_j}).
+\end{align}
+The first term on the right-hand side of \eqref{eq:err.est.cj.a.1} is bounded using Cauchy-Schwarz inequality, \eqref{eq:ID.approximation} and \eqref{eq:varphi.data} to get
+\begin{align}\label{eq:err.est.cj.a.2}
+    \sum_{D \in \Th} (\grad{\varphi_i}, \grad{(\ID{\varphi_j} - \Pi^1_{k,D}\ID{\varphi_j})})  \lesssim  h^{\min((\pi/\omega)-\epsilon,k)}.
+\end{align}
+The second term on the right-hand side of \eqref{eq:err.est.cj.a.1} is bounded using Cauchy-Schwarz inequality, the error estimate \eqref{eq:err.est.Proj_varphi}, stability of projection and interpolation operators \eqref{eq:stability.H1p}, \eqref{eq:ID.stability},  and \eqref{eq:varphi.data} to get
+\begin{align}\label{eq:err.est.cj.a.3}
+    &\sum_{D \in \Th} (\grad{(\varphi_i - \Pi^1_{k,D} \varphi_{i,h})}, \grad{\Pi^1_{k,D}\ID{\varphi_j}}) \nonumber\\
+    &\lesssim \left(\sum_{D \in \Th} \norm{L^2(D)}{\grad{(\varphi_i - \Pi^1_{k,D} \varphi_{i,h})}}^2\right)^{1/2} \left(\sum_{D \in \Th} \norm{L^2(D)}{\grad{\Pi^1_{k,D}\ID{\varphi_j}}}^2\right)^{1/2} \nonumber\\
+    &\lesssim  h^{\min((\pi/\omega)-\epsilon,k)}.
+    % &\lesssim h^{\min((\pi/\omega)-\epsilon,k)} \norm{H^{1+(\pi/\omega - \epsilon)(\Omega)}}{\varphi_i} \left(\sum_{D \in \Th} \seminorm{H^1(D)}{\varphi_j}^2 + h_D^{2((\pi/\omega)-\epsilon)} \seminorm{H^{1+(\pi/\omega)-\epsilon}(\Omega)}{\varphi_j}^2\right)^{1/2} \nonumber\\
+\end{align}
+The stabilization term on the right-hand side of \eqref{eq:err.est.cj.a.1} is bounded using the Cauchy-Schwarz inequality to obtain
+\begin{align*}
+     \sum_{D \in \Th}S^D((I - \Pi^1_{k,D})\varphi_{i,h}, (I - \Pi^1_{k,D})\ID{\varphi_j}) \lesssim \norm{h_0}{\varphi_{i,h} - \Pi^1_{k,h}\varphi_{i,h}} \norm{h_0}{\varphi_j - \Ih{\varphi_j}}.
+\end{align*}
+The second term in the above inequality is bounded using \eqref{eq:est.hbeta.norm} and the first term is bounded using the definition of $S^D(\cdot,\cdot)$, \eqref{eq:stab.p2}, Sobolev inequality \eqref{eq:Sobolev.inequality}, Lemma \ref{lem:H1p.properties} and \eqref{eq:varphi.data} as follows,
+\begin{align}\label{eq:err.est.cj.a.4}
+    \norm{h_0}{\varphi_{i,h} - \Pi^1_{k,h}{\varphi_{i,h}}}^2 &\lesssim \sum_{D \in \Th} \norm{L^\infty(D)}{\varphi_{i,h} - \Pi^1_{k,h} \varphi_{i,h}}^2 \nonumber\\
+    &\lesssim \sum_{D \in \Th} h_D^{-2} \norm{L^2(D)}{\varphi_{i,h} - \Pi^1_{k,D}\varphi_{i,h}}^2 + \seminorm{H^1(D)}{\varphi_{i,h} - \Pi^1_{k,D}\varphi_{i,h}}^2 \nonumber\\
+    &\lesssim C_\Omega.
+\end{align}
+Substituting the bounds \eqref{eq:err.est.cj.a.2}, \eqref{eq:err.est.cj.a.3}, and \eqref{eq:err.est.cj.a.4} into \eqref{eq:err.est.cj.a.1} leads to
+\begin{align}\label{eq:err.est.cj.a}
+    |(\grad{\varphi_i}, \grad{\varphi_j}) - a_h(\varphi_{i,h}, \varphi_{j,h})| \lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \quad \mbox{for} \quad 1 \leq i,j \leq m.
+\end{align}
+
+\begin{lemma}\label{lem:err.est.cj}
+    For $h < h_0$, and any $\epsilon > 0$, there exists a positive constant dependent on $\epsilon$ and independent of $h$ such that for $k = 1,2$, $\gamma > 0$, $1 \leq j \leq m$, and $h_0 = $,
+    \begin{align}
+        |c_j - c_{j,h}| &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}. \label{eq:err.est.cj}
+    \end{align}.
+\end{lemma}
+
+% Furthermore, using the definition of $\Pi^1_{k,D}$, we have
+% \begin{align*}
+%     (\grad{\varphi_i}, \grad{\varphi_j}) - (\grad{\Pi^1_{k,h}\varphi_i}, \grad{\Pi^1_{k,h} \varphi_j}) &= \sum_{D \in \Th} (\grad{(\varphi_i - \Pi^1_{k,D} \varphi_i)}, \grad{(\varphi_j - \Pi^1_{k,D} \varphi_j)}).
+% \end{align*}
+
