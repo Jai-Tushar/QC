@@ -527,12 +527,69 @@ Substituting the bounds \eqref{eq:err.est.cj.a.2}, \eqref{eq:err.est.cj.a.3}, an
 \end{align}
 
 \begin{lemma}\label{lem:err.est.cj}
-    For $h < h_0$, and any $\epsilon > 0$, there exists a positive constant dependent on $\epsilon$ and independent of $h$ such that for $k = 1,2$, $\gamma > 0$, $1 \leq j \leq m$, and $h_0 = $,
+    For $h < h_0$, and any $\epsilon > 0$, there exists a positive constant dependent on $\epsilon$ and independent of $h$ such that for $k = 1,2$, $\gamma > 0$, and $1 \leq j \leq m$,
     \begin{align}
         |c_j - c_{j,h}| &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}. \label{eq:err.est.cj}
-    \end{align}.
+    \end{align}
+    Here $h_0 = \left( \frac{\lambda_{\min}(\bs{A})}{2}\right)^{1/\min{((\pi / \omega) - \epsilon, k)}}$, where $\lambda_{\min}(\bs{A})$ is the minimum eigenvalue of the $\bs{A} := [( \grad{\varphi_i}, \grad{\varphi_j})]_{i,j=1}^m$.
 \end{lemma}
-
+\begin{proof}
+    The equations \eqref{eq:P.cj} and \eqref{eq:Ph.cj} can be rewritten in the following matrix form:
+    \begin{align*}
+        \bs{A} \bs{c} = \bs{b}, \quad \mbox{and} \quad \bs{A}_h \bs{c}_h = \bs{b}_h,
+    \end{align*}
+    where $\bs{A} = [( \grad{\varphi_i}, \grad{\varphi_j})]_{i,j=1}^m$, $\bs{A}_h = [a_h(\varphi_{i,h}, \varphi_{j,h})]_{i,j=1}^m$, $\bs{c} = [c_j]_{j=1}^m$, $\bs{c}_h = [c_{j,h}]_{j=1}^m$, $\bs{b} = [\gamma^{-1}(\bs{f}, \grad{\varphi_j})]_{j=1}^m$, and $\bs{b}_h = [\gamma^{-1}(\bs{f}, \grad{\Pi^1_{k,h} \varphi_{j,h}})]_{j=1}^m$. Some algebra then gives,
+    \begin{align*}
+        \bs{c} - \bs{c}_h &= \bs{A}^{-1} \bs{b} - \bs{A}_h^{-1} \bs{b}_h = \bs{A}^{-1} (\bs{b} - \bs{b}_h) + \bs{A}^{-1} (\bs{A}_h - \bs{A}) \bs{A}_h^{-1} ((\bs{b}_h - \bs{b})+\bs{b}).
+    \end{align*}
+    Hence, using the properties of matrix norm $\norm{\infty}{\cdot}$, we have
+    \begin{align}\label{err.est.cj.1}
+        \norm{\infty}{\bs{c} - \bs{c}_h} &\leq \norm{\infty}{\bs{A}^{-1}} \norm{\infty}{\bs{b} - \bs{b}_h} + \norm{\infty}{\bs{A}^{-1}} \norm{\infty}{\bs{A}_h - \bs{A}} \norm{\infty}{\bs{A}_h^{-1}} (\norm{\infty}{\bs{b}_h - \bs{b}} + \norm{\infty}{\bs{b}}).
+    \end{align}
+    Observe that 
+    \begin{align*}
+        |\bs{b}| \leq |\gamma|^{-1}  |(\bs{f}, \grad{\varphi_j})| \leq |\gamma|^{-1} \norm{L^2(\Omega)}{\bs{f}} \norm{L^2(\Omega)}{\grad{\varphi_j}}.
+    \end{align*}
+    Taking the $\max$ over $j$ gives
+    \begin{align}\label{eq:err.est.cj.b}
+        \norm{\infty}{\bs{b}} \lesssim \norm{L^2(\Omega)}{\bs{f}}.
+    \end{align}
+    Similarly, we have
+    \begin{align}\label{eq:err.est.cj.bh}
+        \norm{\infty}{\bs{b}_h} \lesssim \norm{L^2(\Omega)}{\bs{f}}.
+    \end{align}    
+    The estimates \eqref{eq:err.est.cj.a} and \eqref{eq:err.est.cj.f} translate to
+    \begin{align}
+        \norm{\infty}{\bs{A}-\bs{A}_h} \lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \quad \mbox{and} \quad \norm{\infty}{\bs{b} - \bs{b}_h} \lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}. \label{eq:err.est.A.b}
+    \end{align}
+    Furthermore, since $\bs{A}$ is symmetric positive definite matrix and due to equivalence of norms in finite dimensional spaces, we have
+    \begin{align}
+        \norm{\infty}{\bs{A}^{-1}} \leq 2 \norm{2}{\bs{A}^{-1}} = \frac{2}{\lambda_{\min}(\bs{A})}, \label{eq:err.est.cj.Ainv}
+    \end{align}
+    where $\lambda_{\min}(\bs{A})$ denotes the minimum eigenvalue of $\bs{A}$. In order to control the $\norm{\infty}{\bs{A}_h}$, we write $\bs{A}^{-1}_h = (\bs{I} - \bs{A}^{-1} (\bs{A}_h - \bs{A}))^{-1} \bs{A}^{-1}$, and proceed using the Von Neumann lemma and \eqref{eq:err.est.A.b} as follows,
+    \begin{align}\label{eq:err.est.cj.Ahinv}
+        \norm{\infty}{\bs{A}_h^{-1}} &\leq \norm{\infty}{(\bs{I}-\bs{A}^{-1}(\bs{A}_h - \bs{A}))^{-1}} \norm{\infty}{\bs{A}^{-1}}
+        \leq \frac{\norm{\infty}{\bs{A}^{-1}}}{1 - \norm{\infty}{\bs{A}^{-1}(\bs{A}_h - \bs{A})}}.
+    \end{align}
+    The estimate \eqref{eq:err.est.cj.Ahinv} holds provided $\norm{\infty}{\bs{A}^{-1}(\bs{A}_h - \bs{A})} < 1$. On simplification this leads to the following condition on $h$:
+    \begin{align*}
+        h < h_0 := \left( \frac{\lambda_{\min}(\bs{A})}{2}\right)^{1/\min{((\pi / \omega) - \epsilon, k)}}.
+    \end{align*}
+    Substituting the estimates \eqref{eq:err.est.cj.b}, \eqref{eq:err.est.cj.bh}, \eqref{eq:err.est.A.b}, \eqref{eq:err.est.cj.Ainv}, and \eqref{eq:err.est.cj.Ahinv} into \eqref{err.est.cj.1} leads to
+    \begin{align*}
+        \norm{\infty}{\bs{c} - \bs{c}_h} &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}.
+    \end{align*}
+    This completes the proof of \eqref{eq:err.est.cj}.
+    % Since $\bs{A}$ is a positive definite matrix, there exists a constant $\alpha > 0$ such that for any $\bs{v} \in \mathbb{R}^m$,
+    % \begin{align}\label{eq:matrix.A.coercive}
+    %     \bs{v}^T \bs{A} \bs{v} \geq \alpha \norm{2}{\bs{v}}^2.
+    % \end{align}
+    % Now, using \eqref{eq:err.est.cj.a} and \eqref{eq:err.est.cj.f}, we have
+    % \begin{align*}
+    %     \norm{2}{\bs{A} - \bs{A}_h} &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}}, \\
+    %     \norm{2}{\bs{b} - \bs{b}_h} &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}.
+    % \end{align*}
+\end{proof}
 % Furthermore, using the definition of $\Pi^1_{k,D}$, we have
 % \begin{align*}
 %     (\grad{\varphi_i}, \grad{\varphi_j}) - (\grad{\Pi^1_{k,h}\varphi_i}, \grad{\Pi^1_{k,h} \varphi_j}) &= \sum_{D \in \Th} (\grad{(\varphi_i - \Pi^1_{k,D} \varphi_i)}, \grad{(\varphi_j - \Pi^1_{k,D} \varphi_j)}).
