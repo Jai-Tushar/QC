@@ -287,7 +287,7 @@ In view of Lemmas \ref{lem:xi.est}, \ref{lem:est.phi}, \eqref{u.simplyConnected}
 \begin{theorem}\label{thm:simplyconnected}
     The approximations $\xi_h$ and $\bs{u}_h$ obtained by $\Poly_k$-virtual finite element method satisfy 
     \begin{align}\label{eq:err.est.simplyconnected}
-        \norm{L^2(\Omega)}{\bs{u} - \bs{u}_h} + \seminorm{H^1(\Omega)}{\curl{\bs{u}} - \xi_h} \lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}}.
+        \norm{L^2(\Omega)}{\bs{u} - \bs{u}_h} + \seminorm{H^1(\Omega)}{\curl{\bs{u}} - \xi_h} \lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}},
     \end{align}
     for any $\epsilon > 0$, and $k = 1,2$, where $\omega$ is the largest angle at the corners of $\Omega$.
 \end{theorem} 
@@ -464,7 +464,7 @@ Now analogous to the simply connected case, we estimate the error for $\zeta_{0,
 
 It remains to estimate the error in the approximation of harmonic part $\varphi_j$ and the real numbers $c_j$ for $1 \leq j \leq m$. The error estimate for $\varphi_j$ can be estimated readily by using the abstract error estimate for second order elliptic problems approximated by virtual element methods \cite[Section 4.3]{Brenner-Sung-2018-VEM-Small-Edges-Faces} and the regularity of $\varphi_j \in H^{1+(\pi/\omega)-\epsilon}(\Omega)$.
 
-\begin{lemma}\label{lem:est.phi.mc}
+\begin{lemma}\label{lem:est.varphi.mc}
     For any $\epsilon > 0$, there exists a positive constant dependent on $\epsilon$ and independent of $h$ such that for $k = 1,2, \gamma > 0$, and $1 \leq j \leq m$,
     \begin{align}
         \seminorm{H^1(\Omega)}{\varphi_j - \varphi_{j,h}} &\lesssim h^{\min{((\pi / \omega) - \epsilon, k)}}, \label{eq:err.est.varphi} \\
@@ -566,12 +566,12 @@ Substituting the bounds \eqref{eq:err.est.cj.a.2}, \eqref{eq:err.est.cj.a.3}, an
     \begin{align}
         \norm{\infty}{\bs{A}^{-1}} \leq 2 \norm{2}{\bs{A}^{-1}} = \frac{2}{\lambda_{\min}(\bs{A})}, \label{eq:err.est.cj.Ainv}
     \end{align}
-    where $\lambda_{\min}(\bs{A})$ denotes the minimum eigenvalue of $\bs{A}$. In order to control the $\norm{\infty}{\bs{A}_h}$, we write $\bs{A}^{-1}_h = (\bs{I} - \bs{A}^{-1} (\bs{A}_h - \bs{A}))^{-1} \bs{A}^{-1}$, and proceed using the Von Neumann lemma and \eqref{eq:err.est.A.b} as follows,
+    where $\lambda_{\min}(\bs{A})$ denotes the minimum eigenvalue of $\bs{A}$. In order to control the $\norm{\infty}{\bs{A}_h}$, we write $\bs{A}^{-1}_h = (\bs{I} - \bs{A}^{-1} (\bs{A}_h - \bs{A}))^{-1} \bs{A}^{-1}$, and proceed using the Von Neumann lemma as follows,
     \begin{align}\label{eq:err.est.cj.Ahinv}
         \norm{\infty}{\bs{A}_h^{-1}} &\leq \norm{\infty}{(\bs{I}-\bs{A}^{-1}(\bs{A}_h - \bs{A}))^{-1}} \norm{\infty}{\bs{A}^{-1}}
         \leq \frac{\norm{\infty}{\bs{A}^{-1}}}{1 - \norm{\infty}{\bs{A}^{-1}(\bs{A}_h - \bs{A})}}.
     \end{align}
-    The estimate \eqref{eq:err.est.cj.Ahinv} holds provided $\norm{\infty}{\bs{A}^{-1}(\bs{A}_h - \bs{A})} < 1$. On simplification this leads to the following condition on $h$:
+    The estimate \eqref{eq:err.est.cj.Ahinv} holds provided $\norm{\infty}{\bs{A}^{-1}}\norm{\infty}{(\bs{A}_h - \bs{A})} < 1$ which implies $\norm{\infty}{\bs{A}^{-1}(\bs{A}_h - \bs{A})} < 1$. On using \eqref{eq:err.est.A.b} and further simplification this leads to the following condition on $h$:
     \begin{align*}
         h < h_0 := \left( \frac{\lambda_{\min}(\bs{A})}{2}\right)^{1/\min{((\pi / \omega) - \epsilon, k)}}.
     \end{align*}
@@ -595,3 +595,15 @@ Substituting the bounds \eqref{eq:err.est.cj.a.2}, \eqref{eq:err.est.cj.a.3}, an
 %     (\grad{\varphi_i}, \grad{\varphi_j}) - (\grad{\Pi^1_{k,h}\varphi_i}, \grad{\Pi^1_{k,h} \varphi_j}) &= \sum_{D \in \Th} (\grad{(\varphi_i - \Pi^1_{k,D} \varphi_i)}, \grad{(\varphi_j - \Pi^1_{k,D} \varphi_j)}).
 % \end{align*}
 
+In view of Lemmas \ref{lem:xi.est.mc}, \ref{lem:est.phi}, \ref{lem:est.varphi.mc}, and \ref{lem:err.est.cj}, we can obtain the following estimate.
+
+\begin{theorem}\label{thm:u.mc}
+    The approximations $\xi_h$ and $\bs{u}_h$ obtained by $\Poly_k$-virtual finite element method satisfy 
+    \begin{align}\label{eq:err.est.simplyconnected}
+        \norm{L^2(\Omega)}{\bs{u} - \bs{u}_h} + \seminorm{H^1(\Omega)}{\curl{\bs{u}} - \xi_h} \lesssim h^{\min{((\pi / \omega) - \epsilon, k)}} \norm{L^2(\Omega)}{\bs{f}},
+    \end{align}
+    for any $\epsilon > 0$, $h < h_0$ with $h_0$ defined in Lemma \ref{lem:err.est.cj}, and $k = 1,2$, where $\omega$ is the largest angle at the corners of $\Omega$.
+\end{theorem} 
+\begin{proof}
+    The proof follows similarly to \cite[Theorem 4.9]{Brenner-Cui-Nan-Sung-2012-HodgeDecomposition2D}.
+\end{proof}
