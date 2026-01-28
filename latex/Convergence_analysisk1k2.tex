@@ -72,10 +72,10 @@ Here $\mathcal{N}^{\partial D}$ is the set of boundary degrees of freedom associ
 In the subsequent analysis, we work with the following assumption which is made concrete in Remark \ref{coercivity.assum}.
 \begin{assumption}\label{assum:coercivity}
     Let $\norm{h_\beta}{\cdot} = \sqrt{a_h(\cdot,\cdot) + \beta (\Pi^0_{k,h} \cdot, \Pi^0_{k,h} \cdot)}$ denote the mesh-dependent energy norm such that 
-    \begin{align}
-        \seminorm{H^1(\Omega)}{v_h} &\lesssim \norm{h_\beta}{v_h} \quad \forall v_h \in V_h^0, \label{eq:coercivity.Dirichlet} \\
-        \seminorm{H^1(\Omega)}{v_h} &\lesssim \norm{h_\beta}{v_h} \quad \forall v_h \in V_h \quad \mbox{with} \quad (v_h,1) = 0. \label{eq:coercivity.Neumann} 
-    \end{align}
+    \begin{align*}
+        \seminorm{H^1(\Omega)}{v_h} &\lesssim \norm{h_\beta}{v_h} \quad \forall v_h \in V_h^0,  \\
+        \seminorm{H^1(\Omega)}{v_h} &\lesssim \norm{h_\beta}{v_h} \quad \forall v_h \in V_h \quad \mbox{with} \quad (v_h,1) = 0. 
+    \end{align*}
 \end{assumption}
 
 We also define the piecewise-broken $H^1$-seminorm by
@@ -93,8 +93,7 @@ Some useful estimates in the mesh-dependent norm and piecewise broken semi-norm 
 \end{lemma}
 
 \begin{remark}\label{coercivity.assum}
-    \corr{}{}{[JT: To do - Making Assumption 5.7 concrete, for shape-regular meshes vs meshes with small edges]}
-    
+    The coercivity Assumption for $\norm{h_0}{\cdot}$ for different stabilization forms has been studied in detail in \cite[(4.4),(4.5),(4.16)]{brenner.sung:2018:virtual} for meshes with small edges and in \cite{brenner.guan.ea:2017:some} for meshes satisfying Assumption \ref{meshreg_assum}. The coercivity Assumption for $\norm{h_\beta}{\cdot}$ is a trivial consequence.
 \end{remark}
 
 
