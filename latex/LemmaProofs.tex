@@ -15,7 +15,7 @@ Observing that $\Pi^1_{k,h}((I - \Pi^1_{k,h})\Ih v) = 0$ due to linearity and id
 \begin{align*}
     \norm{h_0}{\Ih{v} - \Pi^1_{k,h} \Ih{v}}^2 &= \sum_{D \in \Th} S^D((I - \Pi^1_{k,h}) \Ih v, (I - \Pi^1_{k,h}) \Ih v) \\
     &= \sum_{D \in \Th} \sum_{i=1}^{N_{\partial D}^{\texttt{dof}}} \chi_i((I - \Pi^1_{k,h}) \Ih v)^2 \\
-    &\overset{\eqref{eq:stab.p2}}{\lesssim} \sum_{D \in \Th} \norm{L^\infty(D)}{(I - \Pi^1_{k,h}) \Ih v}^2 \\
+    &\hspace{-0.15cm}\overset{\eqref{eq:stab.p2}}{\lesssim} \sum_{D \in \Th} \norm{L^\infty(D)}{(I - \Pi^1_{k,h}) \Ih v}^2 \\
     &\overset{\eqref{eq:Sobolev.inequality}}{\lesssim} \sum_{D \in \Th} h_D^{-2} \norm{L^2(D)}{(I - \Pi^1_{k,D}) \Ih v}^2 + \seminorm{H^1(D)}{(I - \Pi^1_{k,D}) \Ih v}^2 \\
     &\qquad+ h_D^{2\delta} \seminorm{H^{1+\delta}(D)}{(I - \Pi^1_{k,D}) \Ih v}^2 
 \end{align*}
@@ -39,10 +39,6 @@ Now using the approximation property of $\Pi^1_{k,D}$ in Lemma \ref{lem:H1p.prop
     + \beta \norm{L^2(D)}{v - \ID v}^2,
 \end{align*}    
 where in the passage to the second equality we use the fact that $\chi_i(v - \ID{v}) = 0$ for boundary degrees of freedom by definition of interpolation operator \eqref{eq:ID.boundary}. In the last inequality we used the stability of projectors \eqref{eq:stability.H1p}, \eqref{eq:stability.L2p} and the property \eqref{eq:stab.p2}. The first and last terms are bounded using the approximation properties of $\ID$ from Lemma \ref{lem:ID.properties}. The second term can be estimated as in \cite[(4.24)]{brenner.sung:2018:virtual}. Combining all the resulting bounds leads to the desired estimate on the second term in \eqref{eq:est.hbeta.norm}.
-
-
-
-
 
 
 
